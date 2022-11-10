@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98B3C30D291C74BB004EEB14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 98B3C30C291C74BB004EEB14 /* GoogleService-Info.plist */; };
+		98B3C310291C7566004EEB14 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 98B3C30F291C7566004EEB14 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		98B3C312291C7566004EEB14 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 98B3C311291C7566004EEB14 /* FirebaseAuth */; };
+		98B3C314291C7566004EEB14 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 98B3C313291C7566004EEB14 /* FirebaseCrashlytics */; };
+		98B3C316291C7566004EEB14 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 98B3C315291C7566004EEB14 /* FirebaseMessaging */; };
+		98B3C324291C8832004EEB14 /* FirstOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C323291C8832004EEB14 /* FirstOnboardingViewController.swift */; };
+		98B3C329291C8892004EEB14 /* FirstOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C328291C8892004EEB14 /* FirstOnboardingView.swift */; };
+		98B3C32C291C88D7004EEB14 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C32B291C88D7004EEB14 /* BaseViewController.swift */; };
+		98B3C32E291C88E1004EEB14 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C32D291C88E1004EEB14 /* BaseView.swift */; };
+		98B3C33F291C8BA1004EEB14 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 98B3C33E291C8BA1004EEB14 /* SnapKit */; };
+		98B3C342291C8BD4004EEB14 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 98B3C341291C8BD4004EEB14 /* Alamofire */; };
+		98B3C345291C8C06004EEB14 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 98B3C344291C8C06004EEB14 /* Toast */; };
+		98B3C347291CCE3E004EEB14 /* IntroPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C346291CCE3E004EEB14 /* IntroPageViewController.swift */; };
+		98B3C349291D0B78004EEB14 /* IntroPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C348291D0B78004EEB14 /* IntroPageView.swift */; };
+		98B3C34B291D0F10004EEB14 /* SecondOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C34A291D0F10004EEB14 /* SecondOnboardingViewController.swift */; };
+		98B3C34D291D0F26004EEB14 /* ThirdOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C34C291D0F26004EEB14 /* ThirdOnboardingViewController.swift */; };
+		98B3C34F291D0F38004EEB14 /* ThirdOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C34E291D0F38004EEB14 /* ThirdOnboardingView.swift */; };
+		98B3C351291D0F43004EEB14 /* SecondOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C350291D0F43004EEB14 /* SecondOnboardingView.swift */; };
+		98B3C353291D2955004EEB14 /* MainOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C352291D2955004EEB14 /* MainOnboardingViewController.swift */; };
+		98B3C355291D2964004EEB14 /* MainOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C354291D2964004EEB14 /* MainOnboardingView.swift */; };
+		98B3C35B291D3121004EEB14 /* PhoneNumberCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C35A291D3121004EEB14 /* PhoneNumberCheckView.swift */; };
+		98B3C35D291D312D004EEB14 /* PhoneNumberCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C35C291D312D004EEB14 /* PhoneNumberCheckViewController.swift */; };
+		98B3C35F291D3137004EEB14 /* CertificationNumberCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C35E291D3137004EEB14 /* CertificationNumberCheck.swift */; };
+		98B3C361291D3146004EEB14 /* CertificationNumberCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C360291D3146004EEB14 /* CertificationNumberCheckViewController.swift */; };
 		98B9DF80291BEC2D00FE62EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9DF7F291BEC2D00FE62EA /* AppDelegate.swift */; };
 		98B9DF82291BEC2D00FE62EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9DF81291BEC2D00FE62EA /* SceneDelegate.swift */; };
 		98B9DF84291BEC2D00FE62EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9DF83291BEC2D00FE62EA /* ViewController.swift */; };
@@ -14,10 +38,27 @@
 		98B9DF89291BEC2E00FE62EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98B9DF88291BEC2E00FE62EA /* Assets.xcassets */; };
 		98B9DF8C291BEC2E00FE62EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B9DF8A291BEC2E00FE62EA /* LaunchScreen.storyboard */; };
 		98B9DF99291BEF3C00FE62EA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 98B9DF98291BEF3C00FE62EA /* .gitignore */; };
-		98B9DF9E291BEF9000FE62EA /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9DF9D291BEF9000FE62EA /* Test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		98B3C30C291C74BB004EEB14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		98B3C317291C7667004EEB14 /* SLP_Study Mates Finder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SLP_Study Mates Finder.entitlements"; sourceTree = "<group>"; };
+		98B3C323291C8832004EEB14 /* FirstOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingViewController.swift; sourceTree = "<group>"; };
+		98B3C328291C8892004EEB14 /* FirstOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingView.swift; sourceTree = "<group>"; };
+		98B3C32B291C88D7004EEB14 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		98B3C32D291C88E1004EEB14 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		98B3C346291CCE3E004EEB14 /* IntroPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageViewController.swift; sourceTree = "<group>"; };
+		98B3C348291D0B78004EEB14 /* IntroPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageView.swift; sourceTree = "<group>"; };
+		98B3C34A291D0F10004EEB14 /* SecondOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingViewController.swift; sourceTree = "<group>"; };
+		98B3C34C291D0F26004EEB14 /* ThirdOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdOnboardingViewController.swift; sourceTree = "<group>"; };
+		98B3C34E291D0F38004EEB14 /* ThirdOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdOnboardingView.swift; sourceTree = "<group>"; };
+		98B3C350291D0F43004EEB14 /* SecondOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingView.swift; sourceTree = "<group>"; };
+		98B3C352291D2955004EEB14 /* MainOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOnboardingViewController.swift; sourceTree = "<group>"; };
+		98B3C354291D2964004EEB14 /* MainOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOnboardingView.swift; sourceTree = "<group>"; };
+		98B3C35A291D3121004EEB14 /* PhoneNumberCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCheckView.swift; sourceTree = "<group>"; };
+		98B3C35C291D312D004EEB14 /* PhoneNumberCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCheckViewController.swift; sourceTree = "<group>"; };
+		98B3C35E291D3137004EEB14 /* CertificationNumberCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationNumberCheck.swift; sourceTree = "<group>"; };
+		98B3C360291D3146004EEB14 /* CertificationNumberCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationNumberCheckViewController.swift; sourceTree = "<group>"; };
 		98B9DF7C291BEC2D00FE62EA /* SLP_Study Mates Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SLP_Study Mates Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98B9DF7F291BEC2D00FE62EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98B9DF81291BEC2D00FE62EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,7 +68,6 @@
 		98B9DF8B291BEC2E00FE62EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98B9DF8D291BEC2E00FE62EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98B9DF98291BEF3C00FE62EA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		98B9DF9D291BEF9000FE62EA /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,12 +75,80 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B3C345291C8C06004EEB14 /* Toast in Frameworks */,
+				98B3C316291C7566004EEB14 /* FirebaseMessaging in Frameworks */,
+				98B3C314291C7566004EEB14 /* FirebaseCrashlytics in Frameworks */,
+				98B3C310291C7566004EEB14 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				98B3C342291C8BD4004EEB14 /* Alamofire in Frameworks */,
+				98B3C312291C7566004EEB14 /* FirebaseAuth in Frameworks */,
+				98B3C33F291C8BA1004EEB14 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		98B3C318291C86FE004EEB14 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				98B3C346291CCE3E004EEB14 /* IntroPageViewController.swift */,
+				98B3C348291D0B78004EEB14 /* IntroPageView.swift */,
+				98B3C352291D2955004EEB14 /* MainOnboardingViewController.swift */,
+				98B3C354291D2964004EEB14 /* MainOnboardingView.swift */,
+				98B3C323291C8832004EEB14 /* FirstOnboardingViewController.swift */,
+				98B3C328291C8892004EEB14 /* FirstOnboardingView.swift */,
+				98B3C34A291D0F10004EEB14 /* SecondOnboardingViewController.swift */,
+				98B3C350291D0F43004EEB14 /* SecondOnboardingView.swift */,
+				98B3C34C291D0F26004EEB14 /* ThirdOnboardingViewController.swift */,
+				98B3C34E291D0F38004EEB14 /* ThirdOnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		98B3C32A291C88C0004EEB14 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				98B3C32B291C88D7004EEB14 /* BaseViewController.swift */,
+				98B3C32D291C88E1004EEB14 /* BaseView.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		98B3C357291D2FCA004EEB14 /* RegistrationProcess */ = {
+			isa = PBXGroup;
+			children = (
+				98B3C362291D3471004EEB14 /* UserRegistration */,
+				98B3C359291D30FE004EEB14 /* CertificationNumberCheck */,
+				98B3C358291D30E7004EEB14 /* PhoneNumberCheck */,
+			);
+			path = RegistrationProcess;
+			sourceTree = "<group>";
+		};
+		98B3C358291D30E7004EEB14 /* PhoneNumberCheck */ = {
+			isa = PBXGroup;
+			children = (
+				98B3C35A291D3121004EEB14 /* PhoneNumberCheckView.swift */,
+				98B3C35C291D312D004EEB14 /* PhoneNumberCheckViewController.swift */,
+			);
+			path = PhoneNumberCheck;
+			sourceTree = "<group>";
+		};
+		98B3C359291D30FE004EEB14 /* CertificationNumberCheck */ = {
+			isa = PBXGroup;
+			children = (
+				98B3C35E291D3137004EEB14 /* CertificationNumberCheck.swift */,
+				98B3C360291D3146004EEB14 /* CertificationNumberCheckViewController.swift */,
+			);
+			path = CertificationNumberCheck;
+			sourceTree = "<group>";
+		};
+		98B3C362291D3471004EEB14 /* UserRegistration */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserRegistration;
+			sourceTree = "<group>";
+		};
 		98B9DF73291BEC2D00FE62EA = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +169,10 @@
 		98B9DF7E291BEC2D00FE62EA /* SLP_Study Mates Finder */ = {
 			isa = PBXGroup;
 			children = (
+				98B3C357291D2FCA004EEB14 /* RegistrationProcess */,
+				98B3C32A291C88C0004EEB14 /* BaseView */,
+				98B3C318291C86FE004EEB14 /* Onboarding */,
+				98B3C317291C7667004EEB14 /* SLP_Study Mates Finder.entitlements */,
 				98B9DF9A291BEF5200FE62EA /* Confidential Files */,
 				98B9DF7F291BEC2D00FE62EA /* AppDelegate.swift */,
 				98B9DF81291BEC2D00FE62EA /* SceneDelegate.swift */,
@@ -76,7 +188,7 @@
 		98B9DF9A291BEF5200FE62EA /* Confidential Files */ = {
 			isa = PBXGroup;
 			children = (
-				98B9DF9D291BEF9000FE62EA /* Test.swift */,
+				98B3C30C291C74BB004EEB14 /* GoogleService-Info.plist */,
 			);
 			path = "Confidential Files";
 			sourceTree = "<group>";
@@ -97,6 +209,15 @@
 			dependencies = (
 			);
 			name = "SLP_Study Mates Finder";
+			packageProductDependencies = (
+				98B3C30F291C7566004EEB14 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				98B3C311291C7566004EEB14 /* FirebaseAuth */,
+				98B3C313291C7566004EEB14 /* FirebaseCrashlytics */,
+				98B3C315291C7566004EEB14 /* FirebaseMessaging */,
+				98B3C33E291C8BA1004EEB14 /* SnapKit */,
+				98B3C341291C8BD4004EEB14 /* Alamofire */,
+				98B3C344291C8C06004EEB14 /* Toast */,
+			);
 			productName = "SLP_Study Mates Finder";
 			productReference = 98B9DF7C291BEC2D00FE62EA /* SLP_Study Mates Finder.app */;
 			productType = "com.apple.product-type.application";
@@ -125,6 +246,12 @@
 				Base,
 			);
 			mainGroup = 98B9DF73291BEC2D00FE62EA;
+			packageReferences = (
+				98B3C30E291C7566004EEB14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				98B3C33D291C8BA1004EEB14 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				98B3C340291C8BD4004EEB14 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				98B3C343291C8C06004EEB14 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+			);
 			productRefGroup = 98B9DF7D291BEC2D00FE62EA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -141,6 +268,7 @@
 			files = (
 				98B9DF99291BEF3C00FE62EA /* .gitignore in Resources */,
 				98B9DF8C291BEC2E00FE62EA /* LaunchScreen.storyboard in Resources */,
+				98B3C30D291C74BB004EEB14 /* GoogleService-Info.plist in Resources */,
 				98B9DF89291BEC2E00FE62EA /* Assets.xcassets in Resources */,
 				98B9DF87291BEC2D00FE62EA /* Main.storyboard in Resources */,
 			);
@@ -154,9 +282,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				98B9DF84291BEC2D00FE62EA /* ViewController.swift in Sources */,
-				98B9DF9E291BEF9000FE62EA /* Test.swift in Sources */,
+				98B3C34B291D0F10004EEB14 /* SecondOnboardingViewController.swift in Sources */,
 				98B9DF80291BEC2D00FE62EA /* AppDelegate.swift in Sources */,
+				98B3C347291CCE3E004EEB14 /* IntroPageViewController.swift in Sources */,
+				98B3C35F291D3137004EEB14 /* CertificationNumberCheck.swift in Sources */,
+				98B3C353291D2955004EEB14 /* MainOnboardingViewController.swift in Sources */,
+				98B3C355291D2964004EEB14 /* MainOnboardingView.swift in Sources */,
+				98B3C349291D0B78004EEB14 /* IntroPageView.swift in Sources */,
+				98B3C324291C8832004EEB14 /* FirstOnboardingViewController.swift in Sources */,
 				98B9DF82291BEC2D00FE62EA /* SceneDelegate.swift in Sources */,
+				98B3C35B291D3121004EEB14 /* PhoneNumberCheckView.swift in Sources */,
+				98B3C34D291D0F26004EEB14 /* ThirdOnboardingViewController.swift in Sources */,
+				98B3C35D291D312D004EEB14 /* PhoneNumberCheckViewController.swift in Sources */,
+				98B3C32C291C88D7004EEB14 /* BaseViewController.swift in Sources */,
+				98B3C351291D0F43004EEB14 /* SecondOnboardingView.swift in Sources */,
+				98B3C361291D3146004EEB14 /* CertificationNumberCheckViewController.swift in Sources */,
+				98B3C32E291C88E1004EEB14 /* BaseView.swift in Sources */,
+				98B3C329291C8892004EEB14 /* FirstOnboardingView.swift in Sources */,
+				98B3C34F291D0F38004EEB14 /* ThirdOnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,8 +444,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SLP_Study Mates Finder/SLP_Study Mates Finder.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VSHQ8JA888;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SLP_Study Mates Finder/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -328,8 +473,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SLP_Study Mates Finder/SLP_Study Mates Finder.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VSHQ8JA888;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "SLP_Study Mates Finder/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -372,6 +519,79 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		98B3C30E291C7566004EEB14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		98B3C33D291C8BA1004EEB14 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		98B3C340291C8BD4004EEB14 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		98B3C343291C8C06004EEB14 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		98B3C30F291C7566004EEB14 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98B3C30E291C7566004EEB14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		98B3C311291C7566004EEB14 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98B3C30E291C7566004EEB14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		98B3C313291C7566004EEB14 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98B3C30E291C7566004EEB14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		98B3C315291C7566004EEB14 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98B3C30E291C7566004EEB14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		98B3C33E291C8BA1004EEB14 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98B3C33D291C8BA1004EEB14 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		98B3C341291C8BD4004EEB14 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98B3C340291C8BD4004EEB14 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		98B3C344291C8C06004EEB14 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98B3C343291C8C06004EEB14 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 98B9DF74291BEC2D00FE62EA /* Project object */;
 }
