@@ -8,27 +8,41 @@
 import UIKit
 
 class PhoneNumberCheckViewController: BaseViewController {
-var mainView = PhoneNumberCheckView()
-    
+    var mainView = PhoneNumberCheckView()
+    let border = CALayer()
     override func loadView() {
         self.view = mainView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
-    
+        
+        mainView.phoneNumberTextField.addTarget(self, action: #selector(phoneNumberTextFieldEditingDidBegin), for: .editingDidBegin)
+        mainView.phoneNumberTextField.addTarget(self, action: #selector(phoneNumberTextFieldEditingDidEnd), for: .editingDidEnd)
+        mainView.receiveTextButton.addTarget(self, action: #selector(receiveTextButtonClicked), for: .touchUpInside)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func phoneNumberTextFieldEditingDidBegin() {
+        border.black()
+        mainView.phoneNumberTextField.layer.addSublayer((border))
     }
-    */
-
+    
+    @objc func phoneNumberTextFieldEditingDidEnd() {
+        border.gray3()
+        mainView.phoneNumberTextField.layer.addSublayer((border))
+    }
+    
+    @objc func receiveTextButtonClicked() {
+        let vc = CertificationNumberCheckViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        border.frame = CGRect(x: 0, y: mainView.phoneNumberTextField.frame.size.height-1, width: mainView.phoneNumberTextField.frame.width, height: 1)
+        border.gray3()
+        mainView.phoneNumberTextField.layer.addSublayer((border))
+    }
+    
+    
+    
 }

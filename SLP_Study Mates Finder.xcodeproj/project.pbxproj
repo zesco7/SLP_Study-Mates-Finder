@@ -38,6 +38,12 @@
 		98B9DF89291BEC2E00FE62EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98B9DF88291BEC2E00FE62EA /* Assets.xcassets */; };
 		98B9DF8C291BEC2E00FE62EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B9DF8A291BEC2E00FE62EA /* LaunchScreen.storyboard */; };
 		98B9DF99291BEF3C00FE62EA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 98B9DF98291BEF3C00FE62EA /* .gitignore */; };
+		98F696FD291DD39100577FCE /* OnboardingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F696FC291DD39100577FCE /* OnboardingLabel.swift */; };
+		98F696FF291DDEC500577FCE /* RegistrationProcessLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F696FE291DDEC500577FCE /* RegistrationProcessLabel.swift */; };
+		98F69703291E339C00577FCE /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F69702291E339C00577FCE /* UIButton+Extension.swift */; };
+		98F69705291E718400577FCE /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F69704291E718400577FCE /* LargeButton.swift */; };
+		98F69707291E732100577FCE /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F69706291E732100577FCE /* UITextField+Extension.swift */; };
+		98F6971E291E7D2200577FCE /* PhoneNumberCheckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6971D291E7D2200577FCE /* PhoneNumberCheckViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +74,12 @@
 		98B9DF8B291BEC2E00FE62EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98B9DF8D291BEC2E00FE62EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98B9DF98291BEF3C00FE62EA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		98F696FC291DD39100577FCE /* OnboardingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLabel.swift; sourceTree = "<group>"; };
+		98F696FE291DDEC500577FCE /* RegistrationProcessLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationProcessLabel.swift; sourceTree = "<group>"; };
+		98F69702291E339C00577FCE /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		98F69704291E718400577FCE /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
+		98F69706291E732100577FCE /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		98F6971D291E7D2200577FCE /* PhoneNumberCheckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCheckViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,8 +139,9 @@
 		98B3C358291D30E7004EEB14 /* PhoneNumberCheck */ = {
 			isa = PBXGroup;
 			children = (
-				98B3C35A291D3121004EEB14 /* PhoneNumberCheckView.swift */,
 				98B3C35C291D312D004EEB14 /* PhoneNumberCheckViewController.swift */,
+				98B3C35A291D3121004EEB14 /* PhoneNumberCheckView.swift */,
+				98F6971D291E7D2200577FCE /* PhoneNumberCheckViewModel.swift */,
 			);
 			path = PhoneNumberCheck;
 			sourceTree = "<group>";
@@ -136,8 +149,8 @@
 		98B3C359291D30FE004EEB14 /* CertificationNumberCheck */ = {
 			isa = PBXGroup;
 			children = (
-				98B3C35E291D3137004EEB14 /* CertificationNumberCheck.swift */,
 				98B3C360291D3146004EEB14 /* CertificationNumberCheckViewController.swift */,
+				98B3C35E291D3137004EEB14 /* CertificationNumberCheck.swift */,
 			);
 			path = CertificationNumberCheck;
 			sourceTree = "<group>";
@@ -169,6 +182,8 @@
 		98B9DF7E291BEC2D00FE62EA /* SLP_Study Mates Finder */ = {
 			isa = PBXGroup;
 			children = (
+				98F69701291E339100577FCE /* Extensions */,
+				98F696FB291DD2B100577FCE /* CustomView */,
 				98B3C357291D2FCA004EEB14 /* RegistrationProcess */,
 				98B3C32A291C88C0004EEB14 /* BaseView */,
 				98B3C318291C86FE004EEB14 /* Onboarding */,
@@ -191,6 +206,25 @@
 				98B3C30C291C74BB004EEB14 /* GoogleService-Info.plist */,
 			);
 			path = "Confidential Files";
+			sourceTree = "<group>";
+		};
+		98F696FB291DD2B100577FCE /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				98F696FC291DD39100577FCE /* OnboardingLabel.swift */,
+				98F696FE291DDEC500577FCE /* RegistrationProcessLabel.swift */,
+				98F69704291E718400577FCE /* LargeButton.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		98F69701291E339100577FCE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				98F69702291E339C00577FCE /* UIButton+Extension.swift */,
+				98F69706291E732100577FCE /* UITextField+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,20 +318,26 @@
 				98B9DF84291BEC2D00FE62EA /* ViewController.swift in Sources */,
 				98B3C34B291D0F10004EEB14 /* SecondOnboardingViewController.swift in Sources */,
 				98B9DF80291BEC2D00FE62EA /* AppDelegate.swift in Sources */,
+				98F69703291E339C00577FCE /* UIButton+Extension.swift in Sources */,
 				98B3C347291CCE3E004EEB14 /* IntroPageViewController.swift in Sources */,
 				98B3C35F291D3137004EEB14 /* CertificationNumberCheck.swift in Sources */,
 				98B3C353291D2955004EEB14 /* MainOnboardingViewController.swift in Sources */,
 				98B3C355291D2964004EEB14 /* MainOnboardingView.swift in Sources */,
 				98B3C349291D0B78004EEB14 /* IntroPageView.swift in Sources */,
 				98B3C324291C8832004EEB14 /* FirstOnboardingViewController.swift in Sources */,
+				98F69705291E718400577FCE /* LargeButton.swift in Sources */,
 				98B9DF82291BEC2D00FE62EA /* SceneDelegate.swift in Sources */,
 				98B3C35B291D3121004EEB14 /* PhoneNumberCheckView.swift in Sources */,
+				98F696FF291DDEC500577FCE /* RegistrationProcessLabel.swift in Sources */,
+				98F696FD291DD39100577FCE /* OnboardingLabel.swift in Sources */,
 				98B3C34D291D0F26004EEB14 /* ThirdOnboardingViewController.swift in Sources */,
 				98B3C35D291D312D004EEB14 /* PhoneNumberCheckViewController.swift in Sources */,
 				98B3C32C291C88D7004EEB14 /* BaseViewController.swift in Sources */,
 				98B3C351291D0F43004EEB14 /* SecondOnboardingView.swift in Sources */,
 				98B3C361291D3146004EEB14 /* CertificationNumberCheckViewController.swift in Sources */,
 				98B3C32E291C88E1004EEB14 /* BaseView.swift in Sources */,
+				98F69707291E732100577FCE /* UITextField+Extension.swift in Sources */,
+				98F6971E291E7D2200577FCE /* PhoneNumberCheckViewModel.swift in Sources */,
 				98B3C329291C8892004EEB14 /* FirstOnboardingView.swift in Sources */,
 				98B3C34F291D0F38004EEB14 /* ThirdOnboardingView.swift in Sources */,
 			);

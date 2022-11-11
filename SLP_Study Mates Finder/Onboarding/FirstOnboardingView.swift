@@ -9,13 +9,9 @@ import Foundation
 import UIKit
 
 class FirstOnboardingView: BaseView {
-    let serviceIntroduction: UILabel = {
-        let view = UILabel()
+    let serviceIntroduction: OnboardingLabel = {
+        let view = OnboardingLabel()
         view.text = "위치 기반으로 빠르게 주위 친구를 확인"
-        view.numberOfLines = 0
-        view.textAlignment = .center
-        view.font = .systemFont(ofSize: 25)
-        view.textColor = .black
         
         let attributtedString = NSMutableAttributedString(string: view.text!)
         attributtedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.green, range: (view.text! as NSString).range(of:"위치"))

@@ -14,6 +14,7 @@ class BaseViewController: UIViewController {
 
         attribute()
         configure()
+        hideKeyboard()
     }
     
     func attribute() {
@@ -21,4 +22,13 @@ class BaseViewController: UIViewController {
     }
     
     func configure() { }
+    
+    func hideKeyboard() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

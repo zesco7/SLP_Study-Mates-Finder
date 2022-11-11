@@ -39,11 +39,10 @@ class IntroPageView: BaseView {
         return vc
     }()
     
-    let startButton: UIButton = {
-        let view = UIButton()
+    let startButton: LargeButton = {
+        let view = LargeButton()
         view.setTitle("시작하기", for: .normal)
-        view.backgroundColor = .green
-        view.layer.cornerRadius = 5
+        view.green()
         return view
     }()
     

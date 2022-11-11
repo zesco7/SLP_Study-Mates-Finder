@@ -9,13 +9,9 @@ import Foundation
 import UIKit
 
 class ThirdOnboardingView: BaseView {
-    let serviceIntroduction: UILabel = {
-        let view = UILabel()
+    let serviceIntroduction: OnboardingLabel = {
+        let view = OnboardingLabel()
         view.text = "SeSAC Study"
-        view.numberOfLines = 0
-        view.textAlignment = .center
-        view.font = .systemFont(ofSize: 25)
-        view.textColor = .black
         return view
     }()
     
