@@ -10,7 +10,7 @@ import FirebaseAuth
 
 class ViewController: UIViewController {
 
-    var phoneNumber = "+82 01041539939"
+    var phoneNumber = "+82 01012345678"
     
     override func viewDidLoad() {
         super.viewDidLoad()

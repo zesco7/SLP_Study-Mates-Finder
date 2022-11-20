@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 class CertificationNumberCheck: BaseView {
-    let phoneNumberCheckIntroduction: RegistrationProcessLabel = {
+    let certificationNumberCheckIntroduction: RegistrationProcessLabel = {
        let view = RegistrationProcessLabel()
         view.text = "인증 번호가 문자로 전송되었어요"
         return view
     }()
     
-    let phoneNumberTextField: UITextField = {
+    let certificationNumberCheckTextField: UITextField = {
        let view = UITextField()
         view.placeholder = "인증번호 입력"
         view.keyboardType = .decimalPad
@@ -39,20 +39,20 @@ class CertificationNumberCheck: BaseView {
     }()
     
     override func configure() {
-        [phoneNumberCheckIntroduction, phoneNumberTextField, requestTextButton, certificationStartButton].forEach {
+        [certificationNumberCheckIntroduction, certificationNumberCheckTextField, requestTextButton, certificationStartButton].forEach {
             self.addSubview($0)
         }
     }
     
     override func setConstraints() {
-        phoneNumberCheckIntroduction.snp.makeConstraints { make in
-            make.leadingMargin.equalTo(60)
-            make.trailingMargin.equalTo(-60)
-            make.height.equalTo(100)
-            make.bottom.equalTo(phoneNumberTextField.snp.top).offset(-60)
+        certificationNumberCheckIntroduction.snp.makeConstraints { make in
+            make.leadingMargin.equalTo(30)
+            make.trailingMargin.equalTo(-30)
+            make.height.equalTo(50)
+            make.centerY.equalTo(self).multipliedBy(0.4)
         }
         
-        phoneNumberTextField.snp.makeConstraints { make in
+        certificationNumberCheckTextField.snp.makeConstraints { make in
             make.bottom.equalTo(certificationStartButton.snp.top).offset(-60)
             make.leadingMargin.equalTo(20)
             make.trailingMargin.equalTo(-120)

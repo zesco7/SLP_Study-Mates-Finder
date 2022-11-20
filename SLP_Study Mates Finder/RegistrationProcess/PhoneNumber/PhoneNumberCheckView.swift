@@ -41,8 +41,8 @@ class PhoneNumberCheckView: BaseView {
         phoneNumberCheckIntroduction.snp.makeConstraints { make in
             make.leadingMargin.equalTo(60)
             make.trailingMargin.equalTo(-60)
-            make.height.equalTo(100)
-            make.bottom.equalTo(phoneNumberTextField.snp.top).offset(-60)
+            make.height.equalTo(50)
+            make.centerY.equalTo(self).multipliedBy(0.4)
         }
         
         phoneNumberTextField.snp.makeConstraints { make in

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9826BA8E291F9E10006206F4 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 9826BA8D291F9E10006206F4 /* RxCocoa */; };
+		9826BA90291F9E10006206F4 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 9826BA8F291F9E10006206F4 /* RxRelay */; };
+		9826BA92291F9E10006206F4 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9826BA91291F9E10006206F4 /* RxSwift */; };
+		9826BA94291FACE9006206F4 /* CertificationNumberCheckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9826BA93291FACE9006206F4 /* CertificationNumberCheckViewModel.swift */; };
+		9826BA97291FAD87006206F4 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9826BA96291FAD87006206F4 /* Observable.swift */; };
 		98B3C30D291C74BB004EEB14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 98B3C30C291C74BB004EEB14 /* GoogleService-Info.plist */; };
 		98B3C310291C7566004EEB14 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 98B3C30F291C7566004EEB14 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		98B3C312291C7566004EEB14 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 98B3C311291C7566004EEB14 /* FirebaseAuth */; };
@@ -38,6 +43,17 @@
 		98B9DF89291BEC2E00FE62EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98B9DF88291BEC2E00FE62EA /* Assets.xcassets */; };
 		98B9DF8C291BEC2E00FE62EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B9DF8A291BEC2E00FE62EA /* LaunchScreen.storyboard */; };
 		98B9DF99291BEF3C00FE62EA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 98B9DF98291BEF3C00FE62EA /* .gitignore */; };
+		98BAC1252928BE14000A9E7E /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BAC1242928BE14000A9E7E /* NicknameViewModel.swift */; };
+		98C2E7882925BAFA003D43AF /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2E7872925BAFA003D43AF /* NicknameView.swift */; };
+		98C2E78A2925BB05003D43AF /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2E7892925BB05003D43AF /* NicknameViewController.swift */; };
+		98C2E78C2925BDE8003D43AF /* BirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2E78B2925BDE8003D43AF /* BirthView.swift */; };
+		98C2E78E2925BDF2003D43AF /* BirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2E78D2925BDF2003D43AF /* BirthViewController.swift */; };
+		98C2E7902925BDFE003D43AF /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2E78F2925BDFE003D43AF /* EmailView.swift */; };
+		98C2E7922925BE07003D43AF /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2E7912925BE07003D43AF /* EmailViewController.swift */; };
+		98C2E7942925BE11003D43AF /* GenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2E7932925BE11003D43AF /* GenderView.swift */; };
+		98C2E7962925BE1B003D43AF /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2E7952925BE1B003D43AF /* GenderViewController.swift */; };
+		98C2E7982925C084003D43AF /* RegistrationProcessDetailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2E7972925C084003D43AF /* RegistrationProcessDetailLabel.swift */; };
+		98C2E79A2925C11A003D43AF /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2E7992925C11A003D43AF /* UILabel+Extension.swift */; };
 		98F696FD291DD39100577FCE /* OnboardingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F696FC291DD39100577FCE /* OnboardingLabel.swift */; };
 		98F696FF291DDEC500577FCE /* RegistrationProcessLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F696FE291DDEC500577FCE /* RegistrationProcessLabel.swift */; };
 		98F69703291E339C00577FCE /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F69702291E339C00577FCE /* UIButton+Extension.swift */; };
@@ -46,7 +62,22 @@
 		98F6971E291E7D2200577FCE /* PhoneNumberCheckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6971D291E7D2200577FCE /* PhoneNumberCheckViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		98F235A8291F9C270028CA63 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		9826BA93291FACE9006206F4 /* CertificationNumberCheckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationNumberCheckViewModel.swift; sourceTree = "<group>"; };
+		9826BA96291FAD87006206F4 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		98B3C30C291C74BB004EEB14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		98B3C317291C7667004EEB14 /* SLP_Study Mates Finder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SLP_Study Mates Finder.entitlements"; sourceTree = "<group>"; };
 		98B3C323291C8832004EEB14 /* FirstOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +105,17 @@
 		98B9DF8B291BEC2E00FE62EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98B9DF8D291BEC2E00FE62EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98B9DF98291BEF3C00FE62EA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		98BAC1242928BE14000A9E7E /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
+		98C2E7872925BAFA003D43AF /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
+		98C2E7892925BB05003D43AF /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
+		98C2E78B2925BDE8003D43AF /* BirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthView.swift; sourceTree = "<group>"; };
+		98C2E78D2925BDF2003D43AF /* BirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthViewController.swift; sourceTree = "<group>"; };
+		98C2E78F2925BDFE003D43AF /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
+		98C2E7912925BE07003D43AF /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		98C2E7932925BE11003D43AF /* GenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderView.swift; sourceTree = "<group>"; };
+		98C2E7952925BE1B003D43AF /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
+		98C2E7972925C084003D43AF /* RegistrationProcessDetailLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationProcessDetailLabel.swift; sourceTree = "<group>"; };
+		98C2E7992925C11A003D43AF /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		98F696FC291DD39100577FCE /* OnboardingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLabel.swift; sourceTree = "<group>"; };
 		98F696FE291DDEC500577FCE /* RegistrationProcessLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationProcessLabel.swift; sourceTree = "<group>"; };
 		98F69702291E339C00577FCE /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -87,12 +129,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9826BA90291F9E10006206F4 /* RxRelay in Frameworks */,
 				98B3C345291C8C06004EEB14 /* Toast in Frameworks */,
+				9826BA92291F9E10006206F4 /* RxSwift in Frameworks */,
 				98B3C316291C7566004EEB14 /* FirebaseMessaging in Frameworks */,
 				98B3C314291C7566004EEB14 /* FirebaseCrashlytics in Frameworks */,
 				98B3C310291C7566004EEB14 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				98B3C342291C8BD4004EEB14 /* Alamofire in Frameworks */,
 				98B3C312291C7566004EEB14 /* FirebaseAuth in Frameworks */,
+				9826BA8E291F9E10006206F4 /* RxCocoa in Frameworks */,
 				98B3C33F291C8BA1004EEB14 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,6 +145,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9826BA95291FAD7A006206F4 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				9826BA96291FAD87006206F4 /* Observable.swift */,
+			);
+			path = Observable;
+			sourceTree = "<group>";
+		};
 		98B3C318291C86FE004EEB14 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,30 +182,35 @@
 		98B3C357291D2FCA004EEB14 /* RegistrationProcess */ = {
 			isa = PBXGroup;
 			children = (
+				98C2E7862925BAE6003D43AF /* Gender */,
+				98C2E7852925BADA003D43AF /* Email */,
+				98C2E7842925BAC9003D43AF /* Birth */,
+				98C2E7832925BA98003D43AF /* Nickname */,
 				98B3C362291D3471004EEB14 /* UserRegistration */,
-				98B3C359291D30FE004EEB14 /* CertificationNumberCheck */,
-				98B3C358291D30E7004EEB14 /* PhoneNumberCheck */,
+				98B3C359291D30FE004EEB14 /* CertificationNumber */,
+				98B3C358291D30E7004EEB14 /* PhoneNumber */,
 			);
 			path = RegistrationProcess;
 			sourceTree = "<group>";
 		};
-		98B3C358291D30E7004EEB14 /* PhoneNumberCheck */ = {
+		98B3C358291D30E7004EEB14 /* PhoneNumber */ = {
 			isa = PBXGroup;
 			children = (
 				98B3C35C291D312D004EEB14 /* PhoneNumberCheckViewController.swift */,
 				98B3C35A291D3121004EEB14 /* PhoneNumberCheckView.swift */,
 				98F6971D291E7D2200577FCE /* PhoneNumberCheckViewModel.swift */,
 			);
-			path = PhoneNumberCheck;
+			path = PhoneNumber;
 			sourceTree = "<group>";
 		};
-		98B3C359291D30FE004EEB14 /* CertificationNumberCheck */ = {
+		98B3C359291D30FE004EEB14 /* CertificationNumber */ = {
 			isa = PBXGroup;
 			children = (
 				98B3C360291D3146004EEB14 /* CertificationNumberCheckViewController.swift */,
 				98B3C35E291D3137004EEB14 /* CertificationNumberCheck.swift */,
+				9826BA93291FACE9006206F4 /* CertificationNumberCheckViewModel.swift */,
 			);
-			path = CertificationNumberCheck;
+			path = CertificationNumber;
 			sourceTree = "<group>";
 		};
 		98B3C362291D3471004EEB14 /* UserRegistration */ = {
@@ -168,6 +226,7 @@
 				98B9DF98291BEF3C00FE62EA /* .gitignore */,
 				98B9DF7E291BEC2D00FE62EA /* SLP_Study Mates Finder */,
 				98B9DF7D291BEC2D00FE62EA /* Products */,
+				98F235A4291F9C200028CA63 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,12 +241,13 @@
 		98B9DF7E291BEC2D00FE62EA /* SLP_Study Mates Finder */ = {
 			isa = PBXGroup;
 			children = (
+				98B3C317291C7667004EEB14 /* SLP_Study Mates Finder.entitlements */,
+				9826BA95291FAD7A006206F4 /* Observable */,
 				98F69701291E339100577FCE /* Extensions */,
 				98F696FB291DD2B100577FCE /* CustomView */,
 				98B3C357291D2FCA004EEB14 /* RegistrationProcess */,
 				98B3C32A291C88C0004EEB14 /* BaseView */,
 				98B3C318291C86FE004EEB14 /* Onboarding */,
-				98B3C317291C7667004EEB14 /* SLP_Study Mates Finder.entitlements */,
 				98B9DF9A291BEF5200FE62EA /* Confidential Files */,
 				98B9DF7F291BEC2D00FE62EA /* AppDelegate.swift */,
 				98B9DF81291BEC2D00FE62EA /* SceneDelegate.swift */,
@@ -208,12 +268,57 @@
 			path = "Confidential Files";
 			sourceTree = "<group>";
 		};
+		98C2E7832925BA98003D43AF /* Nickname */ = {
+			isa = PBXGroup;
+			children = (
+				98C2E7872925BAFA003D43AF /* NicknameView.swift */,
+				98BAC1242928BE14000A9E7E /* NicknameViewModel.swift */,
+				98C2E7892925BB05003D43AF /* NicknameViewController.swift */,
+			);
+			path = Nickname;
+			sourceTree = "<group>";
+		};
+		98C2E7842925BAC9003D43AF /* Birth */ = {
+			isa = PBXGroup;
+			children = (
+				98C2E78B2925BDE8003D43AF /* BirthView.swift */,
+				98C2E78D2925BDF2003D43AF /* BirthViewController.swift */,
+			);
+			path = Birth;
+			sourceTree = "<group>";
+		};
+		98C2E7852925BADA003D43AF /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				98C2E78F2925BDFE003D43AF /* EmailView.swift */,
+				98C2E7912925BE07003D43AF /* EmailViewController.swift */,
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
+		98C2E7862925BAE6003D43AF /* Gender */ = {
+			isa = PBXGroup;
+			children = (
+				98C2E7932925BE11003D43AF /* GenderView.swift */,
+				98C2E7952925BE1B003D43AF /* GenderViewController.swift */,
+			);
+			path = Gender;
+			sourceTree = "<group>";
+		};
+		98F235A4291F9C200028CA63 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		98F696FB291DD2B100577FCE /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
 				98F696FC291DD39100577FCE /* OnboardingLabel.swift */,
 				98F696FE291DDEC500577FCE /* RegistrationProcessLabel.swift */,
 				98F69704291E718400577FCE /* LargeButton.swift */,
+				98C2E7972925C084003D43AF /* RegistrationProcessDetailLabel.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -223,6 +328,7 @@
 			children = (
 				98F69702291E339C00577FCE /* UIButton+Extension.swift */,
 				98F69706291E732100577FCE /* UITextField+Extension.swift */,
+				98C2E7992925C11A003D43AF /* UILabel+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -237,6 +343,7 @@
 				98B9DF78291BEC2D00FE62EA /* Sources */,
 				98B9DF79291BEC2D00FE62EA /* Frameworks */,
 				98B9DF7A291BEC2D00FE62EA /* Resources */,
+				98F235A8291F9C270028CA63 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -251,6 +358,9 @@
 				98B3C33E291C8BA1004EEB14 /* SnapKit */,
 				98B3C341291C8BD4004EEB14 /* Alamofire */,
 				98B3C344291C8C06004EEB14 /* Toast */,
+				9826BA8D291F9E10006206F4 /* RxCocoa */,
+				9826BA8F291F9E10006206F4 /* RxRelay */,
+				9826BA91291F9E10006206F4 /* RxSwift */,
 			);
 			productName = "SLP_Study Mates Finder";
 			productReference = 98B9DF7C291BEC2D00FE62EA /* SLP_Study Mates Finder.app */;
@@ -285,6 +395,7 @@
 				98B3C33D291C8BA1004EEB14 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				98B3C340291C8BD4004EEB14 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				98B3C343291C8C06004EEB14 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				9826BA8C291F9E0F006206F4 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 98B9DF7D291BEC2D00FE62EA /* Products */;
 			projectDirPath = "";
@@ -318,17 +429,27 @@
 				98B9DF84291BEC2D00FE62EA /* ViewController.swift in Sources */,
 				98B3C34B291D0F10004EEB14 /* SecondOnboardingViewController.swift in Sources */,
 				98B9DF80291BEC2D00FE62EA /* AppDelegate.swift in Sources */,
+				98C2E78E2925BDF2003D43AF /* BirthViewController.swift in Sources */,
 				98F69703291E339C00577FCE /* UIButton+Extension.swift in Sources */,
 				98B3C347291CCE3E004EEB14 /* IntroPageViewController.swift in Sources */,
+				98C2E7962925BE1B003D43AF /* GenderViewController.swift in Sources */,
 				98B3C35F291D3137004EEB14 /* CertificationNumberCheck.swift in Sources */,
+				98C2E7882925BAFA003D43AF /* NicknameView.swift in Sources */,
 				98B3C353291D2955004EEB14 /* MainOnboardingViewController.swift in Sources */,
+				98C2E78C2925BDE8003D43AF /* BirthView.swift in Sources */,
 				98B3C355291D2964004EEB14 /* MainOnboardingView.swift in Sources */,
 				98B3C349291D0B78004EEB14 /* IntroPageView.swift in Sources */,
 				98B3C324291C8832004EEB14 /* FirstOnboardingViewController.swift in Sources */,
+				98C2E7902925BDFE003D43AF /* EmailView.swift in Sources */,
 				98F69705291E718400577FCE /* LargeButton.swift in Sources */,
+				98BAC1252928BE14000A9E7E /* NicknameViewModel.swift in Sources */,
 				98B9DF82291BEC2D00FE62EA /* SceneDelegate.swift in Sources */,
 				98B3C35B291D3121004EEB14 /* PhoneNumberCheckView.swift in Sources */,
+				98C2E7942925BE11003D43AF /* GenderView.swift in Sources */,
+				9826BA97291FAD87006206F4 /* Observable.swift in Sources */,
+				9826BA94291FACE9006206F4 /* CertificationNumberCheckViewModel.swift in Sources */,
 				98F696FF291DDEC500577FCE /* RegistrationProcessLabel.swift in Sources */,
+				98C2E79A2925C11A003D43AF /* UILabel+Extension.swift in Sources */,
 				98F696FD291DD39100577FCE /* OnboardingLabel.swift in Sources */,
 				98B3C34D291D0F26004EEB14 /* ThirdOnboardingViewController.swift in Sources */,
 				98B3C35D291D312D004EEB14 /* PhoneNumberCheckViewController.swift in Sources */,
@@ -339,6 +460,9 @@
 				98F69707291E732100577FCE /* UITextField+Extension.swift in Sources */,
 				98F6971E291E7D2200577FCE /* PhoneNumberCheckViewModel.swift in Sources */,
 				98B3C329291C8892004EEB14 /* FirstOnboardingView.swift in Sources */,
+				98C2E7982925C084003D43AF /* RegistrationProcessDetailLabel.swift in Sources */,
+				98C2E78A2925BB05003D43AF /* NicknameViewController.swift in Sources */,
+				98C2E7922925BE07003D43AF /* EmailViewController.swift in Sources */,
 				98B3C34F291D0F38004EEB14 /* ThirdOnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -561,6 +685,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9826BA8C291F9E0F006206F4 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		98B3C30E291C7566004EEB14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -596,6 +728,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9826BA8D291F9E10006206F4 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9826BA8C291F9E0F006206F4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		9826BA8F291F9E10006206F4 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9826BA8C291F9E0F006206F4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		9826BA91291F9E10006206F4 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9826BA8C291F9E0F006206F4 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		98B3C30F291C7566004EEB14 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 98B3C30E291C7566004EEB14 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -10,6 +10,8 @@ import UIKit
 class PhoneNumberCheckViewController: BaseViewController {
     var mainView = PhoneNumberCheckView()
     let border = CALayer()
+    let viewModel = PhoneNumberCheckViewModel()
+    
     override func loadView() {
         self.view = mainView
     }
@@ -20,6 +22,14 @@ class PhoneNumberCheckViewController: BaseViewController {
         mainView.phoneNumberTextField.addTarget(self, action: #selector(phoneNumberTextFieldEditingDidBegin), for: .editingDidBegin)
         mainView.phoneNumberTextField.addTarget(self, action: #selector(phoneNumberTextFieldEditingDidEnd), for: .editingDidEnd)
         mainView.receiveTextButton.addTarget(self, action: #selector(receiveTextButtonClicked), for: .touchUpInside)
+        
+        var number = "01012345678"
+        number.insert("-", at: number.index(number.startIndex, offsetBy: 3))
+        number.insert("-", at: number.index(number.startIndex, offsetBy: 8))
+        print(number)
+        
+        viewModel.isValidPhoneNumber(phone: "12")
+        
     }
     
     @objc func phoneNumberTextFieldEditingDidBegin() {
