@@ -25,7 +25,7 @@ class GenderViewController: BaseViewController {
         genderAddTargetCollection()
         genderValidation()
         
-        var genderSelection = UserDefaults.standard.set(genderCode, forKey: "genderSelection")
+        //var genderSelection = UserDefaults.standard.set(genderCode, forKey: "genderSelection")
         
     }
     
