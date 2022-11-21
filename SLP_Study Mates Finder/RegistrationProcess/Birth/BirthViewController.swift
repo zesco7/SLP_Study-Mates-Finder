@@ -41,25 +41,27 @@ class BirthViewController: BaseViewController {
     
     func birthValidation() {
         mainView.birthYearTextField.rx.text
+            .map { $0!.count >= 1 }
             .withUnretained(self)
-            .bind { (vc, _) in
-                self.mainView.birthPassButton.green()
+            .bind { (vc, value) in
+                return value
             }
             .disposed(by: disposeBag)
+
         
-        mainView.birthMonthTextField.rx.text
-            .withUnretained(self)
-            .bind { (vc, _) in
-                self.mainView.birthPassButton.green()
-            }
-            .disposed(by: disposeBag)
-        
-        mainView.birthDayTextField.rx.text
-            .withUnretained(self)
-            .bind { (vc, _) in
-                self.mainView.birthPassButton.green()
-            }
-            .disposed(by: disposeBag)
+//        mainView.birthMonthTextField.rx.text
+//            .withUnretained(self)
+//            .bind { (vc, _) in
+//                self.mainView.birthPassButton.green()
+//            }
+//            .disposed(by: disposeBag)
+//
+//        mainView.birthDayTextField.rx.text
+//            .withUnretained(self)
+//            .bind { (vc, _) in
+//                self.mainView.birthPassButton.green()
+//            }
+//            .disposed(by: disposeBag)
     }
     
     func pickerViewRegistration() {

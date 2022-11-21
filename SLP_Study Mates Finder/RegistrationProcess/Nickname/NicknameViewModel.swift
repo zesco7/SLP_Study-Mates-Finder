@@ -10,6 +10,6 @@ import RxCocoa
 import RxSwift
 
 class NicknameViewModel {
-    var nickname = BehaviorRelay<String>(value: "")
-    
+    var nickname = BehaviorRelay<String>(value: "ㅎㅎㅎ")
+ 
 }

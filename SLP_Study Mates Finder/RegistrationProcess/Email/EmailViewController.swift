@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 class EmailViewController: BaseViewController {
     var mainView = EmailView()
@@ -14,10 +15,10 @@ class EmailViewController: BaseViewController {
     override func loadView() {
         self.view = mainView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         mainView.emailTextField.becomeFirstResponder()
         emailAddTargetCollection()
         emailValidation()
@@ -30,7 +31,12 @@ class EmailViewController: BaseViewController {
     }
     
     func emailValidation() {
-        
+        mainView.emailTextField.rx.text
+            .map { $0!.count > 1 && $0!.contains("@") && $0!.contains(".") }
+            .withUnretained(self)
+            .bind { (vc, value) in
+                value ? self.mainView.emailPassButton.green() : self.mainView.emailPassButton.gray6()
+            }
     }
     
     @objc func emailTextFieldEditingDidBegin() {
@@ -44,8 +50,12 @@ class EmailViewController: BaseViewController {
     }
     
     @objc func emailPassButtonClicked() {
-        let vc = GenderViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        if mainView.emailTextField.text!.count > 1 && mainView.emailTextField.text!.contains("@") && mainView.emailTextField.text!.contains(".") {
+            let vc = GenderViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            self.view.makeToast("이메일 형식이 올바르지 않습니다.", duration: 1.0, position: .top)
+        }
     }
     
     override func viewDidLayoutSubviews() {

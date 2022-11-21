@@ -12,6 +12,7 @@
 		9826BA92291F9E10006206F4 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9826BA91291F9E10006206F4 /* RxSwift */; };
 		9826BA94291FACE9006206F4 /* CertificationNumberCheckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9826BA93291FACE9006206F4 /* CertificationNumberCheckViewModel.swift */; };
 		9826BA97291FAD87006206F4 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9826BA96291FAD87006206F4 /* Observable.swift */; };
+		98A25F6B292BB1F900D8EA9F /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A25F6A292BB1F900D8EA9F /* EmailViewModel.swift */; };
 		98B3C30D291C74BB004EEB14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 98B3C30C291C74BB004EEB14 /* GoogleService-Info.plist */; };
 		98B3C310291C7566004EEB14 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 98B3C30F291C7566004EEB14 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		98B3C312291C7566004EEB14 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 98B3C311291C7566004EEB14 /* FirebaseAuth */; };
@@ -78,6 +79,7 @@
 /* Begin PBXFileReference section */
 		9826BA93291FACE9006206F4 /* CertificationNumberCheckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationNumberCheckViewModel.swift; sourceTree = "<group>"; };
 		9826BA96291FAD87006206F4 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		98A25F6A292BB1F900D8EA9F /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
 		98B3C30C291C74BB004EEB14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		98B3C317291C7667004EEB14 /* SLP_Study Mates Finder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SLP_Study Mates Finder.entitlements"; sourceTree = "<group>"; };
 		98B3C323291C8832004EEB14 /* FirstOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				98C2E78F2925BDFE003D43AF /* EmailView.swift */,
+				98A25F6A292BB1F900D8EA9F /* EmailViewModel.swift */,
 				98C2E7912925BE07003D43AF /* EmailViewController.swift */,
 			);
 			path = Email;
@@ -427,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98B9DF84291BEC2D00FE62EA /* ViewController.swift in Sources */,
+				98A25F6B292BB1F900D8EA9F /* EmailViewModel.swift in Sources */,
 				98B3C34B291D0F10004EEB14 /* SecondOnboardingViewController.swift in Sources */,
 				98B9DF80291BEC2D00FE62EA /* AppDelegate.swift in Sources */,
 				98C2E78E2925BDF2003D43AF /* BirthViewController.swift in Sources */,
