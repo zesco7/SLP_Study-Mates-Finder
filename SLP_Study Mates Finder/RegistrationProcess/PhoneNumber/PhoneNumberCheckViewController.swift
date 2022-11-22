@@ -19,17 +19,23 @@ class PhoneNumberCheckViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        phoneNumberAddTargetCollection()
+        
+
+    }
+    
+    func phoneNumberAddTargetCollection() {
         mainView.phoneNumberTextField.addTarget(self, action: #selector(phoneNumberTextFieldEditingDidBegin), for: .editingDidBegin)
         mainView.phoneNumberTextField.addTarget(self, action: #selector(phoneNumberTextFieldEditingDidEnd), for: .editingDidEnd)
         mainView.receiveTextButton.addTarget(self, action: #selector(receiveTextButtonClicked), for: .touchUpInside)
-        
-        var number = "01012345678"
-        number.insert("-", at: number.index(number.startIndex, offsetBy: 3))
-        number.insert("-", at: number.index(number.startIndex, offsetBy: 8))
-        print(number)
-        
-        viewModel.isValidPhoneNumber(phone: "12")
-        
+    }
+    
+    func phoneNumberValidation(number: String) -> Bool {
+        let regex = "^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$"
+        return NSPredicate(format: "SELF MATCHES %@", regex)
+            .evaluate(with: number)
+        print(NSPredicate(format: "SELF MATCHES %@", regex)
+            .evaluate(with: number))
     }
     
     @objc func phoneNumberTextFieldEditingDidBegin() {
@@ -43,8 +49,10 @@ class PhoneNumberCheckViewController: BaseViewController {
     }
     
     @objc func receiveTextButtonClicked() {
-        let vc = CertificationNumberCheckViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        phoneNumberValidation(number: mainView.phoneNumberTextField.text!)
+        print(#function)
+//        let vc = CertificationNumberCheckViewController()
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidLayoutSubviews() {
@@ -52,7 +60,14 @@ class PhoneNumberCheckViewController: BaseViewController {
         border.gray3()
         mainView.phoneNumberTextField.layer.addSublayer((border))
     }
-    
-    
-    
+}
+
+extension String {
+    public var withHypen: String {
+        var stringWithHypen: String = self
+        stringWithHypen.insert("-", at: stringWithHypen.index(stringWithHypen.startIndex, offsetBy: 3))
+        stringWithHypen.insert("-", at: stringWithHypen.index(stringWithHypen.endIndex, offsetBy: -4))
+        
+        return stringWithHypen
+    }
 }
