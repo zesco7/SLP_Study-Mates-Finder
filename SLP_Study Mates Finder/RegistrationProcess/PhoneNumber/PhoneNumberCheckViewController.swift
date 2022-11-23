@@ -7,6 +7,9 @@
 
 import UIKit
 
+import RxSwift
+import Toast
+
 class PhoneNumberCheckViewController: BaseViewController {
     var mainView = PhoneNumberCheckView()
     let border = CALayer()
@@ -20,8 +23,8 @@ class PhoneNumberCheckViewController: BaseViewController {
         super.viewDidLoad()
         
         phoneNumberAddTargetCollection()
+        receiveTextButtonColorChange()
         
-
     }
     
     func phoneNumberAddTargetCollection() {
@@ -31,13 +34,20 @@ class PhoneNumberCheckViewController: BaseViewController {
     }
     
     func phoneNumberValidation(number: String) -> Bool {
-        let regex = "^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$"
+        let regex = "^01([0-9])-?([0-9]{3,4})-?([0-9]{4})$"
         return NSPredicate(format: "SELF MATCHES %@", regex)
             .evaluate(with: number)
-        print(NSPredicate(format: "SELF MATCHES %@", regex)
-            .evaluate(with: number))
     }
     
+    func receiveTextButtonColorChange() {
+        mainView.phoneNumberTextField.rx.text
+            .map { $0!.count >= 10}
+            .withUnretained(self)
+            .bind { (vc, value) in
+                value ? self.mainView.receiveTextButton.green() : self.mainView.receiveTextButton.gray6()
+            }
+    }
+ 
     @objc func phoneNumberTextFieldEditingDidBegin() {
         border.black()
         mainView.phoneNumberTextField.layer.addSublayer((border))
@@ -49,10 +59,15 @@ class PhoneNumberCheckViewController: BaseViewController {
     }
     
     @objc func receiveTextButtonClicked() {
-        phoneNumberValidation(number: mainView.phoneNumberTextField.text!)
-        print(#function)
-//        let vc = CertificationNumberCheckViewController()
-//        self.navigationController?.pushViewController(vc, animated: true)
+        let phoneNumberValidation = phoneNumberValidation(number: mainView.phoneNumberTextField.text!)
+        if phoneNumberValidation == true {
+            self.view.makeToast("전화 번호 인증 시작", duration: 1, position: .top)
+            //통신요청 후 1~2초 있다가 화면전환
+//            let vc = CertificationNumberCheckViewController()
+//            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            self.view.makeToast("잘못된 전화번호 형식입니다.", duration: 1, position: .top)
+        }
     }
     
     override func viewDidLayoutSubviews() {
