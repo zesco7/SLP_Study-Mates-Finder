@@ -30,9 +30,18 @@ class BirthViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pickerViewRegistration()
         birthAddTargetCollection()
         birthValidation()
-        pickerViewRegistration()
+        ageCheck()
+    }
+    
+    func pickerViewRegistration() {
+        mainView.birthYearTextField.inputView = pickerView
+        mainView.birthMonthTextField.inputView = pickerView
+        mainView.birthDayTextField.inputView = pickerView
+        pickerView.delegate = self
+        pickerView.dataSource = self
     }
     
     func birthAddTargetCollection() {
@@ -64,12 +73,17 @@ class BirthViewController: BaseViewController {
 //            .disposed(by: disposeBag)
     }
     
-    func pickerViewRegistration() {
-        mainView.birthYearTextField.inputView = pickerView
-        mainView.birthMonthTextField.inputView = pickerView
-        mainView.birthDayTextField.inputView = pickerView
-        pickerView.delegate = self
-        pickerView.dataSource = self
+    func ageCheck() {
+        let date = Date()
+        let todayYear = Calendar.current.dateComponents([.year], from: date)
+        let todayMonth = Calendar.current.dateComponents([.month], from: date)
+        let todayDay = Calendar.current.dateComponents([.day], from: date)
+        let timeZone = TimeZone(abbreviation: "KST")
+        let dateComponents = DateComponents(timeZone: timeZone, year: todayYear.year, month: todayMonth.month, day: todayDay.day)
+        let date2 = Calendar.current.date(from: dateComponents)!
+        print(date2)
+        print(Date(timeInterval: 20, since: date2))
+        //현재시간-생년월일 입력시간 >= 17
     }
     
     @objc func birthPassButtonClicked() {
