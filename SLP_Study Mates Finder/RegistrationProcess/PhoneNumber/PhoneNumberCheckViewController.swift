@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Firebase
 import FirebaseAuth
 import RxCocoa
 import RxSwift
@@ -59,6 +59,7 @@ class PhoneNumberCheckViewController: BaseViewController {
                     return
                 }
                 print("verify phone")
+                print(verificationID)
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
             }
     }
@@ -77,9 +78,9 @@ class PhoneNumberCheckViewController: BaseViewController {
         let phoneNumberValidation = phoneNumberValidation(number: mainView.phoneNumberTextField.text!)
         if phoneNumberValidation == true {
             self.view.makeToast("전화 번호 인증 시작", duration: 1, position: .top)
-//            let phoneNumberWithNoHyphen = mainView.phoneNumberTextField.text?.replacingOccurrences(of: "-", with: "")
-//            requestVerificationCode(phoneNumber: "+82 \(String(describing: phoneNumberWithNoHyphen!))")
-//            print(phoneNumberWithNoHyphen!)
+            let phoneNumberWithNoHyphen = mainView.phoneNumberTextField.text?.replacingOccurrences(of: "-", with: "")
+            requestVerificationCode(phoneNumber: "+82 \(String(describing: phoneNumberWithNoHyphen!))")
+            print(phoneNumberWithNoHyphen!)
             //+@. 인증요청 후 통신요청 후 1~2초 있다가 화면전환
             let vc = CertificationNumberCheckViewController()
             self.navigationController?.pushViewController(vc, animated: true)

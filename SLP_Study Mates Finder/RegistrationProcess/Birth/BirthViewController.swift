@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Toast
 
 class BirthViewController: BaseViewController {
     var mainView = BirthView()
@@ -26,14 +27,13 @@ class BirthViewController: BaseViewController {
     override func loadView() {
         self.view = mainView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        mainView.birthYearTextField.becomeFirstResponder()
         pickerViewRegistration()
         birthAddTargetCollection()
-        birthValidation()
-        ageCheck()
+        birthPassButtonColorChange()
     }
     
     func pickerViewRegistration() {
@@ -48,47 +48,61 @@ class BirthViewController: BaseViewController {
         mainView.birthPassButton.addTarget(self, action: #selector(birthPassButtonClicked), for: .touchUpInside)
     }
     
-    func birthValidation() {
-        mainView.birthYearTextField.rx.text
-            .map { $0!.count >= 1 }
+    func birthPassButtonColorChange() {
+        mainView.birthDayTextField.rx.text
+            .map { $0!.isEmpty }
             .withUnretained(self)
             .bind { (vc, value) in
-                return value
+                value ? self.mainView.birthPassButton.gray6() :  self.mainView.birthPassButton.green()
             }
             .disposed(by: disposeBag)
-
+    }
+    
+    func birthValidation() {
+        let birthYearIsEmpty = mainView.birthYearTextField.text?.isEmpty
+        let birthMonthIsEmpty = mainView.birthMonthTextField.text?.isEmpty
+        let birthDayIsEmpty = mainView.birthDayTextField.text?.isEmpty
         
-//        mainView.birthMonthTextField.rx.text
-//            .withUnretained(self)
-//            .bind { (vc, _) in
-//                self.mainView.birthPassButton.green()
-//            }
-//            .disposed(by: disposeBag)
-//
-//        mainView.birthDayTextField.rx.text
-//            .withUnretained(self)
-//            .bind { (vc, _) in
-//                self.mainView.birthPassButton.green()
-//            }
-//            .disposed(by: disposeBag)
+        if birthYearIsEmpty == false && birthMonthIsEmpty == false && birthDayIsEmpty == false {
+            ageCheck()
+            print("All False")
+        } else {
+            mainView.birthPassButton.gray6()
+            print("Not All False")
+        }
     }
     
     func ageCheck() {
-        let date = Date()
-        let todayYear = Calendar.current.dateComponents([.year], from: date)
-        let todayMonth = Calendar.current.dateComponents([.month], from: date)
-        let todayDay = Calendar.current.dateComponents([.day], from: date)
         let timeZone = TimeZone(abbreviation: "KST")
-        let dateComponents = DateComponents(timeZone: timeZone, year: todayYear.year, month: todayMonth.month, day: todayDay.day)
-        let date2 = Calendar.current.date(from: dateComponents)!
-        print(date2)
-        print(Date(timeInterval: 20, since: date2))
-        //현재시간-생년월일 입력시간 >= 17
+        let year = Int(mainView.birthYearTextField.text!)
+        let month = Int(mainView.birthMonthTextField.text!)
+        let day = Int(mainView.birthDayTextField.text!)
+        
+        let standard = DateComponents(timeZone: timeZone, year: year, month: month, day: day)
+        let birthDate = Calendar.current.date(from: standard)!
+        let dateDifference = Calendar.current.dateComponents([.year, .month, .day], from: birthDate, to: Date())
+        
+        if dateDifference.year! > 17 {
+            print("가입 가능: 만 17세 이상")
+            let vc = EmailViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if dateDifference.year! == 17 {
+            if dateDifference.month! <= 0 && dateDifference.day! <= 0 {
+                print("가입 가능: 만 17세 이상")
+                let vc = EmailViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                self.view.makeToast("새싹스터디는 만 17세 이상만 사용할 수 있습니다.", duration: 1, position: .top)
+                print("가입 불가: 만 17세 미만")
+            }
+        } else if dateDifference.year! < 17 {
+            self.view.makeToast("새싹스터디는 만 17세 이상만 사용할 수 있습니다.", duration: 1, position: .top)
+            print("가입 불가: 만 17세 미만")
+        }
     }
     
     @objc func birthPassButtonClicked() {
-        let vc = EmailViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        birthValidation()
     }
     
     override func viewDidLayoutSubviews() {
@@ -101,7 +115,7 @@ class BirthViewController: BaseViewController {
         mainView.birthYearTextField.layer.addSublayer((border))
         mainView.birthMonthTextField.layer.addSublayer((border2))
         mainView.birthDayTextField.layer.addSublayer((border3))
-        }
+    }
 }
 
 extension BirthViewController: UIPickerViewDelegate, UIPickerViewDataSource {
