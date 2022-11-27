@@ -59,11 +59,29 @@ class PhoneNumberCheckViewController: BaseViewController {
                     return
                 }
                 print("verify phone")
-                print(verificationID)
+                print(verificationID!)
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
             }
     }
- 
+    
+    func refreshToken() {
+        let currentUser = Auth.auth().currentUser
+        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+          if let error = error {
+            print("error : ", error)// Handle error
+            return;
+          }
+
+          print("idToken : ", idToken)// Send token to your backend via HTTPS
+          // ...
+        }
+    }
+    
+    func certificationCodeCheck() {
+        //서버에 인증번호일치확인 통신요청(post)
+        //인증번호 일치하면 사용자정보확인(get)
+    }
+    
     @objc func phoneNumberTextFieldEditingDidBegin() {
         border.black()
         mainView.phoneNumberTextField.layer.addSublayer((border))
@@ -81,6 +99,7 @@ class PhoneNumberCheckViewController: BaseViewController {
             let phoneNumberWithNoHyphen = mainView.phoneNumberTextField.text?.replacingOccurrences(of: "-", with: "")
             requestVerificationCode(phoneNumber: "+82 \(String(describing: phoneNumberWithNoHyphen!))")
             print(phoneNumberWithNoHyphen!)
+            certificationCodeCheck()
             //+@. 인증요청 후 통신요청 후 1~2초 있다가 화면전환
             let vc = CertificationNumberCheckViewController()
             self.navigationController?.pushViewController(vc, animated: true)
