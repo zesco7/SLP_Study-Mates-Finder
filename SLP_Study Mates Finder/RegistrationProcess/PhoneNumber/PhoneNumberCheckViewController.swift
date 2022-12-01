@@ -52,18 +52,6 @@ class PhoneNumberCheckViewController: BaseViewController {
             }
     }
     
-    func login(completion: @escaping (UserInfo?, Int?, Error?) -> Void) {
-        AF.request(login).responseDecodable(of: UserInfo.self) { response in
-            guard let statusCode = response.response?.statusCode else { return }
-            switch response.result {
-            case .success(let data):
-                completion(data, statusCode, nil)
-            case .failure(let error):
-                completion(nil, statusCode, error)
-            }
-        }
-    }
-    
     func requestVerificationCode(phoneNumber: String) {
         Auth.auth().languageCode = "kr";
         PhoneAuthProvider.provider()
@@ -103,7 +91,7 @@ class PhoneNumberCheckViewController: BaseViewController {
                         guard let token = token else { return }
                         //MARK: - 로그인 API 요청
                         
-                        self.login { value, statusCode, error in
+                        APIService.login { value, statusCode, error in
                             guard let statusCode = statusCode else { return }
                             switch statusCode {
                             case 200:
