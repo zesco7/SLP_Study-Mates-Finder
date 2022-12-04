@@ -62,68 +62,8 @@ class PhoneNumberCheckViewController: BaseViewController {
                 }
                 print("verify phone")
                 print(verificationID!)
-                
-                var verificationCode = self.mainView.phoneNumberTextField.text
-                UserDefaults.standard.set(verificationCode, forKey: "verificationNumber")
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-                
-                let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID!, verificationCode: verificationCode!)
-                
-                Auth.auth().signIn(with: credential) { authResult, error in
-                    if let error = error as NSError? {
-                        guard let errorCode = AuthErrorCode.Code(rawValue: error.code) else { return }
-                        switch errorCode {
-                        case .sessionExpired, .invalidVerificationCode:
-                            self.view.makeToast("전화 번호 인증 실패", duration: 1, position: .top)
-                            return
-                        default:
-                            self.view.makeToast("에러가 발생했습니다. 잠시 후 다시 시도해주세요.", duration: 1, position: .top)
-                            return
-                        }
-                    }
-                    
-                    //MARK: - ID 토큰 발급
-                    authResult?.user.getIDToken { token, error in
-                        if let error = error {
-                            self.view.makeToast("에러: \(error.localizedDescription)", duration: 1, position: .top)
-                            return
-                        }
-                        guard let token = token else { return }
-                        //MARK: - 로그인 API 요청
-                        
-                        APIService.login { value, statusCode, error in
-                            guard let statusCode = statusCode else { return }
-                            switch statusCode {
-                            case 200:
-                                //MARK: - 로그인 성공 시 닉네임 값 받아오기
-                                print("로그인 성공")
-                                return
-                            case 401: self.refreshToken()
-                                return
-                            case 406:
-                                print("미가입 유저로 회원가입 화면으로 이동합니다.")
-                                return
-                            default: print("잠시 후 다시 시도해주세요.")
-                                return
-                            }
-                        }
-                    }
-                }
             }
-            //.disposed(by: disposeBag)
-    }
-    
-    func refreshToken() {
-        let currentUser = Auth.auth().currentUser
-        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
-            if let error = error {
-                print("error : ", error)// Handle error
-                return;
-            }
-            
-            print("idToken : ", idToken)// Send token to your backend via HTTPS
-            // ...
-        }
     }
     
     func certificationCodeCheck() {
