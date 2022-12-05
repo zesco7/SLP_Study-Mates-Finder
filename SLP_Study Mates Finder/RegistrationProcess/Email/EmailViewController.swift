@@ -51,6 +51,7 @@ class EmailViewController: BaseViewController {
     
     @objc func emailPassButtonClicked() {
         if mainView.emailTextField.text!.count > 1 && mainView.emailTextField.text!.contains("@") && mainView.emailTextField.text!.contains(".") {
+            UserDefaults.standard.set(mainView.emailTextField.text, forKey: "email")
             let vc = GenderViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         } else {

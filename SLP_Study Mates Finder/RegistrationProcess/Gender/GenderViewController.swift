@@ -69,6 +69,7 @@ class GenderViewController: BaseViewController {
     }
     
     @objc func genderPassButtonClicked() {
+        print(UserDefaults.standard.string(forKey: "genderSelection")!)
         let vc = BirthViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }

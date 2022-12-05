@@ -29,6 +29,7 @@ class PhoneNumberCheckViewController: BaseViewController {
         mainView.phoneNumberTextField.delegate = self
         phoneNumberAddTargetCollection()
         receiveTextButtonColorChange()
+        print(UserDefaults.standard.string(forKey: "serverToken"))
     }
     
     func phoneNumberAddTargetCollection() {
@@ -87,7 +88,11 @@ class PhoneNumberCheckViewController: BaseViewController {
             self.view.makeToast("전화 번호 인증 시작", duration: 1, position: .top)
             let phoneNumberWithNoHyphen = mainView.phoneNumberTextField.text?.replacingOccurrences(of: "-", with: "")
             requestVerificationCode(phoneNumber: "+82 \(String(describing: phoneNumberWithNoHyphen!))")
-            print(phoneNumberWithNoHyphen!)
+            
+            let phoneNumberIndex = phoneNumberWithNoHyphen?.index(phoneNumberWithNoHyphen!.startIndex, offsetBy: 1)
+            let phoneNumberString = String(phoneNumberWithNoHyphen![phoneNumberIndex!...])
+            print(phoneNumberString)
+            UserDefaults.standard.set("+82\(phoneNumberWithNoHyphen)", forKey: "phoneNumberWithNoHyphen")
             certificationCodeCheck()
             //+@. 인증요청 후 통신요청 후 1~2초 있다가 화면전환
             let vc = CertificationNumberCheckViewController()

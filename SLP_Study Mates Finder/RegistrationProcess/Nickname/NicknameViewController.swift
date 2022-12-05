@@ -59,6 +59,7 @@ class NicknameViewController: BaseViewController {
         if mainView.nicknameTextField.text?.count == 0 || mainView.nicknameTextField.text!.count > 10 {
             self.view.makeToast("닉네임은 1자 이상 10자 이내로 부탁드려요.", duration: 1.0, position: .top)
         } else {
+            UserDefaults.standard.set(mainView.nicknameTextField.text, forKey: "nickname")
             let vc = BirthViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         }

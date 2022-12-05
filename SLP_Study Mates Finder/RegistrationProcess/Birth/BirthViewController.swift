@@ -34,6 +34,7 @@ class BirthViewController: BaseViewController {
         pickerViewRegistration()
         birthAddTargetCollection()
         birthPassButtonColorChange()
+        
     }
     
     func pickerViewRegistration() {
@@ -77,6 +78,15 @@ class BirthViewController: BaseViewController {
         let year = Int(mainView.birthYearTextField.text!)
         let month = Int(mainView.birthMonthTextField.text!)
         let day = Int(mainView.birthDayTextField.text!)
+        
+        let birthString = "\(year!)-\(month!)-\(day!)T12:34:56.789Z"
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        
+        let savedBirthDate = dateformatter.date(from: birthString)
+        //Q. 날짜데이터 ud에 저장안되는 이유?
+        UserDefaults.standard.set(savedBirthDate, forKey: "birth")
+        print(UserDefaults.standard.string(forKey: "birth"))
         
         let standard = DateComponents(timeZone: timeZone, year: year, month: month, day: day)
         let birthDate = Calendar.current.date(from: standard)!
