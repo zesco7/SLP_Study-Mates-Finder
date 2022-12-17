@@ -80,11 +80,16 @@ class BirthViewController: BaseViewController {
         let day = Int(mainView.birthDayTextField.text!)
         
         let birthString = "\(year!)-\(month!)-\(day!)T12:34:56.789Z"
+        let bbirthString = "\(Date())"
         let dateformatter = DateFormatter()
         dateformatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateformatter.locale = Locale(identifier: Locale.current.identifier)
+        dateformatter.timeZone = TimeZone(identifier: TimeZone.current.identifier)
         
         let savedBirthDate = dateformatter.date(from: birthString)
+        
         //Q. 날짜데이터 ud에 저장안되는 이유?
+        print(savedBirthDate)
         UserDefaults.standard.set(savedBirthDate, forKey: "birth")
         print(UserDefaults.standard.string(forKey: "birth"))
         

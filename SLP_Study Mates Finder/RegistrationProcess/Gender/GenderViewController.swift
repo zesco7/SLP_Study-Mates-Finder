@@ -6,6 +6,8 @@
 //
 
 import UIKit
+
+import FirebaseAuth
 import RxCocoa
 import RxSwift
 
@@ -47,6 +49,20 @@ class GenderViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
+    func refreshToken() {
+        let currentUser = Auth.auth().currentUser
+        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+            if let error = error {
+                print("error : ", error)
+                return;
+            } else if let idToken = idToken {
+                print("idToken : ", idToken)
+                APIService.signUpByServerToken { value, status, error in
+                    print("value : ", value)
+                }
+            }
+        }
+    }
     
     @objc func maleButtonClicked() {
         UserDefaults.standard.set("1", forKey: "genderSelection")
@@ -70,8 +86,16 @@ class GenderViewController: BaseViewController {
     
     @objc func genderPassButtonClicked() {
         print(UserDefaults.standard.string(forKey: "genderSelection")!)
-        let vc = BirthViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        APIService.signUp { value, statusCode, error in
+            if let statusCode = statusCode {
+                self.refreshToken()
+            }
+            print(statusCode)
+            
+            
+            //        let vc = BirthViewController()
+            //        self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
-    
 }

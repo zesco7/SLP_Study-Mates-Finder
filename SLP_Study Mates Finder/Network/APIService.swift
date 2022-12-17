@@ -36,4 +36,46 @@ class APIService {
             }
         }
     }
+    
+    static func signUp(completion: @escaping (String?, Int?, Error?) -> Void) {
+        let url = EndPoint.signup
+        let header : HTTPHeaders = ["idtoken": UserDefaults.standard.string(forKey: "authVerificationID")!, "Content-Type" : "application/x-www-form-urlencoded"]
+        let parameter = ["phoneNumber" : UserDefaults.standard.string(forKey: "phoneNumberWithNoHyphen"),
+                         "FCMtoken" : UserDefaults.standard.string(forKey: "FCMToken"),
+                         "nick" : UserDefaults.standard.string(forKey: "nickname"),
+                         "birth" : UserDefaults.standard.string(forKey: "phoneNumberWithNoHyphen"),
+                         "email" : UserDefaults.standard.string(forKey: "email"),
+                         "gender" : UserDefaults.standard.string(forKey: "genderSelection")
+                         ]
+        AF.request(url, method: .post, parameters: parameter, headers: header).responseString{ response in
+            guard let statusCode = response.response?.statusCode else { return }
+            switch response.result {
+            case .success(let data):
+                completion(data, statusCode, nil)
+            case .failure(let error):
+                completion(nil, statusCode, error)
+            }
+        }
+    }
+    
+    static func signUpByServerToken(completion: @escaping (String?, Int?, Error?) -> Void) {
+        let url = EndPoint.signup
+        let header : HTTPHeaders = ["idtoken": UserDefaults.standard.string(forKey: "serverToken")!, "Content-Type" : "application/x-www-form-urlencoded"]
+        let parameter = ["phoneNumber" : UserDefaults.standard.string(forKey: "phoneNumberWithNoHyphen"),
+                         "FCMtoken" : UserDefaults.standard.string(forKey: "FCMToken"),
+                         "nick" : UserDefaults.standard.string(forKey: "nickname"),
+                         "birth" : UserDefaults.standard.string(forKey: "phoneNumberWithNoHyphen"),
+                         "email" : UserDefaults.standard.string(forKey: "email"),
+                         "gender" : UserDefaults.standard.string(forKey: "genderSelection")
+                         ]
+        AF.request(url, method: .post, parameters: parameter, headers: header).responseString{ response in
+            guard let statusCode = response.response?.statusCode else { return }
+            switch response.result {
+            case .success(let data):
+                completion(data, statusCode, nil)
+            case .failure(let error):
+                completion(nil, statusCode, error)
+            }
+        }
+    }
 }
