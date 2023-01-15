@@ -16,7 +16,8 @@ class BirthViewController: BaseViewController {
     let border2 = CALayer()
     let border3 = CALayer()
     
-    let pickerView = UIPickerView()
+    //let pickerView = UIPickerView()
+    let pickerView = UIDatePicker()
     
     let yearArray : [Int] = Array(1922...2022).reversed()
     let monthArray = Array(1...12)
@@ -30,19 +31,52 @@ class BirthViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.standard.set(nil, forKey: "birthDate")
         mainView.birthYearTextField.becomeFirstResponder()
         pickerViewRegistration()
         birthAddTargetCollection()
         birthPassButtonColorChange()
         
+        mainView.birthDatePicker.addTarget(self, action: #selector(birthDatePickerClicked), for: .valueChanged)
+        mainView.birthPassButton.addTarget(self, action: #selector(birthPassButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func birthDatePickerClicked() {
+        let birthDate = mainView.birthDatePicker.date
+        let dateComponents = mainView.birthDatePicker.calendar.dateComponents([.year, .month, .day], from: birthDate)
+        let formattedDate = birthDate.ISO8601Format()
+        mainView.birthYearTextField.text = "\(dateComponents.year!)"
+        mainView.birthMonthTextField.text = "\(dateComponents.month!)"
+        mainView.birthDayTextField.text = "\(dateComponents.day!)"
+        UserDefaults.standard.set(formattedDate, forKey: "birthDate")
+        print(UserDefaults.standard.string(forKey: "birthDate"))
+        
+//        var year = mainView.birthYearTextField.text
+//        var month = mainView.birthMonthTextField.text
+//        var day = mainView.birthDayTextField.text
+//        year = "\(dateComponents.year!)"
+//        month = "\(dateComponents.month!)"
+//        day = "\(dateComponents.day!)"
+        
+    }
+    
+    @objc func birthPassButtonClicked() {
+        let birthDate = UserDefaults.standard.string(forKey: "birthDate")
+        if birthDate == nil {
+            self.view.makeToast("생년월일을 선택해주세요.", position: .center)
+        } else {
+            let vc = EmailViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func pickerViewRegistration() {
-        mainView.birthYearTextField.inputView = pickerView
-        mainView.birthMonthTextField.inputView = pickerView
-        mainView.birthDayTextField.inputView = pickerView
-        pickerView.delegate = self
-        pickerView.dataSource = self
+        pickerView.datePickerMode = .date
+//        mainView.birthYearTextField.inputView = pickerView
+//        mainView.birthMonthTextField.inputView = pickerView
+//        mainView.birthDayTextField.inputView = pickerView
+//        pickerView.delegate = self
+//        pickerView.dataSource = self
     }
     
     func birthAddTargetCollection() {
@@ -79,6 +113,9 @@ class BirthViewController: BaseViewController {
         let month = Int(mainView.birthMonthTextField.text!)
         let day = Int(mainView.birthDayTextField.text!)
         
+        let dateComponents = DateComponents(year: year, month:  month, day: day)
+                       
+        
         let birthString = "\(year!)-\(month!)-\(day!)T12:34:56.789Z"
         let bbirthString = "\(Date())"
         let dateformatter = DateFormatter()
@@ -87,11 +124,6 @@ class BirthViewController: BaseViewController {
         dateformatter.timeZone = TimeZone(identifier: TimeZone.current.identifier)
         
         let savedBirthDate = dateformatter.date(from: birthString)
-        
-        //Q. 날짜데이터 ud에 저장안되는 이유?
-        print(savedBirthDate)
-        UserDefaults.standard.set(savedBirthDate, forKey: "birth")
-        print(UserDefaults.standard.string(forKey: "birth"))
         
         let standard = DateComponents(timeZone: timeZone, year: year, month: month, day: day)
         let birthDate = Calendar.current.date(from: standard)!
@@ -116,9 +148,34 @@ class BirthViewController: BaseViewController {
         }
     }
     
-    @objc func birthPassButtonClicked() {
-        birthValidation()
-    }
+//    func transform(){
+//            let inputValue = input.pickerDate
+//                .changed
+//                .map { value in
+//                    return Calendar.current.dateComponents([.year, .month, .day], from: value)
+//                }
+//            
+//            let validationCheck = input.pickerDate
+//                .changed
+//                .map { value in
+//                    let inputDate = Calendar.current.dateComponents([.year, .month, .day], from: value)
+//                    let todayDate = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+//                    if (((todayDate.year ?? 0) - (inputDate.year ?? 0)) > 17) {
+//                        return true
+//                    } else if (((todayDate.year ?? 0) - (inputDate.year ?? 0)) == 17) {
+//                        if inputDate.month ?? 0 < todayDate.month ?? 0 {
+//                            return true
+//                        } else if inputDate.month ?? 0 == todayDate.month ?? 0 {
+//                            if inputDate.day ?? 0 <= todayDate.day ?? 0 {
+//                                return true
+//                            }
+//                        }
+//                    }
+//                    return false
+//                }
+//            
+//            return Output(inputValue: inputValue, validationCheck: validationCheck)
+//        }
     
     override func viewDidLayoutSubviews() {
         border.frame = CGRect(x: 0, y: mainView.birthYearTextField.frame.size.height-1, width: mainView.birthYearTextField.frame.width, height: 1)

@@ -43,7 +43,7 @@ class APIService {
         let parameter = ["phoneNumber" : UserDefaults.standard.string(forKey: "phoneNumberWithNoHyphen"),
                          "FCMtoken" : UserDefaults.standard.string(forKey: "FCMToken"),
                          "nick" : UserDefaults.standard.string(forKey: "nickname"),
-                         "birth" : UserDefaults.standard.string(forKey: "phoneNumberWithNoHyphen"),
+                         "birthDate" : UserDefaults.standard.string(forKey: "birthDate"),
                          "email" : UserDefaults.standard.string(forKey: "email"),
                          "gender" : UserDefaults.standard.string(forKey: "genderSelection")
                          ]
@@ -64,7 +64,7 @@ class APIService {
         let parameter = ["phoneNumber" : UserDefaults.standard.string(forKey: "phoneNumberWithNoHyphen"),
                          "FCMtoken" : UserDefaults.standard.string(forKey: "FCMToken"),
                          "nick" : UserDefaults.standard.string(forKey: "nickname"),
-                         "birth" : UserDefaults.standard.string(forKey: "phoneNumberWithNoHyphen"),
+                         "birthDate" : UserDefaults.standard.string(forKey: "birthDate"),
                          "email" : UserDefaults.standard.string(forKey: "email"),
                          "gender" : UserDefaults.standard.string(forKey: "genderSelection")
                          ]

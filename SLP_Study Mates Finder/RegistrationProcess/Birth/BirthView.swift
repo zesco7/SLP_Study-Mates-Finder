@@ -16,8 +16,24 @@ class BirthView: BaseView {
         return view
     }()
     
-    let birthYearTextField: UITextField = {
+    let birthDatePicker: UIDatePicker = {
+       let view = UIDatePicker()
+        view.frame = CGRect(x: 10, y: 50, width: view.frame.width, height: 200)
+        view.datePickerMode = .date
+        view.preferredDatePickerStyle = .wheels
+        var components = DateComponents()
+        components.year = 0
+        let maxDate = Calendar.autoupdatingCurrent.date(byAdding: components, to: Date())
+        components.year = -100
+        let minDate = Calendar.autoupdatingCurrent.date(byAdding: components, to: Date())
+        view.maximumDate = maxDate
+        view.minimumDate = minDate
+        return view
+    }()
+    
+    lazy var birthYearTextField: UITextField = {
         let view = UITextField()
+        view.inputView = birthDatePicker
         view.textColor = .black
         view.borderStyle = .none
         view.textAlignment = .center
@@ -32,8 +48,9 @@ class BirthView: BaseView {
         return view
     }()
     
-    let birthMonthTextField: UITextField = {
+    lazy var birthMonthTextField: UITextField = {
         let view = UITextField()
+        view.inputView = birthDatePicker
         view.textColor = .black
         view.borderStyle = .none
         view.textAlignment = .center
@@ -48,8 +65,9 @@ class BirthView: BaseView {
         return view
     }()
     
-    let birthDayTextField: UITextField = {
+    lazy var birthDayTextField: UITextField = {
         let view = UITextField()
+        view.inputView = birthDatePicker
         view.textColor = .black
         view.borderStyle = .none
         view.textAlignment = .center
@@ -71,7 +89,7 @@ class BirthView: BaseView {
     }()
     
     override func configure() {
-        [birthIntroduction, birthYearTextField, birthYearLabel, birthMonthTextField, birthMonthLabel, birthDayTextField, birthDayLabel, birthPassButton].forEach {
+        [birthIntroduction, birthDatePicker, birthYearTextField, birthYearLabel, birthMonthTextField, birthMonthLabel, birthDayTextField, birthDayLabel, birthPassButton].forEach {
             self.addSubview($0)
         }
     }
@@ -82,6 +100,13 @@ class BirthView: BaseView {
             make.trailingMargin.equalTo(-60)
             make.height.equalTo(50)
             make.centerY.equalTo(self).multipliedBy(0.4)
+        }
+        
+        birthDatePicker.snp.makeConstraints { make in
+            make.leadingMargin.equalTo(0)
+            make.width.equalTo(self)
+            make.bottomMargin.equalTo(0)
+            make.height.equalTo(self).multipliedBy(0.3)
         }
         
         birthYearTextField.snp.makeConstraints { make in

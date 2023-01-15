@@ -58,6 +58,7 @@ class GenderViewController: BaseViewController {
             } else if let idToken = idToken {
                 print("idToken : ", idToken)
                 APIService.signUpByServerToken { value, status, error in
+                    print("Network Request by refreshToken", status)
                     print("value : ", value)
                 }
             }
@@ -90,18 +91,17 @@ class GenderViewController: BaseViewController {
         print("phoneNumber", UserDefaults.standard.string(forKey: "phoneNumberWithNoHyphen"))
         print("FCMtoken", UserDefaults.standard.string(forKey: "FCMToken"))
         print("nick", UserDefaults.standard.string(forKey: "nickname"))
-        print("birth", UserDefaults.standard.string(forKey: "birth"))
+        print("birthDate", UserDefaults.standard.string(forKey: "birthDate"))
         print("email", UserDefaults.standard.string(forKey: "email"))
         print("gender", UserDefaults.standard.string(forKey: "genderSelection"))
         
-//        APIService.signUp { value, statusCode, error in
-//            if let statusCode = statusCode {
-//                self.refreshToken()
-//            }
-//            print(statusCode)
-            
-            
-            //        let vc = BirthViewController()
-            //        self.navigationController?.pushViewController(vc, animated: true)
+        APIService.signUp { value, statusCode, error in
+            if let statusCode = statusCode {
+                print("Network Request by AuthenticToken", statusCode)
+                self.refreshToken()
+            } else {
+                print("응답코드 에러")
+            }
         }
     }
+}

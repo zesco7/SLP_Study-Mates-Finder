@@ -18,7 +18,7 @@ class PhoneNumberCheckViewController: BaseViewController {
     let border = CALayer()
     let viewModel = PhoneNumberCheckViewModel()
     let disposeBag = DisposeBag()
-    
+        
     override func loadView() {
         self.view = mainView
     }
@@ -30,6 +30,14 @@ class PhoneNumberCheckViewController: BaseViewController {
         phoneNumberAddTargetCollection()
         receiveTextButtonColorChange()
         print(UserDefaults.standard.string(forKey: "serverToken"))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     func phoneNumberAddTargetCollection() {

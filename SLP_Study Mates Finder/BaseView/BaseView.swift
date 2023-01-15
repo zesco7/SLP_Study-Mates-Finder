@@ -9,7 +9,14 @@ import Foundation
 import UIKit
 import SnapKit
 
-class BaseView: UIView {
+protocol BaseViewDelegate: NSObject {
+    
+    func configure()
+    
+    func setConstraints()
+}
+
+class BaseView: UIView, BaseViewDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
