@@ -15,23 +15,23 @@ import FirebaseMessaging
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        FirebaseApp.configure()
-        Messaging.messaging().delegate = self
-        UNUserNotificationCenter.current().delegate = self
-        
-        let authOprions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        UNUserNotificationCenter.current().requestAuthorization(options: authOprions) { _, _ in }
-        application.registerForRemoteNotifications()
-        
-        Messaging.messaging().token { token, error in
-          if let error = error {
-            print("Error fetching FCM registration token: \(error)")
-          } else if let token = token {
-            print("FCM registration token: \(token)")
-            //print("Remote FCM registration token: \(token)")
-              UserDefaults.standard.set(token, forKey: "FCMToken")
-          }
-        }
+//        FirebaseApp.configure()
+//        Messaging.messaging().delegate = self
+//        UNUserNotificationCenter.current().delegate = self
+//        
+//        let authOprions: UNAuthorizationOptions = [.alert, .badge, .sound]
+//        UNUserNotificationCenter.current().requestAuthorization(options: authOprions) { _, _ in }
+//        application.registerForRemoteNotifications()
+//        
+//        Messaging.messaging().token { token, error in
+//          if let error = error {
+//            print("Error fetching FCM registration token: \(error)")
+//          } else if let token = token {
+//            print("FCM registration token: \(token)")
+//            //print("Remote FCM registration token: \(token)")
+//              UserDefaults.standard.set(token, forKey: "FCMToken")
+//          }
+//        }
         
         sleep(1)
         return true

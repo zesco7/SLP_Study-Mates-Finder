@@ -16,12 +16,12 @@ class PhoneNumberCheckView: BaseView {
     }()
     
     let phoneNumberTextField: UITextField = {
+        
        let view = UITextField()
         view.placeholder = "휴대폰 번호(-없이 숫자만 입력)"
         view.keyboardType = .decimalPad
         view.textColor = .black
         view.borderStyle = .none
-
         return view
     }()
     
