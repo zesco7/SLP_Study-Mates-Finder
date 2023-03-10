@@ -17,7 +17,7 @@ class BaseView: UIView {
         return view
     }()
 
-    var view: UITextField = {
+    var view: UIControl = {
         let view = CustomTextField().phoneNumberTextField
         return view
     }()

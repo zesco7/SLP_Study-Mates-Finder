@@ -40,10 +40,18 @@ class PhoneNumberViewModel: CommonMethods {
     
     func buttonTapped(_ viewController: UIViewController){
         let baseViewToChange = BaseView()
-        baseViewToChange.label.text = SignUpMessages.certification.messages
-        baseViewToChange.view = CustomTextField().certificationTextField
+        baseViewToChange.label.text = SignUpMessages.birth.messages
+        let birth = BirthCustomView()
+        baseViewToChange.view = birth
         
         let vc = SLPViewController(mainView: baseViewToChange)
         viewController.navigationController?.pushViewController(vc, animated: true)
+        
+//        let birthDatePicker = BirthCustomView().birthDatePicker
+//        let birthTextField = BirthCustomView().birthDayTextField
+        
+//        let baseViewToChange = BaseView()
+//        baseViewToChange.label.text = SignUpMessages.certification.messages
+//        baseViewToChange.view = CustomTextField().certificationTextField
     }
 }
