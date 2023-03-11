@@ -9,35 +9,54 @@ import Foundation
 import UIKit
 
 class NicknameView: BaseView {
-    let nicknameIntroduction: RegistrationProcessLabel = {
+    let border = CALayer()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configure()
+        setConstraints()
+        textFieldBorderAttribute()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    let nicknameLabel: RegistrationProcessLabel = {
        let view = RegistrationProcessLabel()
-        view.text = "닉네임을 입력해주세요"
+        view.text = SignUpMessages.nickname.messages
         return view
     }()
     
     let nicknameTextField: UITextField = {
        let view = UITextField()
-        view.placeholder = "10자 이내로 입력"
+        view.placeholder = Placeholder.nickname.messages
         view.textColor = .black
         view.borderStyle = .none
 
         return view
     }()
     
-    let nicknamePassButton: LargeButton = {
+    let nicknameButton: LargeButton = {
         let view = LargeButton()
-        view.setTitle("다음", for: .normal)
+        view.setTitle(ButtonMessages.restPages.messages, for: .normal)
         return view
     }()
     
     override func configure() {
-        [nicknameIntroduction, nicknameTextField, nicknamePassButton].forEach {
+        [nicknameLabel, nicknameTextField, nicknameButton].forEach {
             self.addSubview($0)
         }
     }
     
+    func textFieldBorderAttribute() {
+        border.frame = CGRect(x: 0, y: self.nicknameTextField.frame.size.height-1, width: self.nicknameTextField.frame.width, height: 1)
+        border.gray3()
+        self.nicknameTextField.layer.addSublayer((border))
+    }
+    
     override func setConstraints() {
-        nicknameIntroduction.snp.makeConstraints { make in
+        nicknameLabel.snp.makeConstraints { make in
             make.leadingMargin.equalTo(60)
             make.trailingMargin.equalTo(-60)
             make.height.equalTo(50)
@@ -46,13 +65,13 @@ class NicknameView: BaseView {
         
         nicknameTextField.snp.makeConstraints { make in
             make.centerX.equalTo(self)
-            make.bottom.equalTo(nicknamePassButton.snp.top).offset(-60)
+            make.bottom.equalTo(nicknameButton.snp.top).offset(-60)
             make.leadingMargin.equalTo(20)
             make.trailingMargin.equalTo(-20)
             make.height.equalTo(50)
         }
         
-        nicknamePassButton.snp.makeConstraints { make in
+        nicknameButton.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(self)
             make.leadingMargin.equalTo(20)
             make.trailingMargin.equalTo(-20)

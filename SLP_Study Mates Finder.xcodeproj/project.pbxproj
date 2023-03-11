@@ -15,8 +15,6 @@
 		9826BA8E291F9E10006206F4 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 9826BA8D291F9E10006206F4 /* RxCocoa */; };
 		9826BA90291F9E10006206F4 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 9826BA8F291F9E10006206F4 /* RxRelay */; };
 		9826BA92291F9E10006206F4 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9826BA91291F9E10006206F4 /* RxSwift */; };
-		9826BA94291FACE9006206F4 /* CertificationNumberCheckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9826BA93291FACE9006206F4 /* CertificationNumberCheckViewModel.swift */; };
-		9826BA97291FAD87006206F4 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9826BA96291FAD87006206F4 /* Observable.swift */; };
 		982E9AF0293208C50074331E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982E9AEF293208C50074331E /* APIService.swift */; };
 		982E9AF2293208DB0074331E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982E9AF1293208DB0074331E /* EndPoint.swift */; };
 		982E9AF429320AE90074331E /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982E9AF329320AE90074331E /* Codable.swift */; };
@@ -47,10 +45,6 @@
 		98B3C351291D0F43004EEB14 /* SecondOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C350291D0F43004EEB14 /* SecondOnboardingView.swift */; };
 		98B3C353291D2955004EEB14 /* MainOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C352291D2955004EEB14 /* MainOnboardingViewController.swift */; };
 		98B3C355291D2964004EEB14 /* MainOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C354291D2964004EEB14 /* MainOnboardingView.swift */; };
-		98B3C35B291D3121004EEB14 /* PhoneNumberCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C35A291D3121004EEB14 /* PhoneNumberCheckView.swift */; };
-		98B3C35D291D312D004EEB14 /* PhoneNumberCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C35C291D312D004EEB14 /* PhoneNumberCheckViewController.swift */; };
-		98B3C35F291D3137004EEB14 /* CertificationNumberCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C35E291D3137004EEB14 /* CertificationNumberCheck.swift */; };
-		98B3C361291D3146004EEB14 /* CertificationNumberCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C360291D3146004EEB14 /* CertificationNumberCheckViewController.swift */; };
 		98B9DF80291BEC2D00FE62EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9DF7F291BEC2D00FE62EA /* AppDelegate.swift */; };
 		98B9DF82291BEC2D00FE62EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9DF81291BEC2D00FE62EA /* SceneDelegate.swift */; };
 		98B9DF84291BEC2D00FE62EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9DF83291BEC2D00FE62EA /* ViewController.swift */; };
@@ -70,12 +64,16 @@
 		98C2E79A2925C11A003D43AF /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2E7992925C11A003D43AF /* UILabel+Extension.swift */; };
 		98CC093029B9A50A00CCD24F /* SLPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC092F29B9A50A00CCD24F /* SLPViewController.swift */; };
 		98CC093329B9A6D300CCD24F /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC093229B9A6D300CCD24F /* Enum.swift */; };
+		98DD412F29BC886400D7D78A /* CertificationCustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DD412E29BC886400D7D78A /* CertificationCustomTextField.swift */; };
+		98DD413129BC8ED500D7D78A /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DD413029BC8ED500D7D78A /* PhoneNumberViewController.swift */; };
+		98DD413329BC8EDF00D7D78A /* CertificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DD413229BC8EDF00D7D78A /* CertificationViewController.swift */; };
+		98DD413629BC8F6300D7D78A /* PhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DD413529BC8F6300D7D78A /* PhoneNumberView.swift */; };
+		98DD413829BC8F6B00D7D78A /* CertificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DD413729BC8F6B00D7D78A /* CertificationView.swift */; };
 		98F696FD291DD39100577FCE /* OnboardingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F696FC291DD39100577FCE /* OnboardingLabel.swift */; };
 		98F696FF291DDEC500577FCE /* RegistrationProcessLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F696FE291DDEC500577FCE /* RegistrationProcessLabel.swift */; };
 		98F69703291E339C00577FCE /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F69702291E339C00577FCE /* UIButton+Extension.swift */; };
 		98F69705291E718400577FCE /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F69704291E718400577FCE /* LargeButton.swift */; };
 		98F69707291E732100577FCE /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F69706291E732100577FCE /* UITextField+Extension.swift */; };
-		98F6971E291E7D2200577FCE /* PhoneNumberCheckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F6971D291E7D2200577FCE /* PhoneNumberCheckViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -97,8 +95,6 @@
 		9808D3ED29B4C2B900CFB19A /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		9808D3F129B4C3ED00CFB19A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9808D3F729B4E32A00CFB19A /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
-		9826BA93291FACE9006206F4 /* CertificationNumberCheckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationNumberCheckViewModel.swift; sourceTree = "<group>"; };
-		9826BA96291FAD87006206F4 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		982E9AEF293208C50074331E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		982E9AF1293208DB0074331E /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		982E9AF329320AE90074331E /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
@@ -123,10 +119,6 @@
 		98B3C350291D0F43004EEB14 /* SecondOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingView.swift; sourceTree = "<group>"; };
 		98B3C352291D2955004EEB14 /* MainOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOnboardingViewController.swift; sourceTree = "<group>"; };
 		98B3C354291D2964004EEB14 /* MainOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOnboardingView.swift; sourceTree = "<group>"; };
-		98B3C35A291D3121004EEB14 /* PhoneNumberCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCheckView.swift; sourceTree = "<group>"; };
-		98B3C35C291D312D004EEB14 /* PhoneNumberCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCheckViewController.swift; sourceTree = "<group>"; };
-		98B3C35E291D3137004EEB14 /* CertificationNumberCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationNumberCheck.swift; sourceTree = "<group>"; };
-		98B3C360291D3146004EEB14 /* CertificationNumberCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationNumberCheckViewController.swift; sourceTree = "<group>"; };
 		98B9DF7C291BEC2D00FE62EA /* SLP_Study Mates Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SLP_Study Mates Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98B9DF7F291BEC2D00FE62EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98B9DF81291BEC2D00FE62EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,12 +140,16 @@
 		98C2E7992925C11A003D43AF /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		98CC092F29B9A50A00CCD24F /* SLPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLPViewController.swift; sourceTree = "<group>"; };
 		98CC093229B9A6D300CCD24F /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		98DD412E29BC886400D7D78A /* CertificationCustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationCustomTextField.swift; sourceTree = "<group>"; };
+		98DD413029BC8ED500D7D78A /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
+		98DD413229BC8EDF00D7D78A /* CertificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationViewController.swift; sourceTree = "<group>"; };
+		98DD413529BC8F6300D7D78A /* PhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberView.swift; sourceTree = "<group>"; };
+		98DD413729BC8F6B00D7D78A /* CertificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationView.swift; sourceTree = "<group>"; };
 		98F696FC291DD39100577FCE /* OnboardingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLabel.swift; sourceTree = "<group>"; };
 		98F696FE291DDEC500577FCE /* RegistrationProcessLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationProcessLabel.swift; sourceTree = "<group>"; };
 		98F69702291E339C00577FCE /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		98F69704291E718400577FCE /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 		98F69706291E732100577FCE /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
-		98F6971D291E7D2200577FCE /* PhoneNumberCheckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCheckViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,9 +179,9 @@
 				9808D3ED29B4C2B900CFB19A /* PhoneNumberViewModel.swift */,
 				989EAD9F29BAFDC000068F1F /* CertificationViewModel.swift */,
 				989EADA129BAFDE600068F1F /* NicknameViewModel.swift */,
+				989EADA729BAFE0D00068F1F /* BirthViewModel.swift */,
 				989EADA329BAFDF200068F1F /* EmailViewModel.swift */,
 				989EADA529BAFE0000068F1F /* GenderViewModel.swift */,
-				989EADA729BAFE0D00068F1F /* BirthViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -194,6 +190,12 @@
 			isa = PBXGroup;
 			children = (
 				98CC092F29B9A50A00CCD24F /* SLPViewController.swift */,
+				98DD413529BC8F6300D7D78A /* PhoneNumberView.swift */,
+				98DD413729BC8F6B00D7D78A /* CertificationView.swift */,
+				98C2E7872925BAFA003D43AF /* NicknameView.swift */,
+				98C2E78B2925BDE8003D43AF /* BirthView.swift */,
+				98C2E78F2925BDFE003D43AF /* EmailView.swift */,
+				98C2E7932925BE11003D43AF /* GenderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,17 +211,10 @@
 		9808D3EA29B4BF9F00CFB19A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				9808D3F729B4E32A00CFB19A /* Sample.swift */,
 				9808D3EB29B4BFAC00CFB19A /* Protocols.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		9826BA95291FAD7A006206F4 /* Observable */ = {
-			isa = PBXGroup;
-			children = (
-				9826BA96291FAD87006206F4 /* Observable.swift */,
-			);
-			path = Observable;
 			sourceTree = "<group>";
 		};
 		982E9AEE293208A90074331E /* Network */ = {
@@ -258,47 +253,6 @@
 			path = BaseView;
 			sourceTree = "<group>";
 		};
-		98B3C357291D2FCA004EEB14 /* RegistrationProcess */ = {
-			isa = PBXGroup;
-			children = (
-				98C2E7862925BAE6003D43AF /* Gender */,
-				98C2E7852925BADA003D43AF /* Email */,
-				98C2E7842925BAC9003D43AF /* Birth */,
-				98C2E7832925BA98003D43AF /* Nickname */,
-				98B3C362291D3471004EEB14 /* UserRegistration */,
-				98B3C359291D30FE004EEB14 /* CertificationNumber */,
-				98B3C358291D30E7004EEB14 /* PhoneNumber */,
-			);
-			path = RegistrationProcess;
-			sourceTree = "<group>";
-		};
-		98B3C358291D30E7004EEB14 /* PhoneNumber */ = {
-			isa = PBXGroup;
-			children = (
-				98B3C35C291D312D004EEB14 /* PhoneNumberCheckViewController.swift */,
-				98B3C35A291D3121004EEB14 /* PhoneNumberCheckView.swift */,
-				98F6971D291E7D2200577FCE /* PhoneNumberCheckViewModel.swift */,
-			);
-			path = PhoneNumber;
-			sourceTree = "<group>";
-		};
-		98B3C359291D30FE004EEB14 /* CertificationNumber */ = {
-			isa = PBXGroup;
-			children = (
-				98B3C360291D3146004EEB14 /* CertificationNumberCheckViewController.swift */,
-				98B3C35E291D3137004EEB14 /* CertificationNumberCheck.swift */,
-				9826BA93291FACE9006206F4 /* CertificationNumberCheckViewModel.swift */,
-			);
-			path = CertificationNumber;
-			sourceTree = "<group>";
-		};
-		98B3C362291D3471004EEB14 /* UserRegistration */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UserRegistration;
-			sourceTree = "<group>";
-		};
 		98B9DF73291BEC2D00FE62EA = {
 			isa = PBXGroup;
 			children = (
@@ -320,28 +274,20 @@
 		98B9DF7E291BEC2D00FE62EA /* SLP_Study Mates Finder */ = {
 			isa = PBXGroup;
 			children = (
-				98F69701291E339100577FCE /* Extensions */,
-				982E9AEE293208A90074331E /* Network */,
-				98B3C318291C86FE004EEB14 /* Onboarding */,
+				98DD413929BCC58200D7D78A /* Defaults */,
+				98B3C317291C7667004EEB14 /* SLP_Study Mates Finder.entitlements */,
 				98B9DF9A291BEF5200FE62EA /* Confidential Files */,
 				98CC093129B9A6C400CCD24F /* Enum */,
 				9808D3EA29B4BF9F00CFB19A /* Protocols */,
+				98F69701291E339100577FCE /* Extensions */,
+				982E9AEE293208A90074331E /* Network */,
 				98F696FB291DD2B100577FCE /* CustomView */,
+				98B3C318291C86FE004EEB14 /* Onboarding */,
 				98B3C32A291C88C0004EEB14 /* BaseView */,
-				98B3C317291C7667004EEB14 /* SLP_Study Mates Finder.entitlements */,
+				98DD413429BC8F1D00D7D78A /* ViewController */,
 				9808D3E929B4B8C900CFB19A /* Model */,
 				9808D3E829B4B8C100CFB19A /* View */,
 				9808D3E729B4B8B800CFB19A /* ViewModel */,
-				9826BA95291FAD7A006206F4 /* Observable */,
-				98B3C357291D2FCA004EEB14 /* RegistrationProcess */,
-				98B9DF7F291BEC2D00FE62EA /* AppDelegate.swift */,
-				98B9DF81291BEC2D00FE62EA /* SceneDelegate.swift */,
-				98B9DF83291BEC2D00FE62EA /* ViewController.swift */,
-				98B9DF85291BEC2D00FE62EA /* Main.storyboard */,
-				98B9DF88291BEC2E00FE62EA /* Assets.xcassets */,
-				98B9DF8A291BEC2E00FE62EA /* LaunchScreen.storyboard */,
-				98B9DF8D291BEC2E00FE62EA /* Info.plist */,
-				9808D3F729B4E32A00CFB19A /* Sample.swift */,
 			);
 			path = "SLP_Study Mates Finder";
 			sourceTree = "<group>";
@@ -354,48 +300,39 @@
 			path = "Confidential Files";
 			sourceTree = "<group>";
 		};
-		98C2E7832925BA98003D43AF /* Nickname */ = {
-			isa = PBXGroup;
-			children = (
-				98C2E7872925BAFA003D43AF /* NicknameView.swift */,
-				98C2E7892925BB05003D43AF /* NicknameViewController.swift */,
-			);
-			path = Nickname;
-			sourceTree = "<group>";
-		};
-		98C2E7842925BAC9003D43AF /* Birth */ = {
-			isa = PBXGroup;
-			children = (
-				98C2E78B2925BDE8003D43AF /* BirthView.swift */,
-				98C2E78D2925BDF2003D43AF /* BirthViewController.swift */,
-			);
-			path = Birth;
-			sourceTree = "<group>";
-		};
-		98C2E7852925BADA003D43AF /* Email */ = {
-			isa = PBXGroup;
-			children = (
-				98C2E78F2925BDFE003D43AF /* EmailView.swift */,
-				98C2E7912925BE07003D43AF /* EmailViewController.swift */,
-			);
-			path = Email;
-			sourceTree = "<group>";
-		};
-		98C2E7862925BAE6003D43AF /* Gender */ = {
-			isa = PBXGroup;
-			children = (
-				98C2E7932925BE11003D43AF /* GenderView.swift */,
-				98C2E7952925BE1B003D43AF /* GenderViewController.swift */,
-			);
-			path = Gender;
-			sourceTree = "<group>";
-		};
 		98CC093129B9A6C400CCD24F /* Enum */ = {
 			isa = PBXGroup;
 			children = (
 				98CC093229B9A6D300CCD24F /* Enum.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		98DD413429BC8F1D00D7D78A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				98DD413029BC8ED500D7D78A /* PhoneNumberViewController.swift */,
+				98DD413229BC8EDF00D7D78A /* CertificationViewController.swift */,
+				98C2E7892925BB05003D43AF /* NicknameViewController.swift */,
+				98C2E78D2925BDF2003D43AF /* BirthViewController.swift */,
+				98C2E7912925BE07003D43AF /* EmailViewController.swift */,
+				98C2E7952925BE1B003D43AF /* GenderViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		98DD413929BCC58200D7D78A /* Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				98B9DF7F291BEC2D00FE62EA /* AppDelegate.swift */,
+				98B9DF81291BEC2D00FE62EA /* SceneDelegate.swift */,
+				98B9DF83291BEC2D00FE62EA /* ViewController.swift */,
+				98B9DF85291BEC2D00FE62EA /* Main.storyboard */,
+				98B9DF88291BEC2E00FE62EA /* Assets.xcassets */,
+				98B9DF8A291BEC2E00FE62EA /* LaunchScreen.storyboard */,
+				98B9DF8D291BEC2E00FE62EA /* Info.plist */,
+			);
+			path = Defaults;
 			sourceTree = "<group>";
 		};
 		98F235A4291F9C200028CA63 /* Frameworks */ = {
@@ -415,6 +352,7 @@
 				98410E4429B9B1D1001DECC4 /* CustomTextField.swift */,
 				98410E4629B9B1DB001DECC4 /* CustomButton.swift */,
 				989EADAB29BB01A500068F1F /* BirthCustomView.swift */,
+				98DD412E29BC886400D7D78A /* CertificationCustomTextField.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -526,15 +464,16 @@
 				98B3C34B291D0F10004EEB14 /* SecondOnboardingViewController.swift in Sources */,
 				98B9DF80291BEC2D00FE62EA /* AppDelegate.swift in Sources */,
 				98C2E78E2925BDF2003D43AF /* BirthViewController.swift in Sources */,
+				98DD413129BC8ED500D7D78A /* PhoneNumberViewController.swift in Sources */,
 				98F69703291E339C00577FCE /* UIButton+Extension.swift in Sources */,
 				982E9AF0293208C50074331E /* APIService.swift in Sources */,
 				989EADAC29BB01A500068F1F /* BirthCustomView.swift in Sources */,
 				98B3C347291CCE3E004EEB14 /* IntroPageViewController.swift in Sources */,
 				98C2E7962925BE1B003D43AF /* GenderViewController.swift in Sources */,
-				98B3C35F291D3137004EEB14 /* CertificationNumberCheck.swift in Sources */,
 				98C2E7882925BAFA003D43AF /* NicknameView.swift in Sources */,
 				98B3C353291D2955004EEB14 /* MainOnboardingViewController.swift in Sources */,
 				989EADA229BAFDE600068F1F /* NicknameViewModel.swift in Sources */,
+				98DD412F29BC886400D7D78A /* CertificationCustomTextField.swift in Sources */,
 				98C2E78C2925BDE8003D43AF /* BirthView.swift in Sources */,
 				98B3C355291D2964004EEB14 /* MainOnboardingView.swift in Sources */,
 				9808D3EE29B4C2B900CFB19A /* PhoneNumberViewModel.swift in Sources */,
@@ -546,29 +485,26 @@
 				98B9DF82291BEC2D00FE62EA /* SceneDelegate.swift in Sources */,
 				98CC093029B9A50A00CCD24F /* SLPViewController.swift in Sources */,
 				989EADA629BAFE0000068F1F /* GenderViewModel.swift in Sources */,
-				98B3C35B291D3121004EEB14 /* PhoneNumberCheckView.swift in Sources */,
 				98C2E7942925BE11003D43AF /* GenderView.swift in Sources */,
 				98CC093329B9A6D300CCD24F /* Enum.swift in Sources */,
-				9826BA97291FAD87006206F4 /* Observable.swift in Sources */,
 				9808D3F829B4E32A00CFB19A /* Sample.swift in Sources */,
 				982E9AF2293208DB0074331E /* EndPoint.swift in Sources */,
-				9826BA94291FACE9006206F4 /* CertificationNumberCheckViewModel.swift in Sources */,
 				98F696FF291DDEC500577FCE /* RegistrationProcessLabel.swift in Sources */,
 				98C2E79A2925C11A003D43AF /* UILabel+Extension.swift in Sources */,
 				98F696FD291DD39100577FCE /* OnboardingLabel.swift in Sources */,
 				98B3C34D291D0F26004EEB14 /* ThirdOnboardingViewController.swift in Sources */,
-				98B3C35D291D312D004EEB14 /* PhoneNumberCheckViewController.swift in Sources */,
 				989EADA029BAFDC000068F1F /* CertificationViewModel.swift in Sources */,
 				98410E4529B9B1D1001DECC4 /* CustomTextField.swift in Sources */,
 				98B3C32C291C88D7004EEB14 /* BaseViewController.swift in Sources */,
 				9808D3EC29B4BFAC00CFB19A /* Protocols.swift in Sources */,
+				98DD413829BC8F6B00D7D78A /* CertificationView.swift in Sources */,
 				98B3C351291D0F43004EEB14 /* SecondOnboardingView.swift in Sources */,
 				982E9AF429320AE90074331E /* Codable.swift in Sources */,
-				98B3C361291D3146004EEB14 /* CertificationNumberCheckViewController.swift in Sources */,
+				98DD413329BC8EDF00D7D78A /* CertificationViewController.swift in Sources */,
 				9808D3F229B4C3ED00CFB19A /* Model.swift in Sources */,
 				98B3C32E291C88E1004EEB14 /* BaseView.swift in Sources */,
 				98F69707291E732100577FCE /* UITextField+Extension.swift in Sources */,
-				98F6971E291E7D2200577FCE /* PhoneNumberCheckViewModel.swift in Sources */,
+				98DD413629BC8F6300D7D78A /* PhoneNumberView.swift in Sources */,
 				98B3C329291C8892004EEB14 /* FirstOnboardingView.swift in Sources */,
 				989EADA429BAFDF200068F1F /* EmailViewModel.swift in Sources */,
 				98C2E7982925C084003D43AF /* RegistrationProcessDetailLabel.swift in Sources */,
@@ -726,7 +662,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VSHQ8JA888;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SLP_Study Mates Finder/Info.plist";
+				INFOPLIST_FILE = "SLP_Study Mates Finder/Defaults/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -758,7 +694,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VSHQ8JA888;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SLP_Study Mates Finder/Info.plist";
+				INFOPLIST_FILE = "SLP_Study Mates Finder/Defaults/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

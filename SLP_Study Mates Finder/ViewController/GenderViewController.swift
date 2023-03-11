@@ -11,15 +11,26 @@ import FirebaseAuth
 import RxCocoa
 import RxSwift
 
-class GenderViewController: BaseViewController {
-    var mainView = GenderView()
+class GenderViewController: UIViewController {
+    var mainView: GenderView
+    let viewModel = GenderViewModel()
+    let disposeBag = DisposeBag()
     let border = CALayer()
     let genderCode = BehaviorSubject<Int>(value: 2)
-    let disposeBag = DisposeBag()
-    
+
+    init(mainView: GenderView) {
+        self.mainView = mainView
+        super.init(nibName: nil, bundle: nil)
+    }
+
     override func loadView() {
         self.view = mainView
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

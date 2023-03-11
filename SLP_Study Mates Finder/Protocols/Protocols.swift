@@ -15,6 +15,6 @@ protocol CommonMethods {
 //    var phoneNumberEvent: R { get }
 //    var phoneNumber: T { get }
 //    func phoneNumberValidation(number: T)
-    var baseView: BaseView { get }
+//    var baseView: BaseView { get }
     func buttonTapped(_ viewController: UIViewController)
 }

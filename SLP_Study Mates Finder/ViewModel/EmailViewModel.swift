@@ -5,4 +5,34 @@
 //  Created by Mac Pro 15 on 2023/03/10.
 //
 
-import Foundation
+import UIKit
+import RxCocoa
+import RxSwift
+
+class EmailViewModel: CommonMethods {
+    var baseView = BaseView()
+    var mainView = EmailView()
+
+    var emailEvent = PublishRelay<Bool>()
+    var isValidEmail: Bool = false
+    
+    func emailValidation(_ email: String){
+        if email.count > 1 && email.contains("@") && email.contains(".") {
+            isValidEmail = true
+            emailEvent.accept(isValidEmail)
+        } else {
+            isValidEmail = false
+            emailEvent.accept(isValidEmail)
+        }
+    }
+   
+    func buttonTapped(_ viewController: UIViewController){
+        if isValidEmail {
+            let baseViewToChange = GenderView()
+            let vc = GenderViewController(mainView: baseViewToChange)
+            viewController.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            viewController.view.makeToast(ToastMessages.email.messages, duration: 1.0, position: .top)
+        }
+    }
+}

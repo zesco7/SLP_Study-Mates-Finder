@@ -11,13 +11,13 @@ import UIKit
 class GenderView: BaseView {
     let genderIntroduction: RegistrationProcessLabel = {
        let view = RegistrationProcessLabel()
-        view.text = "성별을 선택해주세요"
+        view.text = SignUpMessages.gender.messages
         return view
     }()
     
     let genderDetailIntroduction: RegistrationProcessDetailLabel = {
        let view = RegistrationProcessDetailLabel()
-        view.text = "새싹 찾기 기능을 이용하기 위해서 필요해요!"
+        view.text = SignUpMessages.gender.subMessages
         return view
     }()
     
@@ -45,7 +45,7 @@ class GenderView: BaseView {
 
     let genderPassButton: LargeButton = {
         let view = LargeButton()
-        view.setTitle("다음", for: .normal)
+        view.setTitle(ButtonMessages.restPages.messages, for: .normal)
         return view
     }()
     

@@ -33,7 +33,91 @@ enum SignUpMessages: String {
             return ""
         }
     }
+    
+    var subMessages: String {
+        switch self {
+        case .email:
+            return "휴대폰 번호 변경 시 인증을 위해 사용해요"
+        case .gender:
+            return "새싹 찾기 기능을 이용하기 위해서 필요해요!"
+        default:
+            return ""
+        }
+    }
 }
+
+enum ButtonMessages: String {
+    case phoneNumber
+    case certification
+    case restPages
+
+    var messages: String {
+        switch self {
+        case .phoneNumber:
+            return "인증 문자 받기"
+        case .certification:
+            return "인증하고 시작하기"
+        case .restPages:
+            return "다음"
+        default:
+            return ""
+        }
+    }
+    
+    var subButtonMessages: String {
+        switch self {
+        case .certification:
+            return "재전송"
+        default:
+            return ""
+        }
+    }
+}
+
+enum Placeholder: String {
+    case phoneNumber
+    case certification
+    case nickname
+
+    var messages: String {
+        switch self {
+        case .phoneNumber:
+            return "휴대폰 번호(-없이 숫자만 입력)"
+        case .certification:
+            return "인증번호 입력"
+        case .nickname:
+            return "10자 이내로 입력"
+        default:
+            return ""
+        }
+    }
+}
+
+enum ToastMessages: String {
+    case phoneNumber
+    case nickname
+    case birth
+    case email
+    case gender
+
+    var messages: String {
+        switch self {
+        case .phoneNumber:
+            return "잘못된 전화번호 형식입니다."
+        case .nickname:
+            return "닉네임은 1자 이상 10자 이내로 부탁드려요."
+        case .birth:
+            return "새싹스터디는 만 17세 이상만 사용할 수 있습니다."
+        case .email:
+            return "이메일 형식이 올바르지 않습니다."
+        case .gender:
+            return "성별을 선택하지 않았습니다."
+        default:
+            return ""
+        }
+    }
+}
+
 
 enum SignUpPageTypes {
     case plain

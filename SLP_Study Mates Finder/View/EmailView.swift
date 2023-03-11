@@ -9,48 +9,66 @@ import Foundation
 import UIKit
 
 class EmailView: BaseView {
-    let emailIntroduction: RegistrationProcessLabel = {
+    let border = CALayer()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configure()
+        setConstraints()
+        textFieldBorderAttribute()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    let emailLabel: RegistrationProcessLabel = {
        let view = RegistrationProcessLabel()
-        view.text = "이메일을 입력해주세요"
+        view.text = SignUpMessages.email.messages
         return view
     }()
     
-    let emailDetailIntroduction: RegistrationProcessDetailLabel = {
+    let emailSubLabel: RegistrationProcessDetailLabel = {
        let view = RegistrationProcessDetailLabel()
-        view.text = "휴대폰 번호 변경 시 인증을 위해 사용해요"
+        view.text = SignUpMessages.email.subMessages
         return view
     }()
     
     let emailTextField: UITextField = {
        let view = UITextField()
-        view.placeholder = "10자 이내로 입력"
         view.textColor = .black
         view.borderStyle = .none
 
         return view
     }()
     
-    let emailPassButton: LargeButton = {
+    let emailButton: LargeButton = {
         let view = LargeButton()
-        view.setTitle("다음", for: .normal)
+        view.setTitle(ButtonMessages.restPages.messages, for: .normal)
         return view
     }()
     
     override func configure() {
-        [emailIntroduction, emailDetailIntroduction, emailTextField, emailPassButton].forEach {
+        [emailLabel, emailSubLabel, emailTextField, emailButton].forEach {
             self.addSubview($0)
         }
     }
     
+    func textFieldBorderAttribute() {
+        border.frame = CGRect(x: 0, y: self.emailTextField.frame.size.height-1, width: self.emailTextField.frame.width, height: 1)
+        border.gray3()
+        self.emailTextField.layer.addSublayer((border))
+    }
+    
     override func setConstraints() {
-        emailIntroduction.snp.makeConstraints { make in
+        emailLabel.snp.makeConstraints { make in
             make.leadingMargin.equalTo(60)
             make.trailingMargin.equalTo(-60)
             make.height.equalTo(50)
             make.centerY.equalTo(self).multipliedBy(0.4)
         }
         
-        emailDetailIntroduction.snp.makeConstraints { make in
+        emailSubLabel.snp.makeConstraints { make in
             make.leadingMargin.equalTo(30)
             make.trailingMargin.equalTo(-30)
             make.height.equalTo(50)
@@ -59,13 +77,13 @@ class EmailView: BaseView {
         
         emailTextField.snp.makeConstraints { make in
             make.centerX.equalTo(self)
-            make.bottom.equalTo(emailPassButton.snp.top).offset(-60)
+            make.bottom.equalTo(emailButton.snp.top).offset(-60)
             make.leadingMargin.equalTo(20)
             make.trailingMargin.equalTo(-20)
             make.height.equalTo(50)
         }
         
-        emailPassButton.snp.makeConstraints { make in
+        emailButton.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(self)
             make.leadingMargin.equalTo(20)
             make.trailingMargin.equalTo(-20)

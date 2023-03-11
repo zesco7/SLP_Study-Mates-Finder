@@ -34,7 +34,8 @@ class IntroPageViewController: UIPageViewController {
     
     @objc func startButtonClicked() {
         print(#function)
-        let vc = PhoneNumberCheckViewController()
+        let view = PhoneNumberView()
+        let vc = PhoneNumberViewController(mainView: view)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
