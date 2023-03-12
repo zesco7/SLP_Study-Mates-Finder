@@ -15,10 +15,12 @@ class EmailViewModel: CommonMethods {
 
     var emailEvent = PublishRelay<Bool>()
     var isValidEmail: Bool = false
+    var emailData: String?
     
     func emailValidation(_ email: String){
         if email.count > 1 && email.contains("@") && email.contains(".") {
             isValidEmail = true
+            emailData = email
             emailEvent.accept(isValidEmail)
         } else {
             isValidEmail = false
@@ -28,6 +30,7 @@ class EmailViewModel: CommonMethods {
    
     func buttonTapped(_ viewController: UIViewController){
         if isValidEmail {
+            UserDefaults.standard.set(emailData, forKey: SignUpUserDefaults.email.rawValue)
             let baseViewToChange = GenderView()
             let vc = GenderViewController(mainView: baseViewToChange)
             viewController.navigationController?.pushViewController(vc, animated: true)

@@ -17,12 +17,12 @@ class GenderViewController: UIViewController {
     let disposeBag = DisposeBag()
     let border = CALayer()
     let genderCode = BehaviorSubject<Int>(value: 2)
-
+    
     init(mainView: GenderView) {
         self.mainView = mainView
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     override func loadView() {
         self.view = mainView
     }
@@ -35,29 +35,61 @@ class GenderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        genderAddTargetCollection()
-        genderValidation()
+        bind()
+        sendGenderEvent()
+        activateAction()
         
-        //var genderSelection = UserDefaults.standard.set(genderCode, forKey: "genderSelection")
-        
+//        mainView.maleButton.rx.tap.asDriver()
+//            .drive(with: mainView.maleButton) { button ,_ in
+//                button.whiteGreen()
+//            }
+//            .disposed(by: disposeBag)
+//        
+//        mainView.femaleButton.rx.tap.asDriver()
+//            .drive(with: mainView.femaleButton) { button ,_ in
+//                button.whiteGreen()
+//            }
+//            .disposed(by: disposeBag)
+//
     }
     
-    func genderAddTargetCollection() {
-        mainView.maleButton.addTarget(self, action: #selector(maleButtonClicked), for: .touchDown)
-        mainView.femaleButton.addTarget(self, action: #selector(femaleButtonClicked), for: .touchDown)
-        mainView.genderPassButton.addTarget(self, action: #selector(genderPassButtonClicked), for: .touchUpInside)
-    }
-    
-    func genderValidation() {
-        genderCode
-            .bind(onNext: { value in
-                if value == 2 {
-                    self.mainView.genderPassButton.gray6()
+    func bind() {
+        //disposebag 어떻게?
+        viewModel.genderCodeEvent.asDriver(onErrorJustReturn: 2)
+            .drive { genderCode in
+                if genderCode == 0 {
+                    self.mainView.femaleButton.whiteGreen()
+                    self.mainView.maleButton.backgroundColor = .white
+                    self.mainView.genderButton.green()
+                } else if genderCode == 1 {
+                    self.mainView.maleButton.whiteGreen()
+                    self.mainView.femaleButton.backgroundColor = .white
+                    self.mainView.genderButton.green()
                 } else {
-                    self.mainView.genderPassButton.green()
+                    self.mainView.maleButton.backgroundColor = .white
+                    self.mainView.femaleButton.backgroundColor = .white
                 }
-            })
-            .disposed(by: disposeBag)
+            }
+    }
+    
+    func sendGenderEvent() {
+        viewModel.maleButtonTapped(mainView: mainView)
+        viewModel.femaleButtonTapped(mainView: mainView)
+    }
+    
+    func activateAction() { mainView.genderButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside) }
+    
+    @objc func buttonTapped() {
+        viewModel.buttonTapped(self)
+    
+        APIService.signUp { value, statusCode, error in
+            if let statusCode = statusCode {
+                print("Network Request by AuthenticToken", statusCode)
+                self.refreshToken()
+            } else {
+                print("응답코드 에러")
+            }
+        }
     }
     
     func refreshToken() {
@@ -72,46 +104,6 @@ class GenderViewController: UIViewController {
                     print("Network Request by refreshToken", status)
                     print("value : ", value)
                 }
-            }
-        }
-    }
-    
-    @objc func maleButtonClicked() {
-        UserDefaults.standard.set("1", forKey: "genderSelection")
-        if mainView.maleButton.backgroundColor == .white && mainView.femaleButton.backgroundColor == .white  {
-            mainView.maleButton.whiteGreen()
-            mainView.maleButton.layer.borderColor = .none
-        } else {
-            mainView.maleButton.backgroundColor = .white
-        }
-    }
-    
-    @objc func femaleButtonClicked() {
-        UserDefaults.standard.set("0", forKey: "genderSelection")
-        if mainView.maleButton.backgroundColor == .white && mainView.femaleButton.backgroundColor == .white {
-            mainView.femaleButton.whiteGreen()
-            mainView.femaleButton.layer.borderColor = .none
-        } else {
-            mainView.femaleButton.backgroundColor = .white
-        }
-    }
-    
-    @objc func genderPassButtonClicked() {
-        print(UserDefaults.standard.string(forKey: "genderSelection")!)
-        
-        print("phoneNumber", UserDefaults.standard.string(forKey: "phoneNumberWithNoHyphen"))
-        print("FCMtoken", UserDefaults.standard.string(forKey: "FCMToken"))
-        print("nick", UserDefaults.standard.string(forKey: "nickname"))
-        print("birthDate", UserDefaults.standard.string(forKey: "birthDate"))
-        print("email", UserDefaults.standard.string(forKey: "email"))
-        print("gender", UserDefaults.standard.string(forKey: "genderSelection"))
-        
-        APIService.signUp { value, statusCode, error in
-            if let statusCode = statusCode {
-                print("Network Request by AuthenticToken", statusCode)
-                self.refreshToken()
-            } else {
-                print("응답코드 에러")
             }
         }
     }

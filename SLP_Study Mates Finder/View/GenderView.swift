@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 class GenderView: BaseView {
-    let genderIntroduction: RegistrationProcessLabel = {
+    let genderLabel: RegistrationProcessLabel = {
        let view = RegistrationProcessLabel()
         view.text = SignUpMessages.gender.messages
         return view
     }()
     
-    let genderDetailIntroduction: RegistrationProcessDetailLabel = {
+    let genderSubLabel: RegistrationProcessDetailLabel = {
        let view = RegistrationProcessDetailLabel()
         view.text = SignUpMessages.gender.subMessages
         return view
@@ -43,27 +43,27 @@ class GenderView: BaseView {
         return view
     }()
 
-    let genderPassButton: LargeButton = {
+    let genderButton: LargeButton = {
         let view = LargeButton()
         view.setTitle(ButtonMessages.restPages.messages, for: .normal)
         return view
     }()
     
     override func configure() {
-        [genderIntroduction, genderDetailIntroduction, maleButton, femaleButton, genderPassButton].forEach {
+        [genderLabel, genderSubLabel, maleButton, femaleButton, genderButton].forEach {
             self.addSubview($0)
         }
     }
     
     override func setConstraints() {
-        genderIntroduction.snp.makeConstraints { make in
+        genderLabel.snp.makeConstraints { make in
             make.leadingMargin.equalTo(60)
             make.trailingMargin.equalTo(-60)
             make.height.equalTo(50)
             make.centerY.equalTo(self).multipliedBy(0.4)
         }
         
-        genderDetailIntroduction.snp.makeConstraints { make in
+        genderSubLabel.snp.makeConstraints { make in
             make.leadingMargin.equalTo(30)
             make.trailingMargin.equalTo(-30)
             make.height.equalTo(50)
@@ -72,19 +72,19 @@ class GenderView: BaseView {
         
         maleButton.snp.makeConstraints { make in
             make.leadingMargin.equalTo(20)
-            make.bottom.equalTo(genderPassButton.snp.top).offset(-30)
+            make.bottom.equalTo(genderButton.snp.top).offset(-30)
             make.width.equalTo(self).multipliedBy(0.4)
             make.height.equalTo(100)
         }
         
         femaleButton.snp.makeConstraints { make in
             make.trailingMargin.equalTo(-20)
-            make.bottom.equalTo(genderPassButton.snp.top).offset(-30)
+            make.bottom.equalTo(genderButton.snp.top).offset(-30)
             make.width.equalTo(self).multipliedBy(0.4)
             make.height.equalTo(100)
         }
         
-        genderPassButton.snp.makeConstraints { make in
+        genderButton.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(self)
             make.leadingMargin.equalTo(20)
             make.trailingMargin.equalTo(-20)

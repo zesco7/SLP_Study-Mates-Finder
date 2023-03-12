@@ -112,12 +112,9 @@ enum ToastMessages: String {
             return "이메일 형식이 올바르지 않습니다."
         case .gender:
             return "성별을 선택하지 않았습니다."
-        default:
-            return ""
         }
     }
 }
-
 
 enum SignUpPageTypes {
     case plain
@@ -125,8 +122,30 @@ enum SignUpPageTypes {
     case password
 }
 
-//struct UIContext {
-//    var textFieldType: type
-//    var placeholder: String
-//    var keyboardType: //키보드 타입
-//}
+enum SignUpUserDefaults: String {
+    case phoneNumber = "phoneNumber"
+    case certification = "certification"
+    case nickname = "nickname"
+    case birth = "birth"
+    case email = "email"
+    case gender = "gender"
+    
+    var userDefaults: String {
+        switch self {
+//        case .phoneNumber:
+//            return UserDefaults.standard.string(forKey: "phoneNumber")!
+//        case .certification:
+//            return UserDefaults.standard.string(forKey: "certification")!
+        case .nickname:
+            return UserDefaults.standard.string(forKey: "nickname")!
+        case .birth:
+            return UserDefaults.standard.string(forKey: "birth")!
+        case .email:
+            return UserDefaults.standard.string(forKey: "email")!
+        case .gender:
+            return UserDefaults.standard.string(forKey: "gender")!
+        default:
+            return ""
+        }
+    }
+}

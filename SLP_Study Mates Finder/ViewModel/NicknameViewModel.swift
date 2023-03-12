@@ -15,10 +15,12 @@ class NicknameViewModel: CommonMethods {
 
     var nicknameEvent = PublishRelay<Bool>()
     var isNickname: Bool = false
+    var nicknameData: String?
     
     func nicknameValidation(_ nickname: String){
         if nickname.count >= 1 && nickname.count <= 10 {
             isNickname = true
+            nicknameData = nickname
             nicknameEvent.accept(isNickname)
             //특수문자 제한 조건 및 조건 충족 여부 토스트 필요
         } else {
@@ -29,6 +31,7 @@ class NicknameViewModel: CommonMethods {
    
     func buttonTapped(_ viewController: UIViewController){
         if isNickname {
+            UserDefaults.standard.set(nicknameData, forKey: SignUpUserDefaults.nickname.rawValue)
             let baseViewToChange = BirthView()
             let vc = BirthViewController(mainView: baseViewToChange)
             viewController.navigationController?.pushViewController(vc, animated: true)

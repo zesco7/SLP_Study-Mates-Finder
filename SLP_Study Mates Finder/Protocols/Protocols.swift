@@ -11,10 +11,5 @@ import RxSwift
 
 protocol CommonMethods {
 //    associatedtype T
-//    associatedtype R
-//    var phoneNumberEvent: R { get }
-//    var phoneNumber: T { get }
-//    func phoneNumberValidation(number: T)
-//    var baseView: BaseView { get }
     func buttonTapped(_ viewController: UIViewController)
 }

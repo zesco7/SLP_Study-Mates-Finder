@@ -60,8 +60,6 @@ class NicknameViewController: UIViewController {
     }
     
     @objc func textFieldEditing() {
-        //해당 메서드가 MVVM 구조에 맞는 흐름인지?
-        //phoneNumber는 안되는데 nickname은 addTarget실행 되는 이유?
         guard let text = mainView.nicknameTextField.text else { return }
         viewModel.nicknameValidation(text)
     }
@@ -69,6 +67,4 @@ class NicknameViewController: UIViewController {
     @objc func buttonTapped() { viewModel.buttonTapped(self) }
 }
 
-extension NicknameViewController: UITextFieldDelegate {
-    
-}
+extension NicknameViewController: UITextFieldDelegate { }

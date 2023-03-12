@@ -21,8 +21,6 @@ class PhoneNumberViewModel: CommonMethods {
     func phoneNumberValidation(number: String) {
         phoneNumber = number
         phoneNumberEvent.accept(phoneNumber)
-        print(phoneNumber)
-        print(number)
     }
     
     func formatter(_ input: String, form: String) -> String {
@@ -42,9 +40,11 @@ class PhoneNumberViewModel: CommonMethods {
     }
     
     func buttonTapped(_ viewController: UIViewController){
-        let baseViewToChange = CertificationView()
-        let vc = CertificationViewController(mainView: baseViewToChange)
-        viewController.navigationController?.pushViewController(vc, animated: true)
+        if phoneNumber.count >= 10 {
+            let baseViewToChange = CertificationView()
+            let vc = CertificationViewController(mainView: baseViewToChange)
+            viewController.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func requestVerificationCode(phoneNumber: String) {

@@ -60,8 +60,6 @@ class EmailViewController: UIViewController {
     }
     
     @objc func textFieldEditing() {
-        //해당 메서드가 MVVM 구조에 맞는 흐름인지?
-        //phoneNumber는 안되는데 email은 addTarget실행 되는 이유?
         guard let text = mainView.emailTextField.text else { return }
         viewModel.emailValidation(text)
     }
@@ -69,6 +67,4 @@ class EmailViewController: UIViewController {
     @objc func buttonTapped() { viewModel.buttonTapped(self) }
 }
 
-extension EmailViewController: UITextFieldDelegate {
-    
-}
+extension EmailViewController: UITextFieldDelegate { }

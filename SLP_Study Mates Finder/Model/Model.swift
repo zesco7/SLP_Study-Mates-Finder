@@ -10,3 +10,16 @@ import Foundation
 struct PhoneNumberModel {
     var phoneNum: String
 }
+
+struct SignUpData {
+    var nickName: String
+    var birth: Date
+    var email: String
+    var gender: Int
+}
+
+struct BirthDate {
+    var year: Int
+    var month: Int
+    var day: Int
+}
