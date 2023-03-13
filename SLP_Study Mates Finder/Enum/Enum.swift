@@ -103,7 +103,7 @@ enum ToastMessages: String {
     var messages: String {
         switch self {
         case .phoneNumber:
-            return "잘못된 전화번호 형식입니다."
+            return "올바른 전화번호 형식이 아닙니다."
         case .nickname:
             return "닉네임은 1자 이상 10자 이내로 부탁드려요."
         case .birth:
@@ -123,6 +123,8 @@ enum SignUpPageTypes {
 }
 
 enum SignUpUserDefaults: String {
+    case authVerificationID = "authVerificationID"
+    case FCMToken = "FCMToken"
     case phoneNumber = "phoneNumber"
     case certification = "certification"
     case nickname = "nickname"
@@ -132,8 +134,12 @@ enum SignUpUserDefaults: String {
     
     var userDefaults: String {
         switch self {
-//        case .phoneNumber:
-//            return UserDefaults.standard.string(forKey: "phoneNumber")!
+        case .authVerificationID:
+            return UserDefaults.standard.string(forKey: "authVerificationID")!
+        case .FCMToken:
+            return UserDefaults.standard.string(forKey: "FCMToken")!
+        case .phoneNumber:
+            return UserDefaults.standard.string(forKey: "phoneNumber")!
 //        case .certification:
 //            return UserDefaults.standard.string(forKey: "certification")!
         case .nickname:

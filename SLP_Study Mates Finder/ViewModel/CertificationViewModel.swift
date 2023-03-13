@@ -26,5 +26,11 @@ class CertificationViewModel: CommonMethods {
     func buttonTapped(_ viewController: UIViewController){
         let baseViewToChange = NicknameView()
         let vc = NicknameViewController(mainView: baseViewToChange)
-        viewController.navigationController?.pushViewController(vc, animated: true)    }
+        viewController.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func certificationCodeCheck() {
+        //서버에 인증번호일치확인 통신요청(post)
+        //인증번호 일치하면 사용자정보확인(get)
+    }
 }

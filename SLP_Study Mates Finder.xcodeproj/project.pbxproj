@@ -20,6 +20,7 @@
 		982E9AF429320AE90074331E /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982E9AF329320AE90074331E /* Codable.swift */; };
 		98410E4529B9B1D1001DECC4 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98410E4429B9B1D1001DECC4 /* CustomTextField.swift */; };
 		98410E4729B9B1DB001DECC4 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98410E4629B9B1DB001DECC4 /* CustomButton.swift */; };
+		986867D829BF5AC2002424FC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986867D729BF5AC2002424FC /* String+Extension.swift */; };
 		989EADA029BAFDC000068F1F /* CertificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989EAD9F29BAFDC000068F1F /* CertificationViewModel.swift */; };
 		989EADA229BAFDE600068F1F /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989EADA129BAFDE600068F1F /* NicknameViewModel.swift */; };
 		989EADA429BAFDF200068F1F /* EmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989EADA329BAFDF200068F1F /* EmailViewModel.swift */; };
@@ -100,6 +101,7 @@
 		982E9AF329320AE90074331E /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
 		98410E4429B9B1D1001DECC4 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		98410E4629B9B1DB001DECC4 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		986867D729BF5AC2002424FC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		989EAD9F29BAFDC000068F1F /* CertificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationViewModel.swift; sourceTree = "<group>"; };
 		989EADA129BAFDE600068F1F /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
 		989EADA329BAFDF200068F1F /* EmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewModel.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				98F69702291E339C00577FCE /* UIButton+Extension.swift */,
 				98F69706291E732100577FCE /* UITextField+Extension.swift */,
 				98C2E7992925C11A003D43AF /* UILabel+Extension.swift */,
+				986867D729BF5AC2002424FC /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				98F69705291E718400577FCE /* LargeButton.swift in Sources */,
 				989EADA829BAFE0E00068F1F /* BirthViewModel.swift in Sources */,
 				98B9DF82291BEC2D00FE62EA /* SceneDelegate.swift in Sources */,
+				986867D829BF5AC2002424FC /* String+Extension.swift in Sources */,
 				98CC093029B9A50A00CCD24F /* SLPViewController.swift in Sources */,
 				989EADA629BAFE0000068F1F /* GenderViewModel.swift in Sources */,
 				98C2E7942925BE11003D43AF /* GenderView.swift in Sources */,

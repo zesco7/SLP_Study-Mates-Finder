@@ -6,21 +6,25 @@
 //
 
 import UIKit
-import Alamofire
 import Firebase
 import FirebaseAuth
 import RxCocoa
 import RxSwift
 
-class PhoneNumberViewModel: CommonMethods {    
+class PhoneNumberViewModel: CommonMethods {
     var baseView = BaseView()
     
-    var phoneNumberEvent = PublishRelay<String>()
+    var phoneNumberEvent = PublishRelay<Bool>()
+    var isValidPhoneNumber: Bool = false
     var phoneNumber: String = ""
     
     func phoneNumberValidation(number: String) {
+        let regularExpression = "^01([0-9])([0-9]{3,4})([0-9]{4})$"
+        let predicate = NSPredicate(format:"SELF MATCHES %@", regularExpression)
+        let isValid = predicate.evaluate(with: number)
         phoneNumber = number
-        phoneNumberEvent.accept(phoneNumber)
+        isValidPhoneNumber = isValid
+        phoneNumberEvent.accept(isValidPhoneNumber)
     }
     
     func formatter(_ input: String, form: String) -> String {
@@ -40,11 +44,9 @@ class PhoneNumberViewModel: CommonMethods {
     }
     
     func buttonTapped(_ viewController: UIViewController){
-        if phoneNumber.count >= 10 {
-            let baseViewToChange = CertificationView()
-            let vc = CertificationViewController(mainView: baseViewToChange)
-            viewController.navigationController?.pushViewController(vc, animated: true)
-        }
+        let baseViewToChange = CertificationView()
+        let vc = CertificationViewController(mainView: baseViewToChange)
+        viewController.navigationController?.pushViewController(vc, animated: true)
     }
     
     func requestVerificationCode(phoneNumber: String) {
@@ -55,34 +57,18 @@ class PhoneNumberViewModel: CommonMethods {
                     print(error)
                     return
                 }
-                print("verify phone")
-                print(verificationID!)
-                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+                UserDefaults.standard.set(verificationID, forKey: SignUpUserDefaults.authVerificationID.rawValue)
+                print("verify phone", verificationID!)
             }
     }
     
-    func certificationCodeCheck() {
-        //서버에 인증번호일치확인 통신요청(post)
-        //인증번호 일치하면 사용자정보확인(get)
+    func receiveFirebaseCode(_ viewController: UIViewController) {
+        if isValidPhoneNumber {
+            requestVerificationCode(phoneNumber: "+82 \(phoneNumber)")
+            UserDefaults.standard.set("+82\(phoneNumber)", forKey: SignUpUserDefaults.phoneNumber.rawValue)
+            buttonTapped(viewController) //+@. 인증요청 후 통신요청 후 1~2초 있다가 화면전환
+        } else {
+            viewController.view.makeToast(ToastMessages.phoneNumber.messages, duration: 1, position: .top)
+        }
     }
-    
-//    @objc func receiveTextButtonClicked() {
-//        let phoneNumberValidation = phoneNumberValidation(number: mainView.phoneNumberTextField.text!)
-//        if phoneNumberValidation == true {
-//            self.view.makeToast("전화 번호 인증 시작", duration: 1, position: .top)
-//            let phoneNumberWithNoHyphen = mainView.phoneNumberTextField.text?.replacingOccurrences(of: "-", with: "")
-//            requestVerificationCode(phoneNumber: "+82 \(String(describing: phoneNumberWithNoHyphen!))")
-//
-//            let phoneNumberIndex = phoneNumberWithNoHyphen?.index(phoneNumberWithNoHyphen!.startIndex, offsetBy: 1)
-//            let phoneNumberString = String(phoneNumberWithNoHyphen![phoneNumberIndex!...])
-//            print(phoneNumberString)
-//            UserDefaults.standard.set("+82\(phoneNumberWithNoHyphen)", forKey: "phoneNumberWithNoHyphen")
-//            certificationCodeCheck()
-//            //+@. 인증요청 후 통신요청 후 1~2초 있다가 화면전환
-//            let vc = CertificationNumberCheckViewController()
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        } else {
-//            self.view.makeToast(ToastMessages.phoneNumber.messages, duration: 1, position: .top)
-//        }
-//    }
 }
