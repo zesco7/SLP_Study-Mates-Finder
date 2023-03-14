@@ -93,8 +93,9 @@ enum Placeholder: String {
     }
 }
 
-enum ToastMessages: String {
+enum SignUpToastMessages: String {
     case phoneNumber
+    case certification
     case nickname
     case birth
     case email
@@ -104,6 +105,8 @@ enum ToastMessages: String {
         switch self {
         case .phoneNumber:
             return "올바른 전화번호 형식이 아닙니다."
+        case .certification:
+            return "올바른 인증번호 형식이 아닙니다."
         case .nickname:
             return "닉네임은 1자 이상 10자 이내로 부탁드려요."
         case .birth:
@@ -116,10 +119,20 @@ enum ToastMessages: String {
     }
 }
 
-enum SignUpPageTypes {
-    case plain
-    case auth
-    case password
+enum FirebaseToastMessages: String {
+    case failureVerified
+    case errorExceptFailure
+
+    var messages: String {
+        switch self {
+        case .failureVerified:
+            return "전화번호 인증 실패"
+        case .errorExceptFailure:
+            return "에러가 발생했습니다. 잠시 후 다시 시도해주세요."
+        default:
+            return ""
+        }
+    }
 }
 
 enum SignUpUserDefaults: String {
@@ -140,8 +153,8 @@ enum SignUpUserDefaults: String {
             return UserDefaults.standard.string(forKey: "FCMToken")!
         case .phoneNumber:
             return UserDefaults.standard.string(forKey: "phoneNumber")!
-//        case .certification:
-//            return UserDefaults.standard.string(forKey: "certification")!
+        case .certification:
+            return UserDefaults.standard.string(forKey: "certification")!
         case .nickname:
             return UserDefaults.standard.string(forKey: "nickname")!
         case .birth:

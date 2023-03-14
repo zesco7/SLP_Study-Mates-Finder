@@ -50,16 +50,7 @@ class PhoneNumberViewModel: CommonMethods {
     }
     
     func requestVerificationCode(phoneNumber: String) {
-        Auth.auth().languageCode = "kr";
-        PhoneAuthProvider.provider()
-            .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
-                if let error = error {
-                    print(error)
-                    return
-                }
-                UserDefaults.standard.set(verificationID, forKey: SignUpUserDefaults.authVerificationID.rawValue)
-                print("verify phone", verificationID!)
-            }
+        FirebaseRequest.requestVerificationCode(phoneNumber: phoneNumber)
     }
     
     func receiveFirebaseCode(_ viewController: UIViewController) {
@@ -68,7 +59,7 @@ class PhoneNumberViewModel: CommonMethods {
             UserDefaults.standard.set("+82\(phoneNumber)", forKey: SignUpUserDefaults.phoneNumber.rawValue)
             buttonTapped(viewController) //+@. 인증요청 후 통신요청 후 1~2초 있다가 화면전환
         } else {
-            viewController.view.makeToast(ToastMessages.phoneNumber.messages, duration: 1, position: .top)
+            viewController.view.makeToast(SignUpToastMessages.phoneNumber.messages, duration: 1, position: .top)
         }
     }
 }

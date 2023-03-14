@@ -36,7 +36,7 @@ class NicknameViewModel: CommonMethods {
             let vc = BirthViewController(mainView: baseViewToChange)
             viewController.navigationController?.pushViewController(vc, animated: true)
         } else {
-            viewController.view.makeToast(ToastMessages.nickname.messages, duration: 1.0, position: .top)
+            viewController.view.makeToast(SignUpToastMessages.nickname.messages, duration: 1.0, position: .top)
         }
     }
 }

@@ -13,6 +13,7 @@ class PhoneNumberViewController: UIViewController {
     var mainView: PhoneNumberView
     let viewModel = PhoneNumberViewModel()
     let disposeBag = DisposeBag()
+    let array = [0, 1, 2, 3]
     
     init(mainView: PhoneNumberView) {
         self.mainView = mainView
@@ -51,7 +52,7 @@ class PhoneNumberViewController: UIViewController {
             }
             .disposed(by: disposeBag)
     }
-    
+
     func activateAction() {
         mainView.phoneNumberTextField.addTarget(self, action: #selector(textFieldEditing), for: .editingChanged)
         mainView.button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)

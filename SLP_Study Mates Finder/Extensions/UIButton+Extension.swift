@@ -24,7 +24,7 @@ extension UIButton {
     func green() {
         self.backgroundColor = UIColor.init(red: 73/255, green: 220/255, blue: 146/255, alpha: 1)
     }
-    
+
     func whiteGreen() {
         self.backgroundColor = UIColor.init(red: 205/255, green: 244/255, blue: 225/255, alpha: 1)
     }

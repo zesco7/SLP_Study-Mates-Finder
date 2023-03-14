@@ -19,7 +19,6 @@ class GenderViewModel: CommonMethods {
     func genderValidation(_ gender: Int) {
         genderCode = gender
         genderCodeEvent.accept(genderCode)
-        print("validation", genderCode)
     }
     
     func maleButtonTapped(mainView: GenderView) {

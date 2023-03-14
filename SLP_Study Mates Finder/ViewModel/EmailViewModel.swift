@@ -35,7 +35,7 @@ class EmailViewModel: CommonMethods {
             let vc = GenderViewController(mainView: baseViewToChange)
             viewController.navigationController?.pushViewController(vc, animated: true)
         } else {
-            viewController.view.makeToast(ToastMessages.email.messages, duration: 1.0, position: .top)
+            viewController.view.makeToast(SignUpToastMessages.email.messages, duration: 1.0, position: .top)
         }
     }
 }

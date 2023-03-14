@@ -31,7 +31,6 @@ class BirthViewModel {
         birthDate = birth
         let dateDifference =
         Calendar.current.dateComponents([.year, .month, .day], from: birthDate, to: Date())
-        print("나이계산", dateDifference)
         
         //강제 언래핑해야하는지?
         if dateDifference.year! >= 17 && dateDifference.month! <= 12 && dateDifference.day! <= 31 {
@@ -72,12 +71,11 @@ class BirthViewModel {
         let birthData = birthDate.ISO8601Format()
         if isValidBirthDate {
             UserDefaults.standard.set(birthData, forKey: SignUpUserDefaults.birth.rawValue)
-            print("ud", SignUpUserDefaults.birth.userDefaults)
             let baseViewToChange = EmailView()
             let vc = EmailViewController(mainView: baseViewToChange)
             viewController.navigationController?.pushViewController(vc, animated: true)
         } else {
-            viewController.view.makeToast(ToastMessages.birth.messages, duration: 1, position: .top)
+            viewController.view.makeToast(SignUpToastMessages.birth.messages, duration: 1, position: .top)
         }
     }
 }

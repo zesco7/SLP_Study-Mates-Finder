@@ -20,6 +20,7 @@
 		982E9AF429320AE90074331E /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982E9AF329320AE90074331E /* Codable.swift */; };
 		98410E4529B9B1D1001DECC4 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98410E4429B9B1D1001DECC4 /* CustomTextField.swift */; };
 		98410E4729B9B1DB001DECC4 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98410E4629B9B1DB001DECC4 /* CustomButton.swift */; };
+		98471DD529C0460800935C55 /* FirebaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98471DD429C0460800935C55 /* FirebaseRequest.swift */; };
 		986867D829BF5AC2002424FC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986867D729BF5AC2002424FC /* String+Extension.swift */; };
 		989EADA029BAFDC000068F1F /* CertificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989EAD9F29BAFDC000068F1F /* CertificationViewModel.swift */; };
 		989EADA229BAFDE600068F1F /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989EADA129BAFDE600068F1F /* NicknameViewModel.swift */; };
@@ -101,6 +102,7 @@
 		982E9AF329320AE90074331E /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
 		98410E4429B9B1D1001DECC4 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		98410E4629B9B1DB001DECC4 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		98471DD429C0460800935C55 /* FirebaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRequest.swift; sourceTree = "<group>"; };
 		986867D729BF5AC2002424FC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		989EAD9F29BAFDC000068F1F /* CertificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationViewModel.swift; sourceTree = "<group>"; };
 		989EADA129BAFDE600068F1F /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				982E9AEF293208C50074331E /* APIService.swift */,
 				982E9AF1293208DB0074331E /* EndPoint.swift */,
 				982E9AF329320AE90074331E /* Codable.swift */,
+				98471DD429C0460800935C55 /* FirebaseRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				98DD412F29BC886400D7D78A /* CertificationCustomTextField.swift in Sources */,
 				98C2E78C2925BDE8003D43AF /* BirthView.swift in Sources */,
 				98B3C355291D2964004EEB14 /* MainOnboardingView.swift in Sources */,
+				98471DD529C0460800935C55 /* FirebaseRequest.swift in Sources */,
 				9808D3EE29B4C2B900CFB19A /* PhoneNumberViewModel.swift in Sources */,
 				98B3C349291D0B78004EEB14 /* IntroPageView.swift in Sources */,
 				98B3C324291C8832004EEB14 /* FirstOnboardingViewController.swift in Sources */,
