@@ -22,8 +22,8 @@ class CertificationView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let certificationLabel: RegistrationProcessLabel = {
-       let view = RegistrationProcessLabel()
+    let certificationLabel: SignUpLabel = {
+       let view = SignUpLabel()
         view.text = SignUpMessages.certification.messages
         return view
     }()

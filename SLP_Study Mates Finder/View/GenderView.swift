@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 class GenderView: BaseView {
-    let genderLabel: RegistrationProcessLabel = {
-       let view = RegistrationProcessLabel()
+    let genderLabel: SignUpLabel = {
+       let view = SignUpLabel()
         view.text = SignUpMessages.gender.messages
         return view
     }()
     
-    let genderSubLabel: RegistrationProcessDetailLabel = {
-       let view = RegistrationProcessDetailLabel()
+    let genderSubLabel: SignUpSubLabel = {
+       let view = SignUpSubLabel()
         view.text = SignUpMessages.gender.subMessages
         return view
     }()

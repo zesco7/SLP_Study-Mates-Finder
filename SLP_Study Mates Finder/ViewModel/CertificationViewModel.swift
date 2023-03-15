@@ -34,19 +34,9 @@ class CertificationViewModel: CommonMethods {
     
     func buttonTapped(_ viewController: UIViewController){
         if isValidCertification {
-            //서버에 인증번호일치확인 통신요청(post)
-            //인증번호 일치하면 사용자정보확인(get)
-            /*
-             1. 인증번호 요청하여 임시토큰 발급
-             2. 임시토큰과 인증코드 서버에 보내서 사용자 정보 확인되면 진짜토큰 발급
-             3. 진짜토큰을 헤더파일에 넣어서 서버에 로그인 정보 확인(이때 기존사용자면 홈화면, 신규사용자면 닉네임 입력화면으로 전환)
-             */
-            
             UserDefaults.standard.set(certificationCode, forKey: "certification")
-            print("certi ud", SignUpUserDefaults.certification.userDefaults)
-            transitionToNicknameViewController(viewController)
 //            verifyRequest(viewController)
-            print("인증요청 가능")
+            transitionToNicknameViewController(viewController)
         } else {
             viewController.view.makeToast(SignUpToastMessages.certification.messages, duration: 1, position: .top)
         }
@@ -58,7 +48,6 @@ class CertificationViewModel: CommonMethods {
     }
         
     func verifyRequest(_ viewController: UIViewController) {
-        
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: SignUpUserDefaults.authVerificationID.userDefaults, verificationCode: SignUpUserDefaults.certification.userDefaults)
 
         Auth.auth().signIn(with: credential) { authResult, error in
@@ -75,38 +64,49 @@ class CertificationViewModel: CommonMethods {
             }
 
             //MARK: - ID 토큰 발급
-//            authResult?.user.getIDToken { token, error in
-//                if let error = error {
-//                    viewController.view.makeToast("에러: \(error.localizedDescription)", duration: 1, position: .top)
-//                    return
-//                }
-//                guard let token = token else { return }
-//                UserDefaults.standard.set(token, forKey: "serverToken")
-//                //MARK: - 로그인 API 요청
-//                APIService.login { value, statusCode, error in
-//                    guard let statusCode = statusCode else { return }
-//                    print(statusCode)
-//                    switch statusCode {
-//                    case 200:
-//                        //MARK: - 로그인 성공 시 닉네임 값 받아오기
-//                        print("로그인 성공")
-//                        return
-//                    case 401: self.refreshToken(viewController)
-//                        return
-//                    case 406:
-//                        print("미가입 유저로 회원가입 화면으로 이동합니다.")
-//                        //닉네임 화면으로 이동
-//                        self.transitionToNicknameViewController(viewController)
-//                        return
-//                    default: print("잠시 후 다시 시도해주세요.")
-//                        return
-//                    }
-//                }
-//            }
+            authResult?.user.getIDToken { token, error in
+                if let error = error {
+                    viewController.view.makeToast("에러: \(error.localizedDescription)", duration: 1, position: .top)
+                    return
+                }
+                guard let token = token else { return }
+                UserDefaults.standard.set(token, forKey: SignUpUserDefaults.idToken.rawValue)
+                print("토큰 여기있음", SignUpUserDefaults.idToken.userDefaults)
+                
+                //MARK: - 발급받은 토큰을 헤더파일로 보내서 로그인 API 요청
+                APIService.login { value, statusCode, error in
+                    guard let statusCode = statusCode else { return }
+                    print(statusCode)
+                    switch statusCode {
+                    case 200:
+                        //MARK: - 로그인 성공하면 회원정보 데이터 받고 서비스 홈화면 이동
+                        print("로그인 성공")
+                        Methods.moveToHome()
+                        return
+                    case 401:
+                        //MARK: - ID 토큰 재발급
+                        self.refreshToken(viewController)
+                        return
+                    case 406:
+                        print("미가입 유저이므로 회원가입 화면으로 이동합니다.")
+                        self.transitionToNicknameViewController(viewController)
+                        return
+                    case 500:
+                        print("Server Error")
+                        return
+                    case 501:
+                        print("Client Error, API 요청시 Header와 RequestBody에 값을 확인해주세요.")
+                        return
+                    default: print("잠시 후 다시 시도해주세요.")
+                        return
+                    }
+                }
+            }
         }
     }
 
     func refreshToken(_ viewController: UIViewController) {
+        //MARK: - ID 토큰 재발급
         let currentUser = Auth.auth().currentUser
         currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
             if let error = error {
@@ -114,17 +114,27 @@ class CertificationViewModel: CommonMethods {
                 return;
             } else if let idToken = idToken {
                 print("idToken : ", idToken)
+                UserDefaults.standard.set(("idToken : ", idToken), forKey: SignUpUserDefaults.idToken.rawValue)
+                
+                //MARK: - 재발급받은 토큰을 헤더파일로 보내서 로그인 API 요청
                 APIService.login { value, statusCode, error in
                     guard let statusCode = statusCode else { return }
                     print(statusCode)
                     switch statusCode {
                     case 200:
-                        //MARK: - 로그인 성공 시 닉네임 값 받아오기
+                        //MARK: - 로그인 성공하면 회원정보 데이터 받고 서비스 홈화면 이동
                         print("로그인 성공")
+                        Methods.moveToHome()
                         return
                     case 406:
                         print("미가입 유저로 회원가입 화면으로 이동합니다.")
                         self.transitionToNicknameViewController(viewController)
+                        return
+                    case 500:
+                        print("Server Error")
+                        return
+                    case 501:
+                        print("Client Error, API 요청시 Header와 RequestBody에 값을 확인해주세요.")
                         return
                     default: print("잠시 후 다시 시도해주세요.")
                         return

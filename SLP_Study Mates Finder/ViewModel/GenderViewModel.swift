@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 import RxCocoa
 import RxSwift
 
@@ -43,17 +44,74 @@ class GenderViewModel: CommonMethods {
     
     func buttonTapped(_ viewController: UIViewController){
         //유저정보 한번에 넘기고 결과에 따라 화면전환
-        //        let baseViewToChange = NicknameView()
-        //        let vc = NicknameViewController(mainView: baseViewToChange)
-        //        viewController.navigationController?.pushViewController(vc, animated: true)    }
+        print(UserDefaultsHelper())
+        APIService.signUp { value, statusCode, error in
+            guard let statusCode = statusCode else { return }
+            switch statusCode {
+            case 200:
+                print("회원가입 성공, 홈 화면으로 이동합니다.")
+                Methods.moveToHome()
+                return
+            case 201:
+                print("이미 가입한 유저입니다.")
+                return
+            case 202:
+                print("사용할 수 없는 닉네임입니다. 닉네임 변경 후 다시 회원가입 요청해주세요.")
+                return
+            case 401:
+                print("Firebase Token Error")
+                refreshToken()
+                return
+            case 500:
+                print("Server Error")
+                return
+            case 501:
+                print("Client Error, API 요청시 Header와 RequestBody에 값을 확인해주세요.")
+                return
+            default: print("잠시 후 다시 시도해주세요.")
+                return
+            }
+        }
         
-        print(SignUpUserDefaults.phoneNumber.userDefaults)
-        print(SignUpUserDefaults.certification.userDefaults)
-        print(SignUpUserDefaults.nickname.userDefaults)
-        print(SignUpUserDefaults.birth.userDefaults)
-        print(SignUpUserDefaults.email.userDefaults)
-        print(SignUpUserDefaults.gender.userDefaults)
+        func refreshToken() {
+            //MARK: - ID 토큰 재발급
+            let currentUser = Auth.auth().currentUser
+            currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+                if let error = error {
+                    print("error : ", error)
+                    return;
+                } else if let idToken = idToken {
+                    print("idToken : ", idToken)
+                    UserDefaults.standard.set(("idToken : ", idToken), forKey: SignUpUserDefaults.idToken.rawValue)
+                    
+                    //MARK: - 재발급받은 토큰을 헤더파일로 보내서 회원가입 API 요청
+                    APIService.signUp { value, statusCode, error in
+                        guard let statusCode = statusCode else { return }
+                        print(statusCode)
+                        switch statusCode {
+                        case 200:
+                            print("회원가입 성공, 홈 화면으로 이동합니다.")
+                            Methods.moveToHome()
+                            return
+                        case 201:
+                            print("이미 가입한 유저입니다.")
+                            return
+                        case 202:
+                            print("사용할 수 없는 닉네임입니다. 닉네임 변경 후 다시 회원가입 요청해주세요.")
+                            return
+                        case 500:
+                            print("Server Error")
+                            return
+                        case 501:
+                            print("Client Error, API 요청시 Header와 RequestBody에 값을 확인해주세요.")
+                            return
+                        default: print("잠시 후 다시 시도해주세요.")
+                            return
+                        }
+                    }
+                }
+            }
+        }
     }
 }
-
 

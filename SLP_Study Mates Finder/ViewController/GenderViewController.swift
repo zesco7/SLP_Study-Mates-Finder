@@ -38,19 +38,6 @@ class GenderViewController: UIViewController {
         bind()
         sendGenderEvent()
         activateAction()
-        
-//        mainView.maleButton.rx.tap.asDriver()
-//            .drive(with: mainView.maleButton) { button ,_ in
-//                button.whiteGreen()
-//            }
-//            .disposed(by: disposeBag)
-//        
-//        mainView.femaleButton.rx.tap.asDriver()
-//            .drive(with: mainView.femaleButton) { button ,_ in
-//                button.whiteGreen()
-//            }
-//            .disposed(by: disposeBag)
-//
     }
     
     func bind() {
@@ -79,32 +66,5 @@ class GenderViewController: UIViewController {
     
     func activateAction() { mainView.genderButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside) }
     
-    @objc func buttonTapped() {
-        viewModel.buttonTapped(self)
-    
-        APIService.signUp { value, statusCode, error in
-            if let statusCode = statusCode {
-                print("Network Request by AuthenticToken", statusCode)
-                self.refreshToken()
-            } else {
-                print("응답코드 에러")
-            }
-        }
-    }
-    
-    func refreshToken() {
-        let currentUser = Auth.auth().currentUser
-        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
-            if let error = error {
-                print("error : ", error)
-                return;
-            } else if let idToken = idToken {
-                print("idToken : ", idToken)
-                APIService.signUpByServerToken { value, status, error in
-                    print("Network Request by refreshToken", status)
-                    print("value : ", value)
-                }
-            }
-        }
-    }
+    @objc func buttonTapped() { viewModel.buttonTapped(self) }
 }

@@ -126,7 +126,7 @@ enum FirebaseToastMessages: String {
     var messages: String {
         switch self {
         case .failureVerified:
-            return "전화번호 인증 실패"
+            return "전화번호 인증 실패(인증번호 기간이 만료 또는 부정확한 인증번호)"
         case .errorExceptFailure:
             return "에러가 발생했습니다. 잠시 후 다시 시도해주세요."
         default:
@@ -138,6 +138,7 @@ enum FirebaseToastMessages: String {
 enum SignUpUserDefaults: String {
     case authVerificationID = "authVerificationID"
     case FCMToken = "FCMToken"
+    case idToken = "idToken"
     case phoneNumber = "phoneNumber"
     case certification = "certification"
     case nickname = "nickname"
@@ -151,6 +152,8 @@ enum SignUpUserDefaults: String {
             return UserDefaults.standard.string(forKey: "authVerificationID")!
         case .FCMToken:
             return UserDefaults.standard.string(forKey: "FCMToken")!
+        case .idToken:
+            return UserDefaults.standard.string(forKey: "idToken")!
         case .phoneNumber:
             return UserDefaults.standard.string(forKey: "phoneNumber")!
         case .certification:

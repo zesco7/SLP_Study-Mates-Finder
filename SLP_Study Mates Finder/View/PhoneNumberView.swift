@@ -23,16 +23,11 @@ class PhoneNumberView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var label: RegistrationProcessLabel = {
-        let view = RegistrationProcessLabel()
+    var label: SignUpLabel = {
+        let view = SignUpLabel()
         view.text = SignUpMessages.phoneNumber.messages
         return view
     }()
-
-//    var view: UITextField = {
-//        let view = CustomTextField().phoneNumberTextField
-//        return view
-//    }()
     
     var phoneNumberTextField: UITextField = {
        let view = UITextField()

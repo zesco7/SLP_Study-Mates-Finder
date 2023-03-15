@@ -22,14 +22,14 @@ class EmailView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let emailLabel: RegistrationProcessLabel = {
-       let view = RegistrationProcessLabel()
+    let emailLabel: SignUpLabel = {
+       let view = SignUpLabel()
         view.text = SignUpMessages.email.messages
         return view
     }()
     
-    let emailSubLabel: RegistrationProcessDetailLabel = {
-       let view = RegistrationProcessDetailLabel()
+    let emailSubLabel: SignUpSubLabel = {
+       let view = SignUpSubLabel()
         view.text = SignUpMessages.email.subMessages
         return view
     }()

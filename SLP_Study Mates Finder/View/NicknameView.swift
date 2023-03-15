@@ -22,8 +22,8 @@ class NicknameView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let nicknameLabel: RegistrationProcessLabel = {
-       let view = RegistrationProcessLabel()
+    let nicknameLabel: SignUpLabel = {
+       let view = SignUpLabel()
         view.text = SignUpMessages.nickname.messages
         return view
     }()

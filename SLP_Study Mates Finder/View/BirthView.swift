@@ -24,8 +24,8 @@ class BirthView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let birthIntroduction: RegistrationProcessLabel = {
-        let view = RegistrationProcessLabel()
+    let birthIntroduction: SignUpLabel = {
+        let view = SignUpLabel()
         view.text = SignUpMessages.birth.messages
         return view
     }()
