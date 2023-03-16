@@ -18,16 +18,14 @@ class EmailViewModel: CommonMethods {
     var emailData: String?
     
     func emailValidation(_ email: String){
-        if email.count > 1 && email.contains("@") && email.contains(".") {
-            isValidEmail = true
-            emailData = email
-            emailEvent.accept(isValidEmail)
-        } else {
-            isValidEmail = false
-            emailEvent.accept(isValidEmail)
-        }
+        let regularExpression = "^([a-zA-Z0-9._-])+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,20}$"
+        let predicate = NSPredicate(format:"SELF MATCHES %@", regularExpression)
+        let isValid = predicate.evaluate(with: email)
+        emailData = email
+        isValidEmail = isValid
+        emailEvent.accept(isValidEmail)
     }
-   
+       
     func buttonTapped(_ viewController: UIViewController){
         if isValidEmail {
             UserDefaults.standard.set(emailData, forKey: SignUpUserDefaults.email.rawValue)

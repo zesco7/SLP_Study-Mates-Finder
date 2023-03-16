@@ -17,11 +17,21 @@ class Methods {
         sceneDelegate?.window?.makeKeyAndVisible()
     }
     
-    static func moveToSignUp() {
+    static func moveToPhoneNumber() {
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate =  windowScene?.delegate as? SceneDelegate
         let view = PhoneNumberView()
         let vc = PhoneNumberViewController(mainView: view)
+        let navi = UINavigationController(rootViewController: vc)
+        sceneDelegate?.window?.rootViewController = navi
+        sceneDelegate?.window?.makeKeyAndVisible()
+    }
+    
+    static func moveToNickname() {
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate =  windowScene?.delegate as? SceneDelegate
+        let view = NicknameView()
+        let vc = NicknameViewController(mainView: view)
         let navi = UINavigationController(rootViewController: vc)
         sceneDelegate?.window?.rootViewController = navi
         sceneDelegate?.window?.makeKeyAndVisible()

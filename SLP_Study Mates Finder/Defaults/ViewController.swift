@@ -37,15 +37,15 @@ class ViewController: UIViewController {
         
         configure()
         setContraints()
-        moveToSignUp()
+        moveToPhoneNumber()
     }
     
-    func moveToSignUp() {
+    func moveToPhoneNumber() {
         logoButton.addTarget(self, action: #selector(serviceLogoButtonTapped), for: .touchUpInside)
     }
     
     @objc func serviceLogoButtonTapped() {
-        Methods.moveToSignUp()
+        Methods.moveToPhoneNumber()
     }
     
     func configure() {

@@ -36,15 +36,10 @@ class CertificationViewModel: CommonMethods {
         if isValidCertification {
             UserDefaults.standard.set(certificationCode, forKey: "certification")
 //            verifyRequest(viewController)
-            transitionToNicknameViewController(viewController)
+            Methods.moveToNickname()
         } else {
             viewController.view.makeToast(SignUpToastMessages.certification.messages, duration: 1, position: .top)
         }
-    }
-    
-    func transitionToNicknameViewController(_ viewController: UIViewController) {
-        let vc = NicknameViewController(mainView: NicknameView())
-        viewController.navigationController?.pushViewController(vc, animated: true)
     }
         
     func verifyRequest(_ viewController: UIViewController) {
@@ -89,7 +84,7 @@ class CertificationViewModel: CommonMethods {
                         return
                     case 406:
                         print("미가입 유저이므로 회원가입 화면으로 이동합니다.")
-                        self.transitionToNicknameViewController(viewController)
+                        Methods.moveToNickname()
                         return
                     case 500:
                         print("Server Error")
@@ -128,7 +123,7 @@ class CertificationViewModel: CommonMethods {
                         return
                     case 406:
                         print("미가입 유저로 회원가입 화면으로 이동합니다.")
-                        self.transitionToNicknameViewController(viewController)
+                        Methods.moveToNickname()
                         return
                     case 500:
                         print("Server Error")

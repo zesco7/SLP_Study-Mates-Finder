@@ -43,8 +43,12 @@ class GenderViewModel: CommonMethods {
     }
     
     func buttonTapped(_ viewController: UIViewController){
-        //유저정보 한번에 넘기고 결과에 따라 화면전환
         print(UserDefaultsHelper())
+        Methods.moveToHome()
+//        requestSignUp()
+    }
+    
+    func requestSignUp() {
         APIService.signUp { value, statusCode, error in
             guard let statusCode = statusCode else { return }
             switch statusCode {
@@ -57,6 +61,7 @@ class GenderViewModel: CommonMethods {
                 return
             case 202:
                 print("사용할 수 없는 닉네임입니다. 닉네임 변경 후 다시 회원가입 요청해주세요.")
+                Methods.moveToNickname()
                 return
             case 401:
                 print("Firebase Token Error")
@@ -98,6 +103,7 @@ class GenderViewModel: CommonMethods {
                             return
                         case 202:
                             print("사용할 수 없는 닉네임입니다. 닉네임 변경 후 다시 회원가입 요청해주세요.")
+                            Methods.moveToNickname()
                             return
                         case 500:
                             print("Server Error")
