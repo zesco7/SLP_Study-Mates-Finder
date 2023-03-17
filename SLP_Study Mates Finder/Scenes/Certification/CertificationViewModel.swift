@@ -16,6 +16,7 @@ class CertificationViewModel: CommonMethods {
     var certificationEvent = PublishRelay<Bool>()
     var isValidCertification: Bool = false
     var certificationCode: String = ""
+    var statusCodePublisher = PublishRelay<Int>()
     
     func certificationValidation(code: String) {
         let regularExpression = "^([0-9]{6})$"
@@ -76,7 +77,8 @@ class CertificationViewModel: CommonMethods {
                     case 200:
                         //MARK: - 로그인 성공하면 회원정보 데이터 받고 서비스 홈화면 이동
                         print("로그인 성공")
-                        Methods.moveToHome()
+                        self.statusCodePublisher.accept(statusCode)
+//                        Methods.moveToHome()
                         return
                     case 401:
                         //MARK: - ID 토큰 재발급
@@ -84,7 +86,8 @@ class CertificationViewModel: CommonMethods {
                         return
                     case 406:
                         print("미가입 유저이므로 회원가입 화면으로 이동합니다.")
-                        Methods.moveToNickname()
+                        self.statusCodePublisher.accept(statusCode)
+//                        Methods.moveToNickname()
                         return
                     case 500:
                         print("Server Error")

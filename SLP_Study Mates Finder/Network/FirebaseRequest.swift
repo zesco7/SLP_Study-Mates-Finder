@@ -8,18 +8,36 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import RxSwift
 
 class FirebaseRequest {
-    static func requestVerificationCode(phoneNumber: String) {
-        Auth.auth().languageCode = "kr";
-        PhoneAuthProvider.provider()
-            .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
-                if let error = error {
-                    print(error)
-                    return
+    static func requestVerificationCode(phoneNumber: String) -> Observable<String> {
+        return .create { observer -> Disposable in
+            Auth.auth().languageCode = "kr"
+            PhoneAuthProvider.provider()
+                .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
+                    if let error = error {
+                        observer.onError(error)
+                    }
+                    
+                    guard let verificationID = verificationID else {
+//                        observer.onError(<#T##error: Error##Error#>)
+                        return
+                    }
+                    observer.onNext(verificationID)
                 }
-                UserDefaults.standard.set(verificationID, forKey: SignUpUserDefaults.authVerificationID.rawValue)
-                print("verify phone", verificationID!)
-            }
+            return Disposables.create()
+        }
+//        Auth.auth().languageCode = "kr";
+//        PhoneAuthProvider.provider()
+//            .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
+//                if let error = error {
+//                    print(error)
+//                    return
+//                }
+//
+//                UserDefaults.standard.set(verificationID, forKey: SignUpUserDefaults.authVerificationID.rawValue)
+//                print("verify phone", verificationID!)
+//            }
     }
 }

@@ -7,8 +7,15 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 class APIService {
+    
+//    static func request<Response>(url: URL, method: HTTPMethod, parameter: [String: String], header: [String: String]) -> Observable<Response> where Response : Decodable {
+//        
+//        AF.request(url, method: method, parameters: parameter, headers: .init(header)).responseD
+//    }
+    
     static func login(completion: @escaping (UserInfo?, Int?, Error?) -> Void) {
         let url = EndPoint.login
         let header : HTTPHeaders = ["idtoken": SignUpUserDefaults.idToken.userDefaults, "Content-Type" : "application/x-www-form-urlencoded"]
