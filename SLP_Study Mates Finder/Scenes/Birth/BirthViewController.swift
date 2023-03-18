@@ -78,11 +78,23 @@ class BirthViewController: UIViewController {
     
     @objc func birthDatePickerSelected() {
         let date = mainView.birthDatePicker.date
-        viewModel.birthValidation(birth: date, viewController: self)
+        viewModel.birthValidation(birth: date)
         viewModel.dateFormatter(datePicker: mainView.birthDatePicker)
     }
     
-    @objc func birthButtonTapped() { viewModel.buttonTapped(self) }
+    @objc func birthButtonTapped() {
+        if viewModel.isValidBirthDate {
+            pushScene()
+        } else {
+            self.view.makeToast(SignUpToastMessages.birth.messages, duration: 1, position: .top)
+        }
+    }
+    
+    func pushScene() {
+        let baseViewToChange = EmailView()
+        let vc = EmailViewController(mainView: baseViewToChange)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     override func viewDidLayoutSubviews() { mainView.textFieldBorderAttribute() }
 }

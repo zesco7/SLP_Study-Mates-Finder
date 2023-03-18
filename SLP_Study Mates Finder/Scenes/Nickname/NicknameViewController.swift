@@ -14,12 +14,12 @@ class NicknameViewController: UIViewController {
     var mainView: NicknameView
     let viewModel = NicknameViewModel()
     let disposeBag = DisposeBag()
-
+    
     init(mainView: NicknameView) {
         self.mainView = mainView
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     override func loadView() {
         self.view = mainView
     }
@@ -53,18 +53,30 @@ class NicknameViewController: UIViewController {
             }
             .disposed(by: disposeBag)
     }
-
+    
     func activateAction() {
         mainView.nicknameTextField.addTarget(self, action: #selector(textFieldEditing), for: .editingChanged)
         mainView.nicknameButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
+    func pushScene() {
+        let baseViewToChange = BirthView()
+        let vc = BirthViewController(mainView: baseViewToChange)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func textFieldEditing() {
         guard let text = mainView.nicknameTextField.text else { return }
         viewModel.nicknameValidation(text)
     }
-
-    @objc func buttonTapped() { viewModel.buttonTapped(self) }
+    
+    @objc func buttonTapped() {
+        if viewModel.isValidNickname {
+            pushScene()
+        } else {
+            self.view.makeToast(SignUpToastMessages.nickname.messages, duration: 1.0, position: .top)
+        }
+    }
 }
 
 extension NicknameViewController: UITextFieldDelegate { }

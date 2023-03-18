@@ -14,12 +14,12 @@ class EmailViewController: UIViewController {
     var mainView: EmailView
     let viewModel = EmailViewModel()
     let disposeBag = DisposeBag()
-
+    
     init(mainView: EmailView) {
         self.mainView = mainView
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     override func loadView() {
         self.view = mainView
     }
@@ -53,7 +53,7 @@ class EmailViewController: UIViewController {
             }
             .disposed(by: disposeBag)
     }
-
+    
     func activateAction() {
         mainView.emailTextField.addTarget(self, action: #selector(textFieldEditing), for: .editingChanged)
         mainView.emailButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
@@ -63,8 +63,20 @@ class EmailViewController: UIViewController {
         guard let text = mainView.emailTextField.text else { return }
         viewModel.emailValidation(text)
     }
-
-    @objc func buttonTapped() { viewModel.buttonTapped(self) }
+    
+    @objc func buttonTapped() {
+        if viewModel.isValidEmail {
+            pushScene()
+        } else {
+            self.view.makeToast(SignUpToastMessages.email.messages, duration: 1.0, position: .top)
+        }
+    }
+    
+    func pushScene() {
+        let baseViewToChange = GenderView()
+        let vc = GenderViewController(mainView: baseViewToChange)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension EmailViewController: UITextFieldDelegate { }

@@ -10,13 +10,16 @@ import Firebase
 import RxCocoa
 import RxSwift
 
-class CertificationViewModel: CommonMethods {
+class CertificationViewModel {
     var baseView = BaseView()
     
     var certificationEvent = PublishRelay<Bool>()
     var isValidCertification: Bool = false
     var certificationCode: String = ""
     var statusCodePublisher = PublishRelay<Int>()
+    var tokenPublisher = PublishRelay<String>()
+    var tokenErrorPublisher = PublishRelay<NSError>()
+    var authErrorPublisher = PublishRelay<NSError>()
     
     func certificationValidation(code: String) {
         let regularExpression = "^([0-9]{6})$"
@@ -33,111 +36,63 @@ class CertificationViewModel: CommonMethods {
         FirebaseRequest.requestVerificationCode(phoneNumber: phoneNumber)
     }
     
-    func buttonTapped(_ viewController: UIViewController){
-        if isValidCertification {
-            UserDefaults.standard.set(certificationCode, forKey: "certification")
-//            verifyRequest(viewController)
-            Methods.moveToNickname()
-        } else {
-            viewController.view.makeToast(SignUpToastMessages.certification.messages, duration: 1, position: .top)
-        }
-    }
-        
-    func verifyRequest(_ viewController: UIViewController) {
+    func verifyRequest() {
+        UserDefaults.standard.set(certificationCode, forKey: "certification")
+        print("인증ID ud", SignUpUserDefaults.authVerificationID.userDefaults)
+        print("인증코드 ud", SignUpUserDefaults.certification.userDefaults)
+        //ud 대신 초기화로 받은값 넣기
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: SignUpUserDefaults.authVerificationID.userDefaults, verificationCode: SignUpUserDefaults.certification.userDefaults)
-
+        
         Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error as NSError? {
                 guard let errorCode = AuthErrorCode.Code(rawValue: error.code) else { return }
                 switch errorCode {
                 case .sessionExpired, .invalidVerificationCode:
-                    viewController.view.makeToast(FirebaseToastMessages.failureVerified.messages, duration: 1, position: .top)
+                    self.authErrorPublisher.accept(error)
                     return
                 default:
-                    viewController.view.makeToast(FirebaseToastMessages.errorExceptFailure.messages, duration: 1, position: .top)
                     return
                 }
             }
-
+            
             //MARK: - ID 토큰 발급
             authResult?.user.getIDToken { token, error in
-                if let error = error {
-                    viewController.view.makeToast("에러: \(error.localizedDescription)", duration: 1, position: .top)
+                if let error = error as NSError? {
+                    self.tokenErrorPublisher.accept(error)
                     return
                 }
                 guard let token = token else { return }
+                self.tokenPublisher.accept(token)
                 UserDefaults.standard.set(token, forKey: SignUpUserDefaults.idToken.rawValue)
-                print("토큰 여기있음", SignUpUserDefaults.idToken.userDefaults)
-                
-                //MARK: - 발급받은 토큰을 헤더파일로 보내서 로그인 API 요청
-                APIService.login { value, statusCode, error in
-                    guard let statusCode = statusCode else { return }
-                    print(statusCode)
-                    switch statusCode {
-                    case 200:
-                        //MARK: - 로그인 성공하면 회원정보 데이터 받고 서비스 홈화면 이동
-                        print("로그인 성공")
-                        self.statusCodePublisher.accept(statusCode)
-//                        Methods.moveToHome()
-                        return
-                    case 401:
-                        //MARK: - ID 토큰 재발급
-                        self.refreshToken(viewController)
-                        return
-                    case 406:
-                        print("미가입 유저이므로 회원가입 화면으로 이동합니다.")
-                        self.statusCodePublisher.accept(statusCode)
-//                        Methods.moveToNickname()
-                        return
-                    case 500:
-                        print("Server Error")
-                        return
-                    case 501:
-                        print("Client Error, API 요청시 Header와 RequestBody에 값을 확인해주세요.")
-                        return
-                    default: print("잠시 후 다시 시도해주세요.")
-                        return
-                    }
-                }
+                print("토큰 저장", SignUpUserDefaults.idToken.userDefaults)
             }
         }
     }
-
-    func refreshToken(_ viewController: UIViewController) {
+    
+    func requestLogin() {
+        //MARK: - 발급받은 토큰을 헤더파일로 보내서 로그인 API 요청
+        APIService.login { value, statusCode, error in
+            guard let statusCode = statusCode else { return }
+            print(statusCode)
+            self.statusCodePublisher.accept(statusCode)
+        }
+    }
+    
+    func refreshToken() {
         //MARK: - ID 토큰 재발급
         let currentUser = Auth.auth().currentUser
         currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
-            if let error = error {
+            if let error = error as NSError? {
                 print("error : ", error)
+                self.tokenErrorPublisher.accept(error)
                 return;
             } else if let idToken = idToken {
                 print("idToken : ", idToken)
-                UserDefaults.standard.set(("idToken : ", idToken), forKey: SignUpUserDefaults.idToken.rawValue)
+                self.tokenPublisher.accept(idToken)
+                UserDefaults.standard.set(idToken, forKey: SignUpUserDefaults.idToken.rawValue)
                 
                 //MARK: - 재발급받은 토큰을 헤더파일로 보내서 로그인 API 요청
-                APIService.login { value, statusCode, error in
-                    guard let statusCode = statusCode else { return }
-                    print(statusCode)
-                    switch statusCode {
-                    case 200:
-                        //MARK: - 로그인 성공하면 회원정보 데이터 받고 서비스 홈화면 이동
-                        print("로그인 성공")
-                        Methods.moveToHome()
-                        return
-                    case 406:
-                        print("미가입 유저로 회원가입 화면으로 이동합니다.")
-                        Methods.moveToNickname()
-                        return
-                    case 500:
-                        print("Server Error")
-                        return
-                    case 501:
-                        print("Client Error, API 요청시 Header와 RequestBody에 값을 확인해주세요.")
-                        return
-                    default: print("잠시 후 다시 시도해주세요.")
-                        return
-                    }
-                }
+                self.requestLogin()
             }
         }
     }

@@ -108,7 +108,7 @@ enum SignUpToastMessages: String {
         case .certification:
             return "올바른 인증번호 형식이 아닙니다."
         case .nickname:
-            return "닉네임은 1자 이상 10자 이내로 부탁드려요."
+            return "닉네임은 2~10글자만 가능합니다.(특수문자 불가)"
         case .birth:
             return "새싹스터디는 만 17세 이상만 사용할 수 있습니다."
         case .email:

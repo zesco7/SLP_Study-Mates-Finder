@@ -80,7 +80,6 @@ class PhoneNumberViewController: UIViewController {
     }
     
     func pushScene() {
-        print("화면전환")
         let baseViewToChange = CertificationView()
         let vc = CertificationViewController(mainView: baseViewToChange)
         self.navigationController?.pushViewController(vc, animated: true)
@@ -118,6 +117,8 @@ extension PhoneNumberViewController: UITextFieldDelegate {
 //            textField.text = viewModel.formatter(newString, form: "XXX-XXXX-XXXX")
 //        }
 //
+//        viewModel.phoneNumberValidation(number: text)
+//
 //        guard let text = textField.text, let textRange = Range(range, in: text) else {
 //            return false
 //        }
@@ -126,7 +127,6 @@ extension PhoneNumberViewController: UITextFieldDelegate {
 //        print("textRange", textRange)
 //        print("text", text)
 //        print("updatedText", updatedText)
-//        viewModel.phoneNumberValidation(number: text)
-//        return true
+//        return false
 //    }
 //}

@@ -27,7 +27,7 @@ class BirthViewModel {
     let monthArray = Array(1...12)
     let dayArray = Array(1...31)
     
-    func birthValidation(birth: Date, viewController: UIViewController) {
+    func birthValidation(birth: Date) {
         birthDate = birth
         let dateDifference =
         Calendar.current.dateComponents([.year, .month, .day], from: birthDate, to: Date())
@@ -40,6 +40,8 @@ class BirthViewModel {
             isValidBirthDate = false
             birthDateEvent.accept(isValidBirthDate)
         }
+        let birthData = birthDate.ISO8601Format()
+        UserDefaults.standard.set(birthData, forKey: SignUpUserDefaults.birth.rawValue)
     }
     
     func dateFormatter(datePicker: UIDatePicker) {
@@ -65,17 +67,5 @@ class BirthViewModel {
         mainView.birthYearTextField.text = "\(dateComponents.year!)"
         mainView.birthMonthTextField.text = "\(dateComponents.month!)"
         mainView.birthDayTextField.text = "\(dateComponents.day!)"
-    }
-    
-    func buttonTapped(_ viewController: UIViewController){
-        let birthData = birthDate.ISO8601Format()
-        if isValidBirthDate {
-            UserDefaults.standard.set(birthData, forKey: SignUpUserDefaults.birth.rawValue)
-            let baseViewToChange = EmailView()
-            let vc = EmailViewController(mainView: baseViewToChange)
-            viewController.navigationController?.pushViewController(vc, animated: true)
-        } else {
-            viewController.view.makeToast(SignUpToastMessages.birth.messages, duration: 1, position: .top)
-        }
     }
 }

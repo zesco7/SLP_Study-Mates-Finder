@@ -57,6 +57,43 @@ class GenderViewController: UIViewController {
                     self.mainView.femaleButton.backgroundColor = .white
                 }
             }
+        
+        viewModel.tokenErrorPublisher
+            .subscribe(onNext: { error in
+                self.view.makeToast("에러: \(error.localizedDescription)", duration: 1, position: .top)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.statusCodePublisher
+            .subscribe(on: MainScheduler.instance)
+            .subscribe(onNext: { statusCode in
+                switch statusCode {
+                case 200:
+                    print("회원가입 성공, 홈 화면으로 이동합니다.")
+                    Methods.moveToHome()
+                    return
+                case 201:
+                    print("이미 가입한 유저입니다.")
+                    return
+                case 202:
+                    print("사용할 수 없는 닉네임입니다. 닉네임 변경 후 다시 회원가입 요청해주세요.")
+                    Methods.moveToNickname()
+                    return
+                case 401:
+                    print("Firebase Token Error")
+                    self.viewModel.refreshToken()
+                    return
+                case 500:
+                    print("Server Error")
+                    return
+                case 501:
+                    print("Client Error, API 요청시 Header와 RequestBody에 값을 확인해주세요.")
+                    return
+                default: print("잠시 후 다시 시도해주세요.")
+                    return
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     func sendGenderEvent() {
@@ -66,5 +103,5 @@ class GenderViewController: UIViewController {
     
     func activateAction() { mainView.genderButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside) }
     
-    @objc func buttonTapped() { viewModel.buttonTapped(self) }
+    @objc func buttonTapped() { viewModel.requestSignUp() }
 }

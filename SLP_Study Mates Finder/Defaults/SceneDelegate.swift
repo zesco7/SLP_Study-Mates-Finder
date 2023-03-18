@@ -18,8 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         
-//        let view = PhoneNumberView()
-//        let vc = PhoneNumberViewController(mainView: view)
+//        let view = NicknameView()
+//        let vc = NicknameViewController(mainView: view)
         let vc = ViewController()
         let navi = UINavigationController(rootViewController: vc)
         window = UIWindow(windowScene: scene)

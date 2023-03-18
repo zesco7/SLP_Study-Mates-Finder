@@ -9,34 +9,21 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class NicknameViewModel: CommonMethods {
+class NicknameViewModel {
     var baseView = BaseView()
     var mainView = NicknameView()
 
     var nicknameEvent = PublishRelay<Bool>()
-    var isNickname: Bool = false
+    var isValidNickname: Bool = false
     var nicknameData: String?
     
-    func nicknameValidation(_ nickname: String){
-        if nickname.count >= 1 && nickname.count <= 10 {
-            isNickname = true
-            nicknameData = nickname
-            nicknameEvent.accept(isNickname)
-            //특수문자 제한 조건 및 조건 충족 여부 토스트 필요
-        } else {
-            isNickname = false
-            nicknameEvent.accept(isNickname)
-        }
-    }
-   
-    func buttonTapped(_ viewController: UIViewController){
-        if isNickname {
-            UserDefaults.standard.set(nicknameData, forKey: SignUpUserDefaults.nickname.rawValue)
-            let baseViewToChange = BirthView()
-            let vc = BirthViewController(mainView: baseViewToChange)
-            viewController.navigationController?.pushViewController(vc, animated: true)
-        } else {
-            viewController.view.makeToast(SignUpToastMessages.nickname.messages, duration: 1.0, position: .top)
-        }
+    func nicknameValidation(_ nickname: String) {
+        let regularExpression = "[가-힣a-zA-Z0-9]{2,10}"
+        let predicate = NSPredicate(format:"SELF MATCHES %@", regularExpression)
+        let isValid = predicate.evaluate(with: nickname)
+        nicknameData = nickname
+        isValidNickname = isValid
+        nicknameEvent.accept(isValidNickname)
+        UserDefaults.standard.set(nicknameData, forKey: SignUpUserDefaults.nickname.rawValue)
     }
 }

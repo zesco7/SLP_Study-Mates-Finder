@@ -21,6 +21,7 @@ class FirebaseRequest {
                     }
                     
                     guard let verificationID = verificationID else {
+                        UserDefaults.standard.set(verificationID, forKey: SignUpUserDefaults.authVerificationID.rawValue)
 //                        observer.onError(<#T##error: Error##Error#>)
                         return
                     }
