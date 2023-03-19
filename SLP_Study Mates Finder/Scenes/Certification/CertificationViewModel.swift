@@ -20,6 +20,9 @@ class CertificationViewModel {
     var tokenPublisher = PublishRelay<String>()
     var tokenErrorPublisher = PublishRelay<NSError>()
     var authErrorPublisher = PublishRelay<NSError>()
+    var signUpData = SignUpData(authVerificationID: "", certification: "", phoneNumber: "", nickName: "", birth: "", email: "", gender: 2)
+
+    let disposeBag = DisposeBag()
     
     func certificationValidation(code: String) {
         let regularExpression = "^([0-9]{6})$"
@@ -29,19 +32,19 @@ class CertificationViewModel {
         isValidCertification = isValid
         certificationEvent.accept(isValidCertification)
     }
-    
+
     func retryButtonTapped() {
-        let phoneNumber = SignUpUserDefaults.phoneNumber.userDefaults
-        let startIndex = phoneNumber.index(phoneNumber.startIndex, offsetBy: 3)
-        FirebaseRequest.requestVerificationCode(phoneNumber: phoneNumber)
+        FirebaseRequest.requestVerificationCode(phoneNumber: "+82 \(signUpData.phoneNumber)")
+            .subscribe(onNext: { verificationID in
+                self.signUpData.authVerificationID = verificationID
+            }, onError: { error in
+            })
+            .disposed(by: disposeBag)
     }
     
     func verifyRequest() {
-        UserDefaults.standard.set(certificationCode, forKey: "certification")
-        print("인증ID ud", SignUpUserDefaults.authVerificationID.userDefaults)
-        print("인증코드 ud", SignUpUserDefaults.certification.userDefaults)
-        //ud 대신 초기화로 받은값 넣기
-        let credential = PhoneAuthProvider.provider().credential(withVerificationID: SignUpUserDefaults.authVerificationID.userDefaults, verificationCode: SignUpUserDefaults.certification.userDefaults)
+        signUpData.certification = certificationCode
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: signUpData.authVerificationID, verificationCode: signUpData.certification)
         
         Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error as NSError? {

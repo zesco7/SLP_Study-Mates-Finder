@@ -10,11 +10,12 @@ import Alamofire
 import RxSwift
 
 class APIService {
-    
 //    static func request<Response>(url: URL, method: HTTPMethod, parameter: [String: String], header: [String: String]) -> Observable<Response> where Response : Decodable {
-//        
+//
 //        AF.request(url, method: method, parameters: parameter, headers: .init(header)).responseD
 //    }
+    
+    static var signUpData = SignUpData(authVerificationID: "", certification: "", phoneNumber: "", nickName: "", birth: "", email: "", gender: 2)
     
     static func login(completion: @escaping (UserInfo?, Int?, Error?) -> Void) {
         let url = EndPoint.login
@@ -34,12 +35,12 @@ class APIService {
         let url = EndPoint.signup
         let header : HTTPHeaders = ["idtoken": SignUpUserDefaults.idToken.userDefaults, "Content-Type" : "application/x-www-form-urlencoded"]
         let userData = UserDefaultsHelper()
-        let parameter = ["phoneNumber" : userData.phoneNumber,
+        let parameter = ["phoneNumber" : signUpData.phoneNumber,
                          "FCMtoken" : userData.FCMToken,
-                         "nick" : userData.nickName,
-                         "birthDate" : userData.birth,
-                         "email" : userData.email,
-                         "gender" : userData.gender]
+                         "nick" : signUpData.nickName,
+                         "birthDate" : signUpData.birth,
+                         "email" : signUpData.email,
+                         "gender" : "\(signUpData.gender)"]
         AF.request(url, method: .post, parameters: parameter, headers: header).responseString{ response in
             guard let statusCode = response.response?.statusCode else { return }
             switch response.result {

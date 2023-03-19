@@ -10,26 +10,24 @@ import Firebase
 import RxCocoa
 import RxSwift
 
-class GenderViewModel {
+class GenderViewModel: CommonProperties {
     var baseView = BaseView()
     let disposeBag = DisposeBag()
     
     var genderCodeEvent = PublishRelay<Int>()
-    var genderCode: Int = 2
     var statusCodePublisher = PublishRelay<Int>()
     var tokenErrorPublisher = PublishRelay<NSError>()
+    var signUpData = SignUpData(authVerificationID: "", certification: "", phoneNumber: "", nickName: "", birth: "", email: "", gender: 2)
     
     func genderValidation(_ gender: Int) {
-        genderCode = gender
-        genderCodeEvent.accept(genderCode)
+        genderCodeEvent.accept(gender)
     }
     
     func maleButtonTapped(mainView: GenderView) {
         mainView.maleButton.rx.tap.asDriver()
             .drive(with: mainView.maleButton) { [self] button, _ in
-                self.genderCode = 1
-                self.genderValidation(genderCode)
-                UserDefaults.standard.set(genderCode, forKey: SignUpUserDefaults.gender.rawValue)
+                self.signUpData.gender = 1
+                self.genderValidation(self.signUpData.gender)
             }
             .disposed(by: disposeBag)
     }
@@ -37,14 +35,14 @@ class GenderViewModel {
     func femaleButtonTapped(mainView: GenderView) {
         mainView.femaleButton.rx.tap.asDriver()
             .drive(with: mainView.femaleButton) { [self] button, _ in
-                self.genderCode = 0
-                self.genderValidation(genderCode)
-                UserDefaults.standard.set(genderCode, forKey: SignUpUserDefaults.gender.rawValue)
+                self.signUpData.gender = 0
+                self.genderValidation(self.signUpData.gender)
             }
             .disposed(by: disposeBag)
     }
 
     func requestSignUp() {
+        APIService.signUpData = signUpData
         APIService.signUp { value, statusCode, error in
             guard let statusCode = statusCode else { return }
             self.statusCodePublisher.accept(statusCode)

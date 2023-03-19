@@ -136,36 +136,15 @@ enum FirebaseToastMessages: String {
 }
 
 enum SignUpUserDefaults: String {
-    case authVerificationID = "authVerificationID"
     case FCMToken = "FCMToken"
     case idToken = "idToken"
-    case phoneNumber = "phoneNumber"
-    case certification = "certification"
-    case nickname = "nickname"
-    case birth = "birth"
-    case email = "email"
-    case gender = "gender"
     
     var userDefaults: String {
         switch self {
-        case .authVerificationID:
-            return UserDefaults.standard.string(forKey: "authVerificationID")!
         case .FCMToken:
             return UserDefaults.standard.string(forKey: "FCMToken")!
         case .idToken:
             return UserDefaults.standard.string(forKey: "idToken")!
-        case .phoneNumber:
-            return UserDefaults.standard.string(forKey: "phoneNumber")!
-        case .certification:
-            return UserDefaults.standard.string(forKey: "certification")!
-        case .nickname:
-            return UserDefaults.standard.string(forKey: "nickname")!
-        case .birth:
-            return UserDefaults.standard.string(forKey: "birth")!
-        case .email:
-            return UserDefaults.standard.string(forKey: "email")!
-        case .gender:
-            return UserDefaults.standard.string(forKey: "gender")!
         default:
             return ""
         }

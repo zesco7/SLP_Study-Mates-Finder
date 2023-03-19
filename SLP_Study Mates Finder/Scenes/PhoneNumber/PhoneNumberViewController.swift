@@ -13,7 +13,6 @@ class PhoneNumberViewController: UIViewController {
     var mainView: PhoneNumberView
     let viewModel = PhoneNumberViewModel()
     let disposeBag = DisposeBag()
-    let array = [0, 1, 2, 3]
     
     init(mainView: PhoneNumberView) {
         self.mainView = mainView
@@ -57,13 +56,9 @@ class PhoneNumberViewController: UIViewController {
         viewModel.verificationCodePublisher
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { verificationCode in
-                if self.viewModel.isValidPhoneNumber {
-                    self.pushScene()
-                } else {
-                    self.view.makeToast(SignUpToastMessages.phoneNumber.messages, duration: 1, position: .top)
-                }
+                self.pushScene()
             }, onError: { error in
-                
+                print("verificationCodePublisher 에러", error)
             })
             .disposed(by: disposeBag)
     }
@@ -76,18 +71,16 @@ class PhoneNumberViewController: UIViewController {
     @objc func textFieldEditing() {
         guard let text = mainView.phoneNumberTextField.text else { return }
         viewModel.phoneNumberValidation(number: text)
-        print("text", text)
     }
     
     func pushScene() {
         let baseViewToChange = CertificationView()
-        let vc = CertificationViewController(mainView: baseViewToChange)
+        let vc = CertificationViewController(mainView: baseViewToChange, signUpData: viewModel.signUpData)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func buttonTapped() {
-        let number = viewModel.phoneNumber
-        viewModel.requestVerificationCode(phoneNumber: number)
+        viewModel.requestVerificationCode()
     }
 }
 

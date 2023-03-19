@@ -16,12 +16,8 @@ class FirebaseRequest {
             Auth.auth().languageCode = "kr"
             PhoneAuthProvider.provider()
                 .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
-                    if let error = error {
-                        observer.onError(error)
-                    }
-                    
+                    if let error = error { observer.onError(error) }
                     guard let verificationID = verificationID else {
-                        UserDefaults.standard.set(verificationID, forKey: SignUpUserDefaults.authVerificationID.rawValue)
 //                        observer.onError(<#T##error: Error##Error#>)
                         return
                     }
@@ -29,16 +25,5 @@ class FirebaseRequest {
                 }
             return Disposables.create()
         }
-//        Auth.auth().languageCode = "kr";
-//        PhoneAuthProvider.provider()
-//            .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
-//                if let error = error {
-//                    print(error)
-//                    return
-//                }
-//
-//                UserDefaults.standard.set(verificationID, forKey: SignUpUserDefaults.authVerificationID.rawValue)
-//                print("verify phone", verificationID!)
-//            }
     }
 }

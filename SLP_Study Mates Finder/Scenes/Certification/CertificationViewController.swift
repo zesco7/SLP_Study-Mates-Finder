@@ -16,8 +16,9 @@ class CertificationViewController: UIViewController {
     let viewModel = CertificationViewModel()
     let disposeBag = DisposeBag()
 
-    init(mainView: CertificationView) {
+    init(mainView: CertificationView, signUpData: SignUpData) {
         self.mainView = mainView
+        self.viewModel.signUpData = signUpData
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -60,7 +61,7 @@ class CertificationViewController: UIViewController {
             .withUnretained(self)
             .subscribe(onNext: { error in
                 self.view.makeToast(FirebaseToastMessages.failureVerified.messages, duration: 1, position: .top)
-                self.pushScene()
+//                self.pushScene()
             })
             .disposed(by: disposeBag)
         
@@ -73,7 +74,8 @@ class CertificationViewController: UIViewController {
         viewModel.tokenPublisher
             .withUnretained(self)
             .subscribe(onNext: { token in
-                self.viewModel.requestLogin()
+//                self.viewModel.requestLogin() //서버 열려있으면 로그인API 호출
+                self.pushScene() //서버 닫혀있으므로 로그인API 호출했다고 가정하고 닉네임 입력화면 이동
             })
             .disposed(by: disposeBag)
         
@@ -84,7 +86,7 @@ class CertificationViewController: UIViewController {
                 case 200:
                     //MARK: - 로그인 성공하면 회원정보 데이터 받고 서비스 홈화면 이동
                     print("로그인 성공")
-                    Methods.moveToHome()
+                    SceneTransition.moveToHome(self)
                     return
                 case 401:
                     //MARK: - ID 토큰 재발급
@@ -116,7 +118,7 @@ class CertificationViewController: UIViewController {
     
     func pushScene() {
         let baseViewToChange = NicknameView()
-        let vc = NicknameViewController(mainView: baseViewToChange)
+        let vc = NicknameViewController(mainView: baseViewToChange, signUpData: viewModel.signUpData)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

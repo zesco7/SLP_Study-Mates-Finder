@@ -15,8 +15,9 @@ class NicknameViewController: UIViewController {
     let viewModel = NicknameViewModel()
     let disposeBag = DisposeBag()
     
-    init(mainView: NicknameView) {
+    init(mainView: NicknameView, signUpData: SignUpData) {
         self.mainView = mainView
+        self.viewModel.signUpData = signUpData
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -61,7 +62,7 @@ class NicknameViewController: UIViewController {
     
     func pushScene() {
         let baseViewToChange = BirthView()
-        let vc = BirthViewController(mainView: baseViewToChange)
+        let vc = BirthViewController(mainView: baseViewToChange, signUpData: viewModel.signUpData)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

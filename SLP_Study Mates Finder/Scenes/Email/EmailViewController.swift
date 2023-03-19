@@ -15,8 +15,9 @@ class EmailViewController: UIViewController {
     let viewModel = EmailViewModel()
     let disposeBag = DisposeBag()
     
-    init(mainView: EmailView) {
+    init(mainView: EmailView, signUpData: SignUpData) {
         self.mainView = mainView
+        self.viewModel.signUpData = signUpData
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -74,7 +75,7 @@ class EmailViewController: UIViewController {
     
     func pushScene() {
         let baseViewToChange = GenderView()
-        let vc = GenderViewController(mainView: baseViewToChange)
+        let vc = GenderViewController(mainView: baseViewToChange, signUpData: viewModel.signUpData)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

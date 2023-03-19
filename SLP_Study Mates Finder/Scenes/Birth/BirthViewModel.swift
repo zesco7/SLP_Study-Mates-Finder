@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class BirthViewModel {
+class BirthViewModel: CommonProperties {
     var baseView = BaseView()
     
     var birthDateEvent = PublishRelay<Bool>()
@@ -27,6 +27,8 @@ class BirthViewModel {
     let monthArray = Array(1...12)
     let dayArray = Array(1...31)
     
+    var signUpData = SignUpData(authVerificationID: "", certification: "", phoneNumber: "", nickName: "", birth: "", email: "", gender: 2)
+    
     func birthValidation(birth: Date) {
         birthDate = birth
         let dateDifference =
@@ -41,7 +43,7 @@ class BirthViewModel {
             birthDateEvent.accept(isValidBirthDate)
         }
         let birthData = birthDate.ISO8601Format()
-        UserDefaults.standard.set(birthData, forKey: SignUpUserDefaults.birth.rawValue)
+        signUpData.birth = birthData
     }
     
     func dateFormatter(datePicker: UIDatePicker) {

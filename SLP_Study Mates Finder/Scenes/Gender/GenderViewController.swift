@@ -18,8 +18,9 @@ class GenderViewController: UIViewController {
     let border = CALayer()
     let genderCode = BehaviorSubject<Int>(value: 2)
     
-    init(mainView: GenderView) {
+    init(mainView: GenderView, signUpData: SignUpData) {
         self.mainView = mainView
+        self.viewModel.signUpData = signUpData
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -70,14 +71,14 @@ class GenderViewController: UIViewController {
                 switch statusCode {
                 case 200:
                     print("회원가입 성공, 홈 화면으로 이동합니다.")
-                    Methods.moveToHome()
+                    SceneTransition.moveToHome(self)
                     return
                 case 201:
                     print("이미 가입한 유저입니다.")
                     return
                 case 202:
                     print("사용할 수 없는 닉네임입니다. 닉네임 변경 후 다시 회원가입 요청해주세요.")
-                    Methods.moveToNickname()
+                    SceneTransition.moveToNickname(self, signUpData: self.viewModel.signUpData)
                     return
                 case 401:
                     print("Firebase Token Error")
@@ -92,6 +93,10 @@ class GenderViewController: UIViewController {
                 default: print("잠시 후 다시 시도해주세요.")
                     return
                 }
+            }, onError: { error in
+                //        SceneTransition.moveToNickname(self, signUpData: self.viewModel.signUpData)
+                SceneTransition.moveToHome(self)
+                print("signUpData입니다.", self.viewModel.signUpData)
             })
             .disposed(by: disposeBag)
     }

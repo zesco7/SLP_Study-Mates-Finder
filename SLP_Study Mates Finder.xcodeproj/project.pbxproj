@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		980207E529C6D44D00053149 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980207E429C6D44D00053149 /* Model.swift */; };
 		9808D3E629B4B69000CFB19A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9808D3E529B4B69000CFB19A /* GoogleService-Info.plist */; };
 		9808D3EC29B4BFAC00CFB19A /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9808D3EB29B4BFAC00CFB19A /* Protocols.swift */; };
 		9808D3EE29B4C2B900CFB19A /* PhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9808D3ED29B4C2B900CFB19A /* PhoneNumberViewModel.swift */; };
@@ -52,7 +53,7 @@
 		98B9DF8C291BEC2E00FE62EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98B9DF8A291BEC2E00FE62EA /* LaunchScreen.storyboard */; };
 		98B9DF99291BEF3C00FE62EA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 98B9DF98291BEF3C00FE62EA /* .gitignore */; };
 		98BA077F29C45BF300E58304 /* BirthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BA077E29C45BF300E58304 /* BirthModel.swift */; };
-		98BD2DF629C19DE000503DE5 /* Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BD2DF529C19DE000503DE5 /* Methods.swift */; };
+		98BD2DF629C19DE000503DE5 /* SceneTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BD2DF529C19DE000503DE5 /* SceneTransition.swift */; };
 		98BD2DF929C1B03400503DE5 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BD2DF829C1B03400503DE5 /* UserDefaultsHelper.swift */; };
 		98C2E7882925BAFA003D43AF /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2E7872925BAFA003D43AF /* NicknameView.swift */; };
 		98C2E78A2925BB05003D43AF /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C2E7892925BB05003D43AF /* NicknameViewController.swift */; };
@@ -90,6 +91,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		980207E429C6D44D00053149 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9808D3E529B4B69000CFB19A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9808D3EB29B4BFAC00CFB19A /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		9808D3ED29B4C2B900CFB19A /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
@@ -128,7 +130,7 @@
 		98B9DF8D291BEC2E00FE62EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98B9DF98291BEF3C00FE62EA /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		98BA077E29C45BF300E58304 /* BirthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthModel.swift; sourceTree = "<group>"; };
-		98BD2DF529C19DE000503DE5 /* Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Methods.swift; sourceTree = "<group>"; };
+		98BD2DF529C19DE000503DE5 /* SceneTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransition.swift; sourceTree = "<group>"; };
 		98BD2DF829C1B03400503DE5 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		98C2E7872925BAFA003D43AF /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
 		98C2E7892925BB05003D43AF /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +175,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		980207E329C6D34A00053149 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				980207E429C6D44D00053149 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9808D3EA29B4BF9F00CFB19A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +336,7 @@
 		98BA077D29C45ABD00E58304 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				980207E329C6D34A00053149 /* Model */,
 				98B3C32A291C88C0004EEB14 /* BaseView */,
 				98F696FB291DD2B100577FCE /* CustomView */,
 				98B3C318291C86FE004EEB14 /* Onboarding */,
@@ -342,7 +353,7 @@
 		98BD2DF429C19D9600503DE5 /* Methods */ = {
 			isa = PBXGroup;
 			children = (
-				98BD2DF529C19DE000503DE5 /* Methods.swift */,
+				98BD2DF529C19DE000503DE5 /* SceneTransition.swift */,
 			);
 			path = Methods;
 			sourceTree = "<group>";
@@ -517,7 +528,7 @@
 				98B3C355291D2964004EEB14 /* MainOnboardingView.swift in Sources */,
 				98471DD529C0460800935C55 /* FirebaseRequest.swift in Sources */,
 				9808D3EE29B4C2B900CFB19A /* PhoneNumberViewModel.swift in Sources */,
-				98BD2DF629C19DE000503DE5 /* Methods.swift in Sources */,
+				98BD2DF629C19DE000503DE5 /* SceneTransition.swift in Sources */,
 				98B3C349291D0B78004EEB14 /* IntroPageView.swift in Sources */,
 				98B3C324291C8832004EEB14 /* FirstOnboardingViewController.swift in Sources */,
 				98C2E7902925BDFE003D43AF /* EmailView.swift in Sources */,
@@ -541,6 +552,7 @@
 				98DD413829BC8F6B00D7D78A /* CertificationView.swift in Sources */,
 				98B3C351291D0F43004EEB14 /* SecondOnboardingView.swift in Sources */,
 				98BD2DF929C1B03400503DE5 /* UserDefaultsHelper.swift in Sources */,
+				980207E529C6D44D00053149 /* Model.swift in Sources */,
 				982E9AF429320AE90074331E /* Codable.swift in Sources */,
 				98DD413329BC8EDF00D7D78A /* CertificationViewController.swift in Sources */,
 				98B3C32E291C88E1004EEB14 /* BaseView.swift in Sources */,

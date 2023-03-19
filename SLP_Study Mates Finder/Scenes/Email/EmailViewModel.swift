@@ -9,21 +9,20 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class EmailViewModel {
+class EmailViewModel: CommonProperties {
     var baseView = BaseView()
     var mainView = EmailView()
 
     var emailEvent = PublishRelay<Bool>()
     var isValidEmail: Bool = false
-    var emailData: String?
+    var signUpData = SignUpData(authVerificationID: "", certification: "", phoneNumber: "", nickName: "", birth: "", email: "", gender: 2)
     
     func emailValidation(_ email: String){
         let regularExpression = "^([a-zA-Z0-9._-])+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,20}$"
         let predicate = NSPredicate(format:"SELF MATCHES %@", regularExpression)
         let isValid = predicate.evaluate(with: email)
-        emailData = email
         isValidEmail = isValid
         emailEvent.accept(isValidEmail)
-        UserDefaults.standard.set(emailData, forKey: SignUpUserDefaults.email.rawValue)
+        signUpData.email = email
     }
 }

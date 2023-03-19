@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-protocol CommonMethods {
+protocol CommonProperties {
 //    associatedtype T
-    func buttonTapped(_ viewController: UIViewController)
+    var signUpData: SignUpData { get }
 }

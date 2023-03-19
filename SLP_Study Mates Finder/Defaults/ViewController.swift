@@ -30,22 +30,22 @@ class ViewController: UIViewController {
         view.text = "*그림을 누르면 회원가입 화면으로 이동합니다."
         return view
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
         configure()
         setContraints()
-        moveToPhoneNumber()
+        activateAction()
     }
     
-    func moveToPhoneNumber() {
+    func activateAction() {
         logoButton.addTarget(self, action: #selector(serviceLogoButtonTapped), for: .touchUpInside)
     }
     
     @objc func serviceLogoButtonTapped() {
-        Methods.moveToPhoneNumber()
+        SceneTransition.moveToPhoneNumber(self)
     }
     
     func configure() {

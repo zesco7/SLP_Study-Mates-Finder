@@ -16,8 +16,9 @@ class BirthViewController: UIViewController {
     let disposeBag = DisposeBag()
     let pickerView = UIDatePicker()
 
-    init(mainView: BirthView) {
+    init(mainView: BirthView, signUpData: SignUpData) {
         self.mainView = mainView
+        self.viewModel.signUpData = signUpData
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -92,7 +93,7 @@ class BirthViewController: UIViewController {
     
     func pushScene() {
         let baseViewToChange = EmailView()
-        let vc = EmailViewController(mainView: baseViewToChange)
+        let vc = EmailViewController(mainView: baseViewToChange, signUpData: viewModel.signUpData)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -11,13 +11,13 @@ import FirebaseAuth
 import RxCocoa
 import RxSwift
 
-class PhoneNumberViewModel {
+class PhoneNumberViewModel: CommonProperties {
     var baseView = BaseView()
     
     var phoneNumberEvent = PublishRelay<Bool>()
     var verificationCodePublisher = PublishRelay<String>()
     var isValidPhoneNumber: Bool = false
-    var phoneNumber: String = ""
+    var signUpData = SignUpData(authVerificationID: "", certification: "", phoneNumber: "", nickName: "", birth: "", email: "", gender: 2)
     
     var disposeBag = DisposeBag()
     
@@ -25,9 +25,22 @@ class PhoneNumberViewModel {
         let regularExpression = "^01([0-9])-?([0-9]{4})-?([0-9]{4})$"
         let predicate = NSPredicate(format:"SELF MATCHES %@", regularExpression)
         let isValid = predicate.evaluate(with: number)
-        phoneNumber = number
         isValidPhoneNumber = isValid
         phoneNumberEvent.accept(isValidPhoneNumber)
+        signUpData.phoneNumber = number.replacingOccurrences(of: "-", with: "")
+        print("phoneNumber", signUpData.phoneNumber)
+//        print("defaults", signUpData.signUpDataWithNothing)
+    }
+    
+    func requestVerificationCode() {
+        FirebaseRequest.requestVerificationCode(phoneNumber: "+82 \(signUpData.phoneNumber)")
+            .subscribe(onNext: { verificationID in
+                self.signUpData.authVerificationID = verificationID
+                self.verificationCodePublisher.accept(verificationID)
+                print("verificationCodePublisher", self.verificationCodePublisher)
+            }, onError: { error in
+            })
+            .disposed(by: disposeBag)
     }
     
 //    func formatter(_ input: String, form: String) -> String {
@@ -45,17 +58,4 @@ class PhoneNumberViewModel {
 //        }
 //        return result
 //    }
-    
-    func requestVerificationCode(phoneNumber: String) {
-        var number = phoneNumber
-        number = number.replacingOccurrences(of: "-", with: "")
-        FirebaseRequest.requestVerificationCode(phoneNumber: "+82 \(number)")
-            .subscribe(onNext: { verificationID in
-                UserDefaults.standard.set("+82\(number)", forKey: SignUpUserDefaults.phoneNumber.rawValue)
-                print("폰번", SignUpUserDefaults.phoneNumber.userDefaults)
-                self.verificationCodePublisher.accept(verificationID)
-            }, onError: { error in
-            })
-            .disposed(by: disposeBag)
-    }
 }
