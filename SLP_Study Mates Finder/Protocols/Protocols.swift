@@ -10,6 +10,5 @@ import RxCocoa
 import RxSwift
 
 protocol CommonProperties {
-//    associatedtype T
     var signUpData: SignUpData { get }
 }

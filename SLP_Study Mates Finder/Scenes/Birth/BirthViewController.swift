@@ -68,7 +68,6 @@ class BirthViewController: UIViewController {
     }
     
     func pickerViewAttribute() {
-        //delegate, dataSource 설정?
         pickerView.datePickerMode = .date
     }
     

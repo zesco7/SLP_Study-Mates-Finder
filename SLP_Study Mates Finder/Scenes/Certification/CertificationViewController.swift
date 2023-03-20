@@ -61,7 +61,6 @@ class CertificationViewController: UIViewController {
             .withUnretained(self)
             .subscribe(onNext: { error in
                 self.view.makeToast(FirebaseToastMessages.failureVerified.messages, duration: 1, position: .top)
-//                self.pushScene()
             })
             .disposed(by: disposeBag)
         
@@ -75,7 +74,7 @@ class CertificationViewController: UIViewController {
             .withUnretained(self)
             .subscribe(onNext: { token in
 //                self.viewModel.requestLogin() //서버 열려있으면 로그인API 호출
-                self.pushScene() //서버 닫혀있으므로 로그인API 호출했다고 가정하고 닉네임 입력화면 이동
+                self.pushScene() //서버 닫혀있으므로 로그인API 호출했다고 가정하고 닉네임화면 이동
             })
             .disposed(by: disposeBag)
         
@@ -86,7 +85,7 @@ class CertificationViewController: UIViewController {
                 case 200:
                     //MARK: - 로그인 성공하면 회원정보 데이터 받고 서비스 홈화면 이동
                     print("로그인 성공")
-                    SceneTransition.moveToHome(self)
+                    self.moveToHome(self)
                     return
                 case 401:
                     //MARK: - ID 토큰 재발급
@@ -106,6 +105,8 @@ class CertificationViewController: UIViewController {
                 default: print("잠시 후 다시 시도해주세요.")
                     return
                 }
+            }, onError: { error in
+                print("서버연결이 되어 있지 않습니다.")
             })
             .disposed(by: disposeBag)
     }
@@ -116,6 +117,12 @@ class CertificationViewController: UIViewController {
         mainView.certificationButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
+    func moveToHome(_ viewController: UIViewController) {
+        let vc = ViewController()
+        vc.modalPresentationStyle = .fullScreen
+        viewController.present(vc, animated: true)
+    }
+
     func pushScene() {
         let baseViewToChange = NicknameView()
         let vc = NicknameViewController(mainView: baseViewToChange, signUpData: viewModel.signUpData)

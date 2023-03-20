@@ -71,14 +71,14 @@ class GenderViewController: UIViewController {
                 switch statusCode {
                 case 200:
                     print("회원가입 성공, 홈 화면으로 이동합니다.")
-                    SceneTransition.moveToHome(self)
+                    self.moveToHome(self)
                     return
                 case 201:
                     print("이미 가입한 유저입니다.")
                     return
                 case 202:
                     print("사용할 수 없는 닉네임입니다. 닉네임 변경 후 다시 회원가입 요청해주세요.")
-                    SceneTransition.moveToNickname(self, signUpData: self.viewModel.signUpData)
+                    self.moveToNickname(self, signUpData: self.viewModel.signUpData)
                     return
                 case 401:
                     print("Firebase Token Error")
@@ -94,11 +94,21 @@ class GenderViewController: UIViewController {
                     return
                 }
             }, onError: { error in
-                //        SceneTransition.moveToNickname(self, signUpData: self.viewModel.signUpData)
-                SceneTransition.moveToHome(self)
-                print("signUpData입니다.", self.viewModel.signUpData)
+                print("서버연결이 되어 있지 않습니다.")
             })
             .disposed(by: disposeBag)
+    }
+    
+    func moveToHome(_ viewController: UIViewController) {
+        let vc = ViewController()
+        viewController.present(vc, animated: true)
+    }
+    
+    func moveToNickname(_ viewController: UIViewController, signUpData: SignUpData) {
+        let vc = NicknameViewController(mainView: NicknameView(), signUpData: signUpData)
+        let navi = UINavigationController(rootViewController: vc)
+        navi.modalPresentationStyle = .fullScreen
+        viewController.present(navi, animated: true)
     }
     
     func sendGenderEvent() {
@@ -108,5 +118,9 @@ class GenderViewController: UIViewController {
     
     func activateAction() { mainView.genderButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside) }
     
-    @objc func buttonTapped() { viewModel.requestSignUp() }
+    @objc func buttonTapped() {
+//        viewModel.requestSignUp() //서버 열려있으면 회원가입API 호출
+        self.moveToHome(self) //서버 닫혀있으므로 회원가입API 호출했다고 가정하고 홈화면 이동
+        print("signUpData입니다.", self.viewModel.signUpData)
+    }
 }

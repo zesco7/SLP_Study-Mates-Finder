@@ -22,7 +22,6 @@ class IntroPageViewController: UIPageViewController {
         mainView.pageViewController.dataSource = self
         mainView.pageViewController.delegate = self
         
-        //PageViewController Indicator 색상 변경: let proxy = UIPageControl.appearance()
         proxy.pageIndicatorTintColor = UIColor.gray
         proxy.currentPageIndicatorTintColor = UIColor.black
         
@@ -40,7 +39,6 @@ class IntroPageViewController: UIPageViewController {
     }
 }
 
-// typical Page View Controller Data Source
 extension IntroPageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let index = mainView.dataViewControllers.firstIndex(of: viewController) else { return nil }

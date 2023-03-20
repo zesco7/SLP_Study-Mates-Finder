@@ -27,14 +27,13 @@ class BirthViewModel: CommonProperties {
     let monthArray = Array(1...12)
     let dayArray = Array(1...31)
     
-    var signUpData = SignUpData(authVerificationID: "", certification: "", phoneNumber: "", nickName: "", birth: "", email: "", gender: 2)
+    var signUpData: SignUpData = SignUpData()
     
     func birthValidation(birth: Date) {
         birthDate = birth
         let dateDifference =
         Calendar.current.dateComponents([.year, .month, .day], from: birthDate, to: Date())
         
-        //강제 언래핑해야하는지?
         if dateDifference.year! >= 17 && dateDifference.month! <= 12 && dateDifference.day! <= 31 {
             isValidBirthDate = true
             birthDateEvent.accept(isValidBirthDate)
@@ -47,10 +46,7 @@ class BirthViewModel: CommonProperties {
     }
     
     func dateFormatter(datePicker: UIDatePicker) {
-        //피커 클릭해서 데이터 받는것과 화면에 표시하는걸 구분해야하는지?
         let dateComponents = datePicker.calendar.dateComponents([.year, .month, .day], from: datePicker.date)
-        //dateComponents 반환 타입이 Int?이므로 언래핑 해줘야함.
-        //강제 언래핑해야하는지?
         birthYear = String(describing: dateComponents.year!)
         birthMonth = String(describing: dateComponents.month!)
         birthDay = String(describing: dateComponents.day!)
@@ -58,16 +54,5 @@ class BirthViewModel: CommonProperties {
         birthYearEvent.accept(birthYear)
         birthMonthEvent.accept(birthMonth)
         birthDayEvent.accept(birthDay)
-    }
-    
-    //mvp
-    func dateFormatter2(mainView: BirthView) {
-        //피커 클릭해서 데이터 받는것과 화면에 표시하는걸 구분해야하는지?
-        birthDate = mainView.birthDatePicker.date
-        let formattedDate = birthDate.ISO8601Format()
-        let dateComponents = mainView.birthDatePicker.calendar.dateComponents([.year, .month, .day], from: birthDate)
-        mainView.birthYearTextField.text = "\(dateComponents.year!)"
-        mainView.birthMonthTextField.text = "\(dateComponents.month!)"
-        mainView.birthDayTextField.text = "\(dateComponents.day!)"
     }
 }

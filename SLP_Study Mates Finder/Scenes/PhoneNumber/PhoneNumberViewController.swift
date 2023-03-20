@@ -52,7 +52,6 @@ class PhoneNumberViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        //인증코드 담은 이벤트를 전달하면 화면전환
         viewModel.verificationCodePublisher
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { verificationCode in
@@ -98,28 +97,3 @@ extension PhoneNumberViewController: UITextFieldDelegate {
         return true
     }
 }
-
-//extension PhoneNumberViewController: UITextFieldDelegate {
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        guard let text = textField.text else { return false }
-//        let newString = (text as NSString).replacingCharacters(in: range, with: string)
-//
-//        if text.count <= 11 { //텍스트 입력할 때 formatter실행되면서 dash가 추가될때마다 text.count가 같이 증가하기 때문에 11을 기준으로 분기
-//            textField.text = viewModel.formatter(newString, form: "XXX-XXX-XXXX")
-//        } else {
-//            textField.text = viewModel.formatter(newString, form: "XXX-XXXX-XXXX")
-//        }
-//
-//        viewModel.phoneNumberValidation(number: text)
-//
-//        guard let text = textField.text, let textRange = Range(range, in: text) else {
-//            return false
-//        }
-//        let updatedText = text.replacingCharacters(in: textRange, with: string)
-//        print("range", range)
-//        print("textRange", textRange)
-//        print("text", text)
-//        print("updatedText", updatedText)
-//        return false
-//    }
-//}

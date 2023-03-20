@@ -11,12 +11,11 @@ import RxSwift
 
 class NicknameViewModel: CommonProperties {
     var baseView = BaseView()
-    var mainView = NicknameView()
-
+    
     var nicknameEvent = PublishRelay<Bool>()
     var isValidNickname: Bool = false
-    var signUpData = SignUpData(authVerificationID: "", certification: "", phoneNumber: "", nickName: "", birth: "", email: "", gender: 2)
-    
+    var signUpData: SignUpData = SignUpData()
+
     func nicknameValidation(_ nickname: String) {
         let regularExpression = "[가-힣a-zA-Z0-9]{2,10}"
         let predicate = NSPredicate(format:"SELF MATCHES %@", regularExpression)

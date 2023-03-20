@@ -45,9 +45,16 @@ class ViewController: UIViewController {
     }
     
     @objc func serviceLogoButtonTapped() {
-        SceneTransition.moveToPhoneNumber(self)
+        moveToPhoneNumber(self)
     }
     
+    func moveToPhoneNumber(_ viewController: UIViewController) {
+        let vc = PhoneNumberViewController(mainView: PhoneNumberView())
+        let navi = UINavigationController(rootViewController: vc)
+        navi.modalPresentationStyle = .fullScreen
+        viewController.present(navi, animated: true)
+    }
+
     func configure() {
         [message, logoButton, subMessage].forEach {
             self.view.addSubview($0)

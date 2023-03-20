@@ -11,11 +11,10 @@ import RxSwift
 
 class EmailViewModel: CommonProperties {
     var baseView = BaseView()
-    var mainView = EmailView()
-
+    
     var emailEvent = PublishRelay<Bool>()
     var isValidEmail: Bool = false
-    var signUpData = SignUpData(authVerificationID: "", certification: "", phoneNumber: "", nickName: "", birth: "", email: "", gender: 2)
+    var signUpData: SignUpData = SignUpData()
     
     func emailValidation(_ email: String){
         let regularExpression = "^([a-zA-Z0-9._-])+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,20}$"

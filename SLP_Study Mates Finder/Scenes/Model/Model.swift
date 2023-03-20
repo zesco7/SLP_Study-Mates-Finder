@@ -8,16 +8,11 @@
 import Foundation
 
 struct SignUpData {
-    var authVerificationID: String
-    var certification: String
-    var phoneNumber: String
-    var nickName: String
-    var birth: String
-    var email: String
-    var gender: Int
-    
-    var signUpDataWithNothing: SignUpData {
-        let data = SignUpData(authVerificationID: "", certification: "", phoneNumber: "", nickName: "", birth: "", email: "", gender: 2)
-        return data
-    }
+    var authVerificationID: String = ""
+    var certification: String = ""
+    var phoneNumber: String = ""
+    var nickName: String = ""
+    var birth: String = ""
+    var email: String = ""
+    var gender: Int = 2
 }

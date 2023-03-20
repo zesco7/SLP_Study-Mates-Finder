@@ -16,7 +16,6 @@ class PhoneNumberView: BaseView {
         configure()
         setConstraints()
         textFieldBorderAttribute()
-//        activeTextFieldBorder()
     }
     
     required init?(coder: NSCoder) {
@@ -79,25 +78,4 @@ class PhoneNumberView: BaseView {
             make.height.equalTo(50)
         }
     }
-    
-//    func activeTextFieldBorder() {
-//        self.view.addTarget(self, action: #selector(textFieldEditingDidBegin), for: .editingDidBegin)
-//        self.view.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
-//        self.view.addTarget(self, action: #selector(textFieldEditingDidEnd), for: .editingDidEnd)
-//    }
-//
-//    @objc func textFieldEditingDidBegin() {
-//        border.black()
-//        self.view.layer.addSublayer((border))
-//    }
-//    
-//    @objc func textFieldEditingChanged() {
-//        border.black()
-//        self.view.layer.addSublayer((border))
-//    }
-//
-//    @objc func textFieldEditingDidEnd() {
-//        border.gray3()
-//        self.view.layer.addSublayer((border))
-//    }
 }

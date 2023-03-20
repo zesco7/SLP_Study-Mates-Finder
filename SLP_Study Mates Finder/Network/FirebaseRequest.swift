@@ -17,10 +17,7 @@ class FirebaseRequest {
             PhoneAuthProvider.provider()
                 .verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
                     if let error = error { observer.onError(error) }
-                    guard let verificationID = verificationID else {
-//                        observer.onError(<#T##error: Error##Error#>)
-                        return
-                    }
+                    guard let verificationID = verificationID else { return }
                     observer.onNext(verificationID)
                 }
             return Disposables.create()

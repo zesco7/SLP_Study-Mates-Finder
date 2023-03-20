@@ -12,12 +12,13 @@ import RxSwift
 
 class GenderViewModel: CommonProperties {
     var baseView = BaseView()
-    let disposeBag = DisposeBag()
     
     var genderCodeEvent = PublishRelay<Int>()
     var statusCodePublisher = PublishRelay<Int>()
     var tokenErrorPublisher = PublishRelay<NSError>()
-    var signUpData = SignUpData(authVerificationID: "", certification: "", phoneNumber: "", nickName: "", birth: "", email: "", gender: 2)
+    var signUpData: SignUpData = SignUpData()
+    
+    var disposeBag = DisposeBag()
     
     func genderValidation(_ gender: Int) {
         genderCodeEvent.accept(gender)
@@ -42,6 +43,7 @@ class GenderViewModel: CommonProperties {
     }
 
     func requestSignUp() {
+        //MARK: - 회원가입 API 통해 회원가입 시도
         APIService.signUpData = signUpData
         APIService.signUp { value, statusCode, error in
             guard let statusCode = statusCode else { return }

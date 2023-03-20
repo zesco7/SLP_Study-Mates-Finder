@@ -10,12 +10,7 @@ import Alamofire
 import RxSwift
 
 class APIService {
-//    static func request<Response>(url: URL, method: HTTPMethod, parameter: [String: String], header: [String: String]) -> Observable<Response> where Response : Decodable {
-//
-//        AF.request(url, method: method, parameters: parameter, headers: .init(header)).responseD
-//    }
-    
-    static var signUpData = SignUpData(authVerificationID: "", certification: "", phoneNumber: "", nickName: "", birth: "", email: "", gender: 2)
+    static var signUpData = SignUpData()
     
     static func login(completion: @escaping (UserInfo?, Int?, Error?) -> Void) {
         let url = EndPoint.login
