@@ -14,7 +14,7 @@ class BirthViewController: UIViewController {
     var mainView: BirthView
     let viewModel = BirthViewModel()
     let disposeBag = DisposeBag()
-    let pickerView = UIDatePicker()
+    let datePicker = UIDatePicker()
 
     init(mainView: BirthView, signUpData: SignUpData) {
         self.mainView = mainView
@@ -34,7 +34,8 @@ class BirthViewController: UIViewController {
         super.viewDidLoad()
     
         bind()
-        pickerViewAttribute()
+        textFieldAttribute()
+        datePickerAttribute()
         activateAction()
     }
     
@@ -67,8 +68,16 @@ class BirthViewController: UIViewController {
             }
     }
     
-    func pickerViewAttribute() {
-        pickerView.datePickerMode = .date
+    func textFieldAttribute() {
+        mainView.birthYearTextField.isEnabled = false
+        mainView.birthMonthTextField.isEnabled = false
+        mainView.birthDayTextField.isEnabled = false
+    }
+    
+    func datePickerAttribute() {
+        datePicker.datePickerMode = .date
+        datePicker.locale = Locale(identifier: "ko_KR")
+        datePicker.calendar.locale = Locale(identifier: "ko_KR")
     }
     
     func activateAction() {

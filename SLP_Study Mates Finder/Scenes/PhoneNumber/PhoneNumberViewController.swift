@@ -8,11 +8,13 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import JGProgressHUD
 
 class PhoneNumberViewController: UIViewController {
     var mainView: PhoneNumberView
     let viewModel = PhoneNumberViewModel()
     let disposeBag = DisposeBag()
+    let hud = JGProgressHUD()
     
     init(mainView: PhoneNumberView) {
         self.mainView = mainView
@@ -37,7 +39,10 @@ class PhoneNumberViewController: UIViewController {
     
     override func viewDidLayoutSubviews() { mainView.textFieldBorderAttribute() }
     
-    func textFieldAttribute() { mainView.phoneNumberTextField.delegate = self }
+    func textFieldAttribute() {
+        mainView.phoneNumberTextField.delegate = self
+        mainView.phoneNumberTextField.keyboardType = .decimalPad
+    }
     
     func bind() {
         viewModel.phoneNumberEvent.asDriver(onErrorJustReturn: false)
@@ -55,11 +60,18 @@ class PhoneNumberViewController: UIViewController {
         viewModel.verificationCodePublisher
             .subscribe(on: MainScheduler.instance)
             .subscribe(onNext: { verificationCode in
+                self.hud.dismiss()
                 self.pushScene()
             }, onError: { error in
                 print("verificationCodePublisher 에러", error)
             })
             .disposed(by: disposeBag)
+    }
+    
+    func showProgress() {
+        hud.style = .dark
+        hud.textLabel.text = "인증 요청 중"
+        hud.show(in: self.view)
     }
     
     func activateAction() {
@@ -79,6 +91,7 @@ class PhoneNumberViewController: UIViewController {
     }
     
     @objc func buttonTapped() {
+        showProgress()
         viewModel.requestVerificationCode()
     }
 }

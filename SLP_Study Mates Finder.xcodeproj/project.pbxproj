@@ -42,6 +42,7 @@
 		98B3C351291D0F43004EEB14 /* SecondOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C350291D0F43004EEB14 /* SecondOnboardingView.swift */; };
 		98B3C353291D2955004EEB14 /* MainOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C352291D2955004EEB14 /* MainOnboardingViewController.swift */; };
 		98B3C355291D2964004EEB14 /* MainOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3C354291D2964004EEB14 /* MainOnboardingView.swift */; };
+		98B7A80829CC2272003931B1 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 98B7A80729CC2272003931B1 /* JGProgressHUD */; };
 		98B9DF80291BEC2D00FE62EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9DF7F291BEC2D00FE62EA /* AppDelegate.swift */; };
 		98B9DF82291BEC2D00FE62EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9DF81291BEC2D00FE62EA /* SceneDelegate.swift */; };
 		98B9DF84291BEC2D00FE62EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B9DF83291BEC2D00FE62EA /* ViewController.swift */; };
@@ -159,6 +160,7 @@
 			files = (
 				9826BA90291F9E10006206F4 /* RxRelay in Frameworks */,
 				98B3C345291C8C06004EEB14 /* Toast in Frameworks */,
+				98B7A80829CC2272003931B1 /* JGProgressHUD in Frameworks */,
 				9826BA92291F9E10006206F4 /* RxSwift in Frameworks */,
 				98B3C316291C7566004EEB14 /* FirebaseMessaging in Frameworks */,
 				98B3C314291C7566004EEB14 /* FirebaseCrashlytics in Frameworks */,
@@ -435,6 +437,7 @@
 				9826BA8D291F9E10006206F4 /* RxCocoa */,
 				9826BA8F291F9E10006206F4 /* RxRelay */,
 				9826BA91291F9E10006206F4 /* RxSwift */,
+				98B7A80729CC2272003931B1 /* JGProgressHUD */,
 			);
 			productName = "SLP_Study Mates Finder";
 			productReference = 98B9DF7C291BEC2D00FE62EA /* SLP_Study Mates Finder.app */;
@@ -470,6 +473,7 @@
 				98B3C340291C8BD4004EEB14 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				98B3C343291C8C06004EEB14 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				9826BA8C291F9E0F006206F4 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				98B7A80629CC2272003931B1 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 98B9DF7D291BEC2D00FE62EA /* Products */;
 			projectDirPath = "";
@@ -819,6 +823,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		98B7A80629CC2272003931B1 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -871,6 +883,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 98B3C343291C8C06004EEB14 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		98B7A80729CC2272003931B1 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98B7A80629CC2272003931B1 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
