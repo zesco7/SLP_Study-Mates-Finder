@@ -45,11 +45,11 @@ class ViewController: UIViewController {
     }
     
     @objc func serviceLogoButtonTapped() {
-        moveToPhoneNumber(self)
+        moveToSignUp(self)
     }
     
-    func moveToPhoneNumber(_ viewController: UIViewController) {
-        let vc = PhoneNumberViewController(mainView: PhoneNumberView())
+    func moveToSignUp(_ viewController: UIViewController) {
+        let vc = LoginSelectionViewController(mainView: LoginSelectionView())
         let navi = UINavigationController(rootViewController: vc)
         navi.modalPresentationStyle = .fullScreen
         viewController.present(navi, animated: true)
