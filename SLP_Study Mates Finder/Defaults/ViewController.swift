@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     var subMessage: UILabel = {
         let view = UILabel()
         view.font = .systemFont(ofSize: 13)
+        view.black()
         view.text = "*그림을 누르면 회원가입 화면으로 이동합니다."
         return view
     }()

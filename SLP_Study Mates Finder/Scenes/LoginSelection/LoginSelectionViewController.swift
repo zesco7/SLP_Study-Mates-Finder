@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import KakaoSDKUser
+import KakaoSDKAuth
+import Toast
 
 class LoginSelectionViewController: UIViewController {
     var mainView = LoginSelectionView()
-    
+    var kakaoToken: String?
+
     init(mainView: LoginSelectionView) {
         self.mainView = mainView
         super.init(nibName: nil, bundle: nil)
@@ -27,7 +31,7 @@ class LoginSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         activateAction()
-
+        
     }
     
     func activateAction() {
@@ -36,12 +40,13 @@ class LoginSelectionViewController: UIViewController {
         mainView.appleLoginButton.addTarget(self, action: #selector(appleLoginButtonTapped), for: .touchUpInside)
         mainView.kakaoLoginButton.addTarget(self, action: #selector(kakaoLoginButtonTapped), for: .touchUpInside)
         mainView.naverLoginButton.addTarget(self, action: #selector(naverLoginButtonTapped), for: .touchUpInside)
+        mainView.logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
     }
     
-    func moveToHome(_ viewController: UIViewController) {
+    func moveToHome() {
         let vc = ViewController()
         vc.modalPresentationStyle = .fullScreen
-        viewController.present(vc, animated: true)
+        self.present(vc, animated: true)
     }
     
     @objc func signUpButtonTapped() {
@@ -51,21 +56,67 @@ class LoginSelectionViewController: UIViewController {
     
     @objc func googleLoginButtonTapped() {
         //인증 후 홈화면 이동
-        moveToHome(self)
+        moveToHome()
     }
     
     @objc func appleLoginButtonTapped() {
         //인증 후 홈화면 이동
-        moveToHome(self)
+        moveToHome()
     }
     
     @objc func kakaoLoginButtonTapped() {
-        //인증 후 홈화면 이동
-        moveToHome(self)
+        if (UserApi.isKakaoTalkLoginAvailable()) {
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    print("카카오 톡으로 로그인 성공")
+                    _ = oauthToken
+                    self.kakaoToken = oauthToken?.accessToken
+                    print("kakaoToken created", self.kakaoToken)
+                    self.moveToHome()
+                }
+            }
+        } else {
+            UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    print("카카오 계정으로 로그인 성공")
+                    _ = oauthToken
+                    self.kakaoToken = oauthToken?.accessToken
+                    print("kakaoToken created", self.kakaoToken)
+                    self.moveToHome()
+                }
+            }
+        }
     }
     
     @objc func naverLoginButtonTapped() {
         //인증 후 홈화면 이동
-        moveToHome(self)
+        moveToHome()
+    }
+    
+    @objc func logoutButtonTapped() {
+        print("kakaoToken", kakaoToken)
+        unlinkKakao()
+//        if kakaoToken != nil {
+//            self.view.makeToast("로그아웃 되었습니다.", duration: 1.0, position: .bottom)
+//        } else {
+//            self.view.makeToast("로그인 상태가 아닙니다.", duration: 1.0, position: .bottom)
+//        }
+    }
+    
+    func unlinkKakao() {
+        UserApi.shared.unlink {(error) in
+            if let error = error {
+                print(error)
+            }
+            else {
+                self.kakaoToken = nil
+                print("kakaoToken deleted", self.kakaoToken)
+                print("unlink() success.")
+            }
+        }
     }
 }

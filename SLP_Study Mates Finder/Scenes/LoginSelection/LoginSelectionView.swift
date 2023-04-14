@@ -87,8 +87,17 @@ class LoginSelectionView: BaseView {
         return view
     }()
     
+    var logoutButton: UIButton = {
+        let view = UIButton()
+        view.setTitle("로그아웃", for: .normal)
+        view.setTitleColor(.systemGray, for: .normal)
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        view.titleLabel?.textAlignment = .center
+        return view
+    }()
+   
     override func configure() {
-        [signUpMessage, signUpSubMessage, signUpButton, divisionLine, loginMessage, googleLoginButton, appleLoginButton, kakaoLoginButton, naverLoginButton].forEach {
+        [signUpMessage, signUpSubMessage, signUpButton, divisionLine, loginMessage, googleLoginButton, appleLoginButton, kakaoLoginButton, naverLoginButton, logoutButton].forEach {
             self.addSubview($0)
         }
     }
@@ -155,6 +164,13 @@ class LoginSelectionView: BaseView {
             make.width.equalTo(60)
             make.height.equalTo(60)
             make.leadingMargin.equalTo(kakaoLoginButton).offset(80)
+        }
+        
+        logoutButton.snp.makeConstraints { make in
+            make.topMargin.equalTo(naverLoginButton).offset(80)
+            make.width.equalTo(self)
+            make.height.equalTo(20)
+            make.centerX.equalTo(self)
         }
     }
 }
